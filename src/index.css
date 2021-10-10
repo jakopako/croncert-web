@@ -14,7 +14,7 @@ code {
 
 
 .concert-item {
-  padding: 8px 0;
+  padding: 6px;
 }
 
 .concert-list {
@@ -22,6 +22,7 @@ code {
     width: auto;
     max-width: 50em;
     list-style-type: none;
+    padding: 2em;
 }
 
 .concert-location {
