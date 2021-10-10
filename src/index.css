@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.concert-item {
+  padding: 8px 0;
+}
+
+.concert-list {
+    margin: auto;
+    width: 50%;
+    list-style-type: none;
+}
+
+.concert-location {
+  font-weight: bold;
+}
+
+.concert-artist {
+  font-size: large;
+  font-weight: bold;
+  padding: 1em 0;
+}
+
+.concert-artist a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.concert-artist a:hover {
+  color:lightblue !important;
+}
+
+.concert-artist a:visited {
+  color: black;
+  text-decoration: none;
+}
