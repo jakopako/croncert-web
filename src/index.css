@@ -19,7 +19,8 @@ code {
 
 .concert-list {
     margin: auto;
-    width: 50%;
+    width: auto;
+    max-width: 50em;
     list-style-type: none;
 }
 
