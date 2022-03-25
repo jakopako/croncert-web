@@ -17,7 +17,7 @@ const ConcertList = ({concerts}: IConcerts) => {
   return (
     <div className='concertlist__box'>
       {concerts.map((concert) => (
-        <ConcertItem title={concert.title} location={concert.location} city={concert.city} comment={concert.comment} date={concert.date}></ConcertItem>
+        <ConcertItem title={concert.title} location={concert.location} city={concert.city} comment={concert.comment} url={concert.url} date={concert.date}></ConcertItem>
       ))}
         {/* <ConcertItem title={c1.title} location={''} city={''} comment={''} date={new Date()} /> */}
     </div>

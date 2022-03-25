@@ -8,18 +8,21 @@
 .input__box {
     width: 100%;
     border-radius: 20px;
-    padding: 10px 20px;
-    font-size: large;
+    padding: 10px 20px 10px 25px;
+    font-size: 20px;
     border: none;
     transition: 0.2s;
-    background-color: rgb(255, 238, 221);
+    background-color: rgb(255, 226, 197);
+    font-family: inherit;
+    font-weight: 400;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .input__box:focus {
     outline: none;
 }
 
-.input__submit {
+/* .input__submit {
     position: absolute;
     width: 35px;
     height: 35px;
@@ -27,40 +30,60 @@
     border-radius: 35px;
     right: 5px;
     border: none;
-}
+} */
 
 .concertlist__box {
-    display: flex;
+    /* display: flex; */
     width: 50%;
     position: relative;
-    align-items: center;
-    background-color:rgb(255, 238, 221);
+    background-color:rgb(255, 226, 197);
     border-radius: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 0 10px 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .concertitem__box {
-    display: flex;
-    margin: 20px;
+    /* display: flex; */
+    padding: 10px 0 10px 0;
+    margin: 0 20px 0 20px;
     font-size: 30px;
+    /* width: 90%; */
+    border-bottom: 1px solid rgb(255, 186, 81);
 }
 
-.concerttitle {
-
+.concertitem__box:last-child {
+    border-bottom: none;
 }
 
-.concertlocation {
-
+.concertitem__field {
+    position: relative;
+    text-align: left;
 }
 
-.concertcity {
-
+.concertitem__title {
+    font-size: 25px;
+    font-weight: 500;
+    padding: 5px;
 }
 
-.concertcomment {
-
+.concertitem__title a {
+    color: black;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-.concertdate {
-    
+.concertitem__title a:hover {
+    color: rgb(255, 186, 81);
+}
+
+.concertitem__location_city {
+    font-size: 20px;
+    padding: 2px 0 2px 5px;
+}
+
+.concertitem__date {
+    font-size: 20px;
+    padding: 2px 0 2px 5px;
 }

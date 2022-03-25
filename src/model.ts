@@ -3,5 +3,6 @@ export type Concert = {
     location: string;
     city: string;
     comment: string;
+    url: string;
     date: Date;
   }
