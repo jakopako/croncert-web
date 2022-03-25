@@ -1,0 +1,66 @@
+.input {
+    display: flex;
+    width: 50%;
+    position: relative;
+    align-items: center;
+}
+
+.input__box {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: large;
+    border: none;
+    transition: 0.2s;
+    background-color: rgb(255, 238, 221);
+}
+
+.input__box:focus {
+    outline: none;
+}
+
+.input__submit {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    margin: 0px;
+    border-radius: 35px;
+    right: 5px;
+    border: none;
+}
+
+.concertlist__box {
+    display: flex;
+    width: 50%;
+    position: relative;
+    align-items: center;
+    background-color:rgb(255, 238, 221);
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.concertitem__box {
+    display: flex;
+    margin: 20px;
+    font-size: 30px;
+}
+
+.concerttitle {
+
+}
+
+.concertlocation {
+
+}
+
+.concertcity {
+
+}
+
+.concertcomment {
+
+}
+
+.concertdate {
+    
+}

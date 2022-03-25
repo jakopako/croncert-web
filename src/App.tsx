@@ -1,14 +1,22 @@
 import './App.css';
+import ConcertList from './components/ConcertList';
+import SearchField from './components/SearchField';
 
-function App() {
+const App: React.FC = () => {
+  const concerts = [
+    {
+      title: "title1",
+      location: 'location1',
+      city: 'city1',
+      comment: 'comment1',
+      date: new Date()
+    }
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>CrONCERT</h1>
-        <p>
-          Coming soon.
-        </p>
-      </header>
+      <span className='heading'>CrONCERT</span>
+      <SearchField></SearchField>
+      <ConcertList concerts={concerts}></ConcertList>
     </div>
   );
 }
