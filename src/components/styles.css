@@ -80,10 +80,54 @@
 
 .concertitem__location_city {
     font-size: 20px;
+    font-weight: 400;
     padding: 2px 0 2px 5px;
 }
 
 .concertitem__date {
-    font-size: 20px;
+    font-size: 18px;
+    /* font-weight: 400; */
     padding: 2px 0 2px 5px;
+}
+
+.pagination {
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.pagination ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pagination ul li {
+    display: inline-block;
+    /* padding: 10px 10px 5px 10px; */
+    /* padding: 10px; */
+    /* width: 25px;
+    height: 20px; */
+}
+
+.pagination ul li a {
+    display: block;
+    width: 45px;
+    height: 35px;
+    line-height: 40px;
+}
+
+.pagination ul li:hover {
+    border-radius: 10px;
+    background-color: rgb(255, 208, 138);
+    cursor: pointer;
+}
+
+.pagination ul li.selected {
+    border-radius: 10px;
+    background-color: rgb(255, 186, 81);
+}
+
+.noconcerts {
+    padding: 20px;
+    font-weight: 400;
 }
