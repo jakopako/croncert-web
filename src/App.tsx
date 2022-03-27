@@ -1,9 +1,8 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import ConcertList from './components/ConcertList';
-import SearchField from './components/SearchField';
 import { Concert } from './model';
-import { Route, Routes } from "react-router-dom";
+import SearchBar from './components/SearchBar';
 
 type State = {
   baseUrl: string;
@@ -11,6 +10,7 @@ type State = {
   totalPages: number;
   concerts: Array<Concert>;
   titleSearchTerm: string;
+  citySearchTerm: string;
 }
 
 type Props = {
@@ -51,11 +51,12 @@ class App extends Component {
     totalPages: 0,
     page: 1,
     concerts: [],
-    titleSearchTerm: ""
+    titleSearchTerm: "",
+    citySearchTerm: ""
   }
 
   async getConcerts() {
-    const res = await fetch(this.state.baseUrl + '?page=' + this.state.page+'&title='+this.state.titleSearchTerm);
+    const res = await fetch(this.state.baseUrl + '?page=' + this.state.page + '&title=' + this.state.titleSearchTerm + '&city=' + this.state.citySearchTerm);
     const res_json = await res.json();
     this.setState({
       totalPages: res_json['last_page'],
@@ -70,15 +71,42 @@ class App extends Component {
   }
 
   handlePageClick = (event: { selected: number; }) => {
-    this.setState({ page: event.selected + 1}, () => {
+    this.setState({ page: event.selected + 1 }, () => {
       this.getConcerts();
     });
   };
 
   handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.setState({ titleSearchTerm: event.currentTarget.titlesearch.value, page: 1}, () => {
+    this.setState({
+      titleSearchTerm: event.currentTarget.titlesearch.value,
+      citySearchTerm: event.currentTarget.citysearch.value,
+      page: 1
+    }, () => {
       this.getConcerts();
+    })
+  }
+
+  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    this.setState({
+      page: 1
+    }, () => {
+      this.getConcerts();
+    })
+  }
+
+  handleTitleChange = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    this.setState({
+      titleSearchTerm: event.currentTarget.titlesearch.value
+    })
+  } 
+
+  handleCityChange = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    this.setState({
+      citySearchTerm: event.currentTarget.citysearch.value,
     })
   }
 
@@ -86,7 +114,11 @@ class App extends Component {
     return (
       <div className="App">
         <span className='heading'>CrONCERT</span>
-        <SearchField handleFormSubmit={this.handleSearch}></SearchField>
+        {/* <SearchField handleFormSubmit={this.handleSearch}></SearchField> */}
+        <SearchBar
+          handleSubmit={this.handleSubmit}
+          handleTitleChange={this.handleTitleChange}
+          handleCityChange={this.handleCityChange} />
         <ConcertList
           concerts={this.state.concerts}
           page={this.state.page}

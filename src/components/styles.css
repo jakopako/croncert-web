@@ -5,9 +5,9 @@
     align-items: center;
 }
 
-.input__box {
-    width: 100%;
-    border-radius: 20px;
+.input__box_title {
+    width: 60%;
+    border-radius: 20px 0 0 20px;
     padding: 10px 20px 10px 25px;
     font-size: 20px;
     border: none;
@@ -18,8 +18,73 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.input__box:focus {
+.input__box_city {
+    width: 40%;
+    border-radius: 0 20px 20px 0;
+    border: none;
+    transition: 0.2s;
+    background-color: rgb(255, 226, 197);
+    font-family: inherit;
+    font-weight: 400;
+    padding: 10px 20px 10px 25px;
+    font-size: 20px;
+    border-left: 1px solid rgb(255, 186, 81);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.input__box_title:focus {
     outline: none;
+}
+
+.input__box_city:focus {
+    outline: none;
+}
+
+.searchbar__box {
+    display: flex;
+    width: 50%;
+    position: relative;
+    background-color:rgb(255, 226, 197);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.searchbar__title {
+    width: 60%;
+    padding-left: 20px;
+}
+
+.searchbar_input_title {
+    border: none;
+    background-color: rgb(255, 226, 197);
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 20px;
+    float: left;
+}
+
+.searchbar_input_title:focus {
+    outline: none;
+}
+
+.searchbar_input_city:focus {
+    outline: none;
+}
+
+.searchbar__city {
+    width: 40%;
+    padding-left: 20px;
+    border-left: 2px solid rgb(255, 186, 81);
+}
+.searchbar_input_city {
+    border: none;
+    background-color: rgb(255, 226, 197);
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 20px;
+    float: left;
 }
 
 /* .input__submit {
@@ -50,7 +115,7 @@
     margin: 0 20px 0 20px;
     font-size: 30px;
     /* width: 90%; */
-    border-bottom: 1px solid rgb(255, 186, 81);
+    border-bottom: 2px solid rgb(255, 186, 81);
 }
 
 .concertitem__box:last-child {

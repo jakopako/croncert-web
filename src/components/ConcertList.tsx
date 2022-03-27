@@ -3,6 +3,7 @@ import { Concert } from '../model'
 import ConcertItem from './ConcertItem'
 import ReactPaginate from 'react-paginate';
 import { NoConcerts } from './NoConcerts';
+import './styles.css'
 
 interface Props {
   concerts: Concert[];

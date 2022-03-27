@@ -8,7 +8,8 @@ interface Props {
 const SearchField = ({handleFormSubmit}: Props) => {
   return (
   <form className='input' onSubmit={handleFormSubmit}>
-      <input id='titlesearch' type='input' placeholder='Search' className='input__box'/>
+      <input id='titlesearch' type='input' placeholder='Title' className='input__box_title'/>
+      <input id='citysearch' type='input' placeholder='City' className='input__box_city'/>
       {/* <button className='input__submit'>Go</button> */}
   </form>
   )
