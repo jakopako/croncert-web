@@ -1,4 +1,4 @@
-.input {
+/* .input {
     display: flex;
     width: 50%;
     position: relative;
@@ -38,11 +38,12 @@
 
 .input__box_city:focus {
     outline: none;
-}
+} */
 
 .searchbar__box {
     display: flex;
-    width: 50%;
+    max-width: 800px;
+    width: 90%;
     position: relative;
     background-color:rgb(255, 226, 197);
     border-radius: 20px;
@@ -79,6 +80,7 @@
     border-left: 2px solid rgb(255, 186, 81);
 }
 .searchbar_input_city {
+    width: 80%;
     border: none;
     background-color: rgb(255, 226, 197);
     font-family: inherit;
@@ -99,7 +101,8 @@
 
 .concertlist__box {
     /* display: flex; */
-    width: 50%;
+    max-width: 800px;
+    width: 90%;
     position: relative;
     background-color:rgb(255, 226, 197);
     border-radius: 20px;
@@ -176,7 +179,7 @@
 
 .pagination ul li a {
     display: block;
-    width: 45px;
+    width: 35px;
     height: 35px;
     line-height: 40px;
 }

@@ -25,11 +25,12 @@ const ConcertList = ({ concerts, page, totalPages, handlePagination }: Props) =>
         {concerts && (
         <ReactPaginate
           breakLabel="..."
-          nextLabel=" >"
+          nextLabel=">"
           onPageChange={handlePagination}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
           pageCount={totalPages}
-          previousLabel="< "
+          previousLabel="<"
         // renderOnZeroPageCount={null}
         />)}
       </div>
