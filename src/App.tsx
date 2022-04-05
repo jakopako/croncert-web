@@ -3,6 +3,7 @@ import './App.css';
 import ConcertList from './components/ConcertList';
 import { Concert } from './model';
 import SearchBar from './components/SearchBar';
+import Footer from './components/Footer';
 
 type State = {
   baseUrl: string;
@@ -19,35 +20,9 @@ type Props = {
 };
 
 class App extends Component {
-  // const concerts = [
-  //   {
-  //     title: "Jugendblasorchester Zürich (JBOZ)",
-  //     location: 'Tonhalle',
-  //     city: 'Zurich',
-  //     comment: 'Jugendblasorchester Zürich JBOZ',
-  //     url: 'https://www.tonhalle-orchester.ch/en/concerts/kalender/jugendblasorchester-zrich-jboz-1439709/tz/',
-  //     date: new Date()
-  //   },
-  //   {
-  //     title: "MEDHANE",
-  //     location: 'Botanique',
-  //     city: 'Brussels',
-  //     comment: 'Rotonde',
-  //     url: 'https://botanique.be/en/concert/medhane-2022',
-  //     date: new Date()
-  //   },
-  //   {
-  //     title: "Yevgueni",
-  //     location: 'HetDepot',
-  //     city: 'Leuven',
-  //     comment: 'Met een nieuw album!',
-  //     url: 'https://www.hetdepot.be/concert/yevgueni-0',
-  //     date: new Date()
-  //   }
-  // ]
 
   state: State = {
-    baseUrl: 'https://event-api-6bbi2ttrza-oa.a.run.app/api/events',
+    baseUrl: 'https://event-api-6bbi2ttrza-ew.a.run.app/api/events',
     totalPages: 0,
     page: 1,
     concerts: [],
@@ -123,7 +98,8 @@ class App extends Component {
           concerts={this.state.concerts}
           page={this.state.page}
           totalPages={this.state.totalPages}
-          handlePagination={this.handlePageClick}></ConcertList>
+          handlePagination={this.handlePageClick} />
+        <Footer/>
       </div>
     );
 
