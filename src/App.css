@@ -1,18 +1,16 @@
 .App {
   text-align: center;
-}
-
-.App-header {
-  background-image: linear-gradient(#ff7b00,  #ffbb00);
+  background-image: linear-gradient(#578672,  #7eacb3);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
   color: rgb(0, 0, 0);
 }
 
-.App-link {
-  color: #61dafb;
+.heading {
+  font-size: 50px;
+  margin: 50px;
 }
