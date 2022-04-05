@@ -14,11 +14,6 @@ type State = {
   citySearchTerm: string;
 }
 
-type Props = {
-  history: History;
-  location: Location;
-};
-
 class App extends Component {
 
   state: State = {
