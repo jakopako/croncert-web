@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import ReactGA from "react-ga";
 
-ReactGA.initialize("G-1VDTNKYJRK");
+ReactGA.initialize("UA-225379065-1");
 
 type State = {
   baseUrl: string;

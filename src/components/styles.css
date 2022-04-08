@@ -1,92 +1,51 @@
-/* .input {
-    display: flex;
-    width: 50%;
-    position: relative;
-    align-items: center;
-}
-
-.input__box_title {
-    width: 60%;
-    border-radius: 20px 0 0 20px;
-    padding: 10px 20px 10px 25px;
-    font-size: 20px;
-    border: none;
-    transition: 0.2s;
-    background-color: rgb(255, 226, 197);
-    font-family: inherit;
-    font-weight: 400;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
-.input__box_city {
-    width: 40%;
-    border-radius: 0 20px 20px 0;
-    border: none;
-    transition: 0.2s;
-    background-color: rgb(255, 226, 197);
-    font-family: inherit;
-    font-weight: 400;
-    padding: 10px 20px 10px 25px;
-    font-size: 20px;
-    border-left: 1px solid rgb(255, 186, 81);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
-.input__box_title:focus {
-    outline: none;
-}
-
-.input__box_city:focus {
-    outline: none;
-} */
-
 .searchbar__box {
-    display: flex;
-    max-width: 800px;
-    width: 90%;
-    position: relative;
-    background-color:rgb(255, 226, 197);
-    border-radius: 20px;
-    padding: 10px 0 8px 0;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  background-color: rgb(255, 226, 197);
+  border-radius: 20px;
+  padding: 10px 0 8px 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .searchbar__title {
-    width: 60%;
-    padding-left: 20px;
+  width: 60%;
+  padding-left: 20px;
 }
 
 .searchbar_input_title {
-    border: none;
-    background-color: rgb(255, 226, 197);
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 18px;
-    float: left;
-    width: 100%;
+  border: none;
+  background-color: rgb(255, 226, 197);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  float: left;
+  width: 100%;
 }
 
 .searchbar_input_title:focus {
-    outline: none;
+  outline: none;
 }
 
 .searchbar_input_city:focus {
-    outline: none;
+  outline: none;
 }
 
 .searchbar__city {
-    width: 40%;
-    padding-left: 20px;
-    border-left: 2px solid rgb(255, 186, 81);
+  width: 40%;
+  padding-left: 10px;
+  border-left: 2px solid rgb(255, 186, 81);
 }
 .searchbar_input_city {
-    width: 80%;
-    border: none;
-    background-color: rgb(255, 226, 197);
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 18px;
-    float: left;
+  width: 80%;
+  border: none;
+  background-color: rgb(255, 226, 197);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  float: left;
 }
 
 /* .input__submit {
@@ -100,122 +59,123 @@
 } */
 
 .concertlist__box {
-    /* display: flex; */
-    max-width: 800px;
-    width: 90%;
-    position: relative;
-    background-color:rgb(255, 226, 197);
-    border-radius: 20px;
-    margin-top: 20px;
-    /* margin-bottom: 20px; */
-    padding: 10px 0 10px 0;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  /* display: flex; */
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  background-color: rgb(255, 226, 197);
+  border-radius: 20px;
+  margin-top: 20px;
+  /* margin-bottom: 20px; */
+  padding: 10px 0 10px 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .concertitem__box {
-    /* display: flex; */
-    padding: 10px 0 10px 0;
-    margin: 0 20px 0 20px;
-    font-size: 30px;
-    /* width: 90%; */
-    border-bottom: 2px solid rgb(255, 186, 81);
+  /* display: flex; */
+  padding: 10px 0 10px 0;
+  margin: 0 20px 0 20px;
+  font-size: 30px;
+  /* width: 90%; */
+  border-bottom: 2px solid rgb(255, 186, 81);
 }
 
 .concertitem__box:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .concertitem__field {
-    position: relative;
-    text-align: left;
+  position: relative;
+  text-align: left;
 }
 
 .concertitem__title {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 5px;
 }
 
 .concertitem__title a {
-    color: black;
-    text-decoration: none;
-    transition: 0.2s;
+  color: black;
+  text-decoration: none;
+  transition: 0.2s;
 }
 
 .concertitem__title a:hover {
-    color: rgb(255, 186, 81);
+  color: rgb(255, 186, 81);
 }
 
 .concertitem__location_city {
-    font-size: 16px;
-    font-weight: 400;
-    padding: 2px 0 2px 5px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 2px 0 2px 5px;
 }
 
 .concertitem__date {
-    font-size: 18px;
-    /* font-weight: 400; */
-    padding: 2px 0 2px 5px;
+  font-size: 18px;
+  /* font-weight: 400; */
+  padding: 2px 0 2px 5px;
 }
 
 .pagination {
-    margin-top: 40px;
-    font-size: 15px;
-    font-weight: 400;
+  margin-top: 40px;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .pagination ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .pagination ul li {
-    display: inline-block;
-    /* padding: 10px 10px 5px 10px; */
-    /* padding: 10px; */
-    /* width: 25px;
+  display: inline-block;
+  /* padding: 10px 10px 5px 10px; */
+  /* padding: 10px; */
+  /* width: 25px;
     height: 20px; */
 }
 
 .pagination ul li a {
-    display: block;
-    width: 35px;
-    height: 35px;
-    line-height: 40px;
+  display: block;
+  width: 35px;
+  height: 35px;
+  line-height: 40px;
 }
 
 .pagination ul li:hover {
-    border-radius: 10px;
-    background-color: rgb(255, 208, 138);
-    cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(255, 208, 138);
+  cursor: pointer;
 }
 
 .pagination ul li.selected {
-    border-radius: 10px;
-    background-color: rgb(255, 186, 81);
+  border-radius: 10px;
+  background-color: rgb(255, 186, 81);
 }
 
 .noconcerts {
-    padding: 20px;
-    font-weight: 400;
+  padding: 20px;
+  font-weight: 400;
 }
 
 .footer__box {
-    padding: 20px;
-    display: flex;
+  padding: 20px;
+  display: flex;
 }
 
 .contribute__box {
-    padding: 10px;
+  padding: 10px;
 }
 
 .contribute__box a {
-    color: black;
-    text-decoration: none;
-    font-weight: 400;
-    transition: 0.2s;
+  color: black;
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.2s;
 }
 
 .contribute__box a:hover {
-    color: rgb(255, 186, 81);
+  color: rgb(255, 186, 81);
 }
