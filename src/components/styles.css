@@ -47,8 +47,7 @@
     position: relative;
     background-color:rgb(255, 226, 197);
     border-radius: 20px;
-    margin-top: 20px;
-    padding: 10px 0 10px 0;
+    padding: 10px 0 8px 0;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
@@ -62,8 +61,9 @@
     background-color: rgb(255, 226, 197);
     font-family: inherit;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     float: left;
+    width: 100%;
 }
 
 .searchbar_input_title:focus {
@@ -85,7 +85,7 @@
     background-color: rgb(255, 226, 197);
     font-family: inherit;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     float: left;
 }
 
@@ -131,7 +131,7 @@
 }
 
 .concertitem__title {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     padding: 5px;
 }
@@ -147,7 +147,7 @@
 }
 
 .concertitem__location_city {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     padding: 2px 0 2px 5px;
 }

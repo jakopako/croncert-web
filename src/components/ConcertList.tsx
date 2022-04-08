@@ -31,7 +31,6 @@ const ConcertList = ({ concerts, page, totalPages, handlePagination }: Props) =>
           marginPagesDisplayed={1}
           pageCount={totalPages}
           previousLabel="<"
-        // renderOnZeroPageCount={null}
         />)}
       </div>
     </div>
