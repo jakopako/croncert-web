@@ -85,9 +85,15 @@ class App extends Component {
 
   handleTitleChange = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.setState({
-      titleSearchTerm: event.currentTarget.titlesearch.value,
-    });
+    this.setState(
+      {
+        titleSearchTerm: event.currentTarget.titlesearch.value,
+        page: 1,
+      },
+      () => {
+        this.getConcerts();
+      }
+    );
   };
 
   handleCityChange = (event: React.FormEvent<HTMLFormElement>) => {
@@ -139,7 +145,6 @@ class App extends Component {
         <div className="App">
           <span className="heading">CrONCERT</span>
           <SearchBar
-            handleSubmit={this.handleSubmit}
             handleTitleChange={this.handleTitleChange}
             handleCityChange={this.handleCityChange}
           />
