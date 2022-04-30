@@ -144,6 +144,7 @@ class App extends Component {
         </svg>
         <div className="App">
           <span className="heading">CrONCERT</span>
+          <span className="subtitle">Find upcoming concerts near you.</span>
           <SearchBar
             handleTitleChange={this.handleTitleChange}
             handleCityChange={this.handleCityChange}

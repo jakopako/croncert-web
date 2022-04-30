@@ -19,12 +19,17 @@ const ConcertList = ({
   handlePagination,
 }: Props) => {
   return (
-    <div className="concertlist__box" data-nosnippet>
+    <div className="concertlist__box">
       <div>
         {concerts &&
           concerts.map((concert) => (
             <ConcertItem
-              key={concert.title + concert.date}
+              key={
+                concert.title +
+                concert.date +
+                concert.location +
+                concert.comment
+              }
               title={concert.title}
               location={concert.location}
               city={concert.city}
