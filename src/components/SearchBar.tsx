@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
   handleCityChange: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleDateChange: (date: Date) => void;
 }
 
-const SearchBar = ({ handleTitleChange, handleCityChange }: Props) => {
+const SearchBar = ({
+  handleTitleChange,
+  handleCityChange,
+  handleDateChange,
+}: Props) => {
+  const startDate = new Date();
   return (
     <div className="searchbar__box">
       <form className="searchbar__title" onChange={handleTitleChange}>
@@ -24,6 +31,9 @@ const SearchBar = ({ handleTitleChange, handleCityChange }: Props) => {
           className="searchbar_input_city"
         />
       </form>
+      <div className="datepicker__container">
+        <DatePicker selected={startDate} onChange={handleDateChange} />
+      </div>
     </div>
   );
 };

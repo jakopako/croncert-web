@@ -15,6 +15,7 @@ type State = {
   concerts: Array<Concert>;
   titleSearchTerm: string;
   citySearchTerm: string;
+  dateSearchTerm: string;
 };
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
     concerts: [],
     titleSearchTerm: "",
     citySearchTerm: "",
+    dateSearchTerm: "",
   };
 
   async getConcerts() {
@@ -35,7 +37,9 @@ class App extends Component {
         "&title=" +
         this.state.titleSearchTerm +
         "&city=" +
-        this.state.citySearchTerm
+        this.state.citySearchTerm +
+        "&date=" +
+        this.state.dateSearchTerm
     );
     const res_json = await res.json();
     this.setState({
@@ -109,6 +113,18 @@ class App extends Component {
     );
   };
 
+  handleDateChange = (date: Date) => {
+    this.setState(
+      {
+        dateSearchTerm: date.toISOString(),
+        page: 1,
+      },
+      () => {
+        this.getConcerts();
+      }
+    );
+  };
+
   render() {
     return (
       <div>
@@ -148,6 +164,7 @@ class App extends Component {
           <SearchBar
             handleTitleChange={this.handleTitleChange}
             handleCityChange={this.handleCityChange}
+            handleDateChange={this.handleDateChange}
           />
           <ConcertList
             concerts={this.state.concerts}

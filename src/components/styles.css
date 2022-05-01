@@ -179,3 +179,7 @@
 .contribute__box a:hover {
   color: rgb(255, 186, 81);
 }
+
+.datepicker__container {
+  z-index: 10;
+}
