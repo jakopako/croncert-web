@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import calendarIcon from './calendar-icon.png'
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -13,6 +14,15 @@ const SearchBar = ({
   handleDateChange,
 }: Props) => {
   const startDate = new Date();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDateSelectorChange = (date: Date) => {
+    setIsOpen(!isOpen);
+    handleDateChange(date);
+  };
+  const handleClick = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="searchbar__box">
       <form className="searchbar__title" onChange={handleTitleChange}>
@@ -32,7 +42,11 @@ const SearchBar = ({
         />
       </form>
       <div className="datepicker__container">
-        <DatePicker selected={startDate} onChange={handleDateChange} />
+        <button className="datepicker__button" onClick={handleClick} type="submit">
+          <img src={calendarIcon} width="20" height="20" />
+        </button>
+        {isOpen && (
+          <DatePicker selected={startDate} onChange={handleDateSelectorChange} inline />)}
       </div>
     </div>
   );

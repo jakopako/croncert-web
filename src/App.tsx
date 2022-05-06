@@ -21,6 +21,7 @@ type State = {
 class App extends Component {
   state: State = {
     baseUrl: "https://api.croncert.ch/api/events",
+    // baseUrl: "http://localhost:5000/api/events",
     totalPages: 0,
     page: 1,
     concerts: [],
@@ -116,10 +117,12 @@ class App extends Component {
   handleDateChange = (date: Date) => {
     this.setState(
       {
+        // TODO: make sure the time zone is the local timezone.
         dateSearchTerm: date.toISOString(),
         page: 1,
       },
       () => {
+        console.log(date.toISOString())
         this.getConcerts();
       }
     );
