@@ -1,27 +1,28 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import calendarIcon from './calendar-icon.png'
+import React from "react";
+import calendarIcon from "./icon-calendar-96.png";
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
   handleCityChange: (event: React.FormEvent<HTMLFormElement>) => void;
-  handleDateChange: (date: Date) => void;
+  // handleDateChange: (date: Date) => void;
+  calendarIsOpen: boolean;
+  setCalendarIsOpen: (value: boolean) => void;
 }
 
 const SearchBar = ({
   handleTitleChange,
   handleCityChange,
-  handleDateChange,
+  calendarIsOpen,
+  setCalendarIsOpen,
 }: Props) => {
-  const startDate = new Date();
-  const [isOpen, setIsOpen] = useState(false);
-  const handleDateSelectorChange = (date: Date) => {
-    setIsOpen(!isOpen);
-    handleDateChange(date);
-  };
-  const handleClick = (e: { preventDefault: () => void; }) => {
+  // const startDate = new Date();
+  // const handleDateSelectorChange = (date: Date) => {
+  //   setIsOpen(!isOpen);
+  //   handleDateChange(date);
+  // };
+  const handleClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setIsOpen(!isOpen);
+    setCalendarIsOpen(!calendarIsOpen);
   };
   return (
     <div className="searchbar__box">
@@ -41,13 +42,24 @@ const SearchBar = ({
           className="searchbar_input_city"
         />
       </form>
-      <div className="datepicker__container">
-        <button className="datepicker__button" onClick={handleClick} type="submit">
+      <div className="datepicker-button__container">
+        <button
+          className="datepicker-button"
+          onClick={handleClick}
+          type="submit"
+        >
           <img src={calendarIcon} width="20" height="20" />
         </button>
-        {isOpen && (
-          <DatePicker selected={startDate} onChange={handleDateSelectorChange} inline />)}
       </div>
+      {/* <div className="datepicker__container">
+        {isOpen && (
+          <DatePicker
+            selected={startDate}
+            onChange={handleDateSelectorChange}
+            inline
+          />
+        )}
+      </div> */}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Concert } from "./model";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import ReactGA from "react-ga";
+import Calendar from "./components/Calendar";
 
 ReactGA.initialize("UA-225379065-1");
 
@@ -15,7 +16,9 @@ type State = {
   concerts: Array<Concert>;
   titleSearchTerm: string;
   citySearchTerm: string;
-  dateSearchTerm: string;
+  calendarIsOpen: boolean;
+  date: Date;
+  dateSelected: boolean;
 };
 
 class App extends Component {
@@ -27,21 +30,24 @@ class App extends Component {
     concerts: [],
     titleSearchTerm: "",
     citySearchTerm: "",
-    dateSearchTerm: "",
+    calendarIsOpen: false,
+    date: new Date(),
+    dateSelected: false,
   };
 
   async getConcerts() {
-    const res = await fetch(
+    var url =
       this.state.baseUrl +
-        "?page=" +
-        this.state.page +
-        "&title=" +
-        this.state.titleSearchTerm +
-        "&city=" +
-        this.state.citySearchTerm +
-        "&date=" +
-        this.state.dateSearchTerm
-    );
+      "?page=" +
+      this.state.page +
+      "&title=" +
+      this.state.titleSearchTerm +
+      "&city=" +
+      this.state.citySearchTerm;
+    if (this.state.dateSelected) {
+      url += "&date=" + this.state.date.toISOString();
+    }
+    const res = await fetch(url);
     const res_json = await res.json();
     this.setState({
       totalPages: res_json["last_page"],
@@ -120,12 +126,21 @@ class App extends Component {
         // TODO: make sure the time zone is the local timezone.
         dateSearchTerm: date.toISOString(),
         page: 1,
+        calendarIsOpen: false,
+        date: date,
+        dateSelected: true,
       },
       () => {
-        console.log(date.toISOString())
+        console.log(date.toISOString());
         this.getConcerts();
       }
     );
+  };
+
+  setCalendarIsOpen = (value: boolean) => {
+    this.setState({
+      calendarIsOpen: value,
+    });
   };
 
   render() {
@@ -167,6 +182,12 @@ class App extends Component {
           <SearchBar
             handleTitleChange={this.handleTitleChange}
             handleCityChange={this.handleCityChange}
+            calendarIsOpen={this.state.calendarIsOpen}
+            setCalendarIsOpen={this.setCalendarIsOpen}
+          />
+          <Calendar
+            isOpen={this.state.calendarIsOpen}
+            date={this.state.date}
             handleDateChange={this.handleDateChange}
           />
           <ConcertList
