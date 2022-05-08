@@ -48,7 +48,7 @@ const SearchBar = ({
           onClick={handleClick}
           type="submit"
         >
-          <img src={calendarIcon} width="20" height="20" />
+          <img src={calendarIcon} width="20" height="20" alt="calendar icon" />
         </button>
       </div>
       {/* <div className="datepicker__container">
