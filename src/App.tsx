@@ -21,6 +21,29 @@ type State = {
   dateSelected: boolean;
 };
 
+const toISOStringWithTimezone = (date: Date): string => {
+  const tzOffset = -date.getTimezoneOffset();
+  const diff = tzOffset >= 0 ? "+" : "-";
+  const pad = (n: number) => `${Math.floor(Math.abs(n))}`.padStart(2, "0");
+  return (
+    date.getFullYear() +
+    "-" +
+    pad(date.getMonth() + 1) +
+    "-" +
+    pad(date.getDate()) +
+    "T" +
+    pad(date.getHours()) +
+    ":" +
+    pad(date.getMinutes()) +
+    ":" +
+    pad(date.getSeconds()) +
+    diff +
+    pad(tzOffset / 60) +
+    ":" +
+    pad(tzOffset % 60)
+  );
+};
+
 class App extends Component {
   state: State = {
     baseUrl: "https://api.croncert.ch/api/events",
@@ -45,7 +68,8 @@ class App extends Component {
       "&city=" +
       this.state.citySearchTerm;
     if (this.state.dateSelected) {
-      url += "&date=" + this.state.date.toISOString();
+      url +=
+        "&date=" + encodeURIComponent(toISOStringWithTimezone(this.state.date));
     }
     const res = await fetch(url);
     const res_json = await res.json();
@@ -124,14 +148,14 @@ class App extends Component {
     this.setState(
       {
         // TODO: make sure the time zone is the local timezone.
-        dateSearchTerm: date.toISOString(),
+        // dateSearchTerm: date.toISOString(),
         page: 1,
         calendarIsOpen: false,
         date: date,
         dateSelected: true,
       },
       () => {
-        console.log(date.toISOString());
+        console.log(toISOStringWithTimezone(date));
         this.getConcerts();
       }
     );
