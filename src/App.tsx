@@ -5,6 +5,7 @@ import { Concert } from "./model";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import ReactGA from "react-ga";
+import Calendar from "./components/Calendar";
 
 ReactGA.initialize("UA-225379065-1");
 
@@ -15,28 +16,62 @@ type State = {
   concerts: Array<Concert>;
   titleSearchTerm: string;
   citySearchTerm: string;
+  calendarIsOpen: boolean;
+  date: Date;
+  dateSelected: boolean;
+};
+
+const toISOStringWithTimezone = (date: Date): string => {
+  const tzOffset = -date.getTimezoneOffset();
+  const diff = tzOffset >= 0 ? "+" : "-";
+  const pad = (n: number) => `${Math.floor(Math.abs(n))}`.padStart(2, "0");
+  return (
+    date.getFullYear() +
+    "-" +
+    pad(date.getMonth() + 1) +
+    "-" +
+    pad(date.getDate()) +
+    "T" +
+    pad(date.getHours()) +
+    ":" +
+    pad(date.getMinutes()) +
+    ":" +
+    pad(date.getSeconds()) +
+    diff +
+    pad(tzOffset / 60) +
+    ":" +
+    pad(tzOffset % 60)
+  );
 };
 
 class App extends Component {
   state: State = {
     baseUrl: "https://api.croncert.ch/api/events",
+    // baseUrl: "http://localhost:5000/api/events",
     totalPages: 0,
     page: 1,
     concerts: [],
     titleSearchTerm: "",
     citySearchTerm: "",
+    calendarIsOpen: false,
+    date: new Date(),
+    dateSelected: false,
   };
 
   async getConcerts() {
-    const res = await fetch(
+    var url =
       this.state.baseUrl +
-        "?page=" +
-        this.state.page +
-        "&title=" +
-        this.state.titleSearchTerm +
-        "&city=" +
-        this.state.citySearchTerm
-    );
+      "?page=" +
+      this.state.page +
+      "&title=" +
+      this.state.titleSearchTerm +
+      "&city=" +
+      this.state.citySearchTerm;
+    if (this.state.dateSelected) {
+      url +=
+        "&date=" + encodeURIComponent(toISOStringWithTimezone(this.state.date));
+    }
+    const res = await fetch(url);
     const res_json = await res.json();
     this.setState({
       totalPages: res_json["last_page"],
@@ -109,6 +144,29 @@ class App extends Component {
     );
   };
 
+  handleDateChange = (date: Date) => {
+    this.setState(
+      {
+        // TODO: make sure the time zone is the local timezone.
+        // dateSearchTerm: date.toISOString(),
+        page: 1,
+        calendarIsOpen: false,
+        date: date,
+        dateSelected: true,
+      },
+      () => {
+        console.log(toISOStringWithTimezone(date));
+        this.getConcerts();
+      }
+    );
+  };
+
+  setCalendarIsOpen = (value: boolean) => {
+    this.setState({
+      calendarIsOpen: value,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -148,6 +206,13 @@ class App extends Component {
           <SearchBar
             handleTitleChange={this.handleTitleChange}
             handleCityChange={this.handleCityChange}
+            calendarIsOpen={this.state.calendarIsOpen}
+            setCalendarIsOpen={this.setCalendarIsOpen}
+          />
+          <Calendar
+            isOpen={this.state.calendarIsOpen}
+            date={this.state.date}
+            handleDateChange={this.handleDateChange}
           />
           <ConcertList
             concerts={this.state.concerts}
