@@ -5,5 +5,6 @@ export type Concert = {
   comment: string;
   url: string;
   date: string;
+  sourceUrl: string;
 }
 

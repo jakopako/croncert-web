@@ -115,6 +115,16 @@
   padding: 2px 0 2px 5px;
 }
 
+.concertitem__location_city a {
+  color: black;
+  text-decoration: none;
+  transition: 0.2s;  
+}
+
+.concertitem__location_city a:hover {
+  color: rgb(255, 186, 81);  
+}
+
 .concertitem__date {
   font-size: 18px;
   /* font-weight: 400; */
