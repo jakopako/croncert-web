@@ -28,7 +28,7 @@ const ConcertList = ({
                 concert.title +
                 concert.date +
                 concert.location +
-                concert.comment
+                concert.sourceUrl
               }
               title={concert.title}
               location={concert.location}
@@ -36,6 +36,7 @@ const ConcertList = ({
               comment={concert.comment}
               url={concert.url}
               date={concert.date}
+              sourceUrl={concert.sourceUrl}
             ></ConcertItem>
           ))}
         {!concerts && <NoConcerts />}
