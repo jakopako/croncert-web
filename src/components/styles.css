@@ -4,11 +4,10 @@
   height: 20px;
   width: 90%;
   position: relative;
-  background-color: rgb(255, 226, 197);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);  
   border-radius: 20px;
   padding: 10px 0 10px 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .searchbar__title {
@@ -18,7 +17,7 @@
 
 .searchbar_input_title {
   border: none;
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
   font-weight: 400;
   font-size: 16px;
@@ -38,12 +37,12 @@
 .searchbar__city {
   width: 40%;
   padding-left: 10px;
-  border-left: 2px solid rgb(255, 186, 81);
+  border-left: 3px solid rgb(0, 0, 0);
 }
 .searchbar_input_city {
   width: 80%;
   border: none;
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
   font-weight: 400;
   font-size: 16px;
@@ -51,28 +50,21 @@
   height: 20px;
 }
 
-/* .input__submit {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    margin: 0px;
-    border-radius: 35px;
-    right: 5px;
-    border: none;
-} */
-
 .concertlist__box {
   /* display: flex; */
   max-width: 800px;
   width: 90%;
   position: relative;
-  background-color: rgb(255, 226, 197);
+  /* background-color: rgb(255, 0, 208); */
+  /* background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  
   border-radius: 20px;
   margin-top: 20px;
   /* margin-bottom: 20px; */
   padding: 10px 0 10px 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .concertitem__box {
@@ -81,7 +73,7 @@
   margin: 0 20px 0 20px;
   font-size: 30px;
   /* width: 90%; */
-  border-bottom: 2px solid rgb(255, 186, 81);
+  border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 .concertitem__box:last-child {
@@ -106,23 +98,24 @@
 }
 
 .concertitem__title a:hover {
-  color: rgb(255, 186, 81);
+  color: rgba(255, 255, 255);
 }
 
-.concertitem__location_city {
+.concertitem__location {
   font-size: 16px;
   font-weight: 400;
   padding: 2px 0 2px 5px;
 }
 
-.concertitem__location_city a {
-  color: black;
+.concertitem__location a {
+  color: rgb(0, 0, 0);
   text-decoration: none;
-  transition: 0.2s;  
+  transition: 0.2s;
+  font-weight: 500;
 }
 
-.concertitem__location_city a:hover {
-  color: rgb(255, 186, 81);  
+.concertitem__location a:hover {
+  color: rgb(255, 255, 255);  
 }
 
 .concertitem__date {
@@ -134,7 +127,8 @@
 .pagination {
   margin-top: 40px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
+  color:rgb(0, 0, 0)
 }
 
 .pagination ul {
@@ -159,13 +153,15 @@
 
 .pagination ul li:hover {
   border-radius: 10px;
-  background-color: rgb(255, 208, 138);
+  background: rgb(31,20,255);
+  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
   cursor: pointer;
 }
 
 .pagination ul li.selected {
   border-radius: 10px;
-  background-color: rgb(255, 186, 81);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
 }
 
 .noconcerts {
@@ -183,14 +179,14 @@
 }
 
 .contribute__box a {
-  color: black;
+  color: rgba(255,3,225,1);
   text-decoration: none;
   font-weight: 400;
   transition: 0.2s;
 }
 
 .contribute__box a:hover {
-  color: rgb(255, 186, 81);
+  color: rgba(31,20,255,1);
 }
 
 .datepicker-button__container {
@@ -199,7 +195,7 @@
 }
 
 .datepicker-button {
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
 }
@@ -209,10 +205,9 @@
 }
 
 .datepicker__container {
-  background-color: rgb(255, 226, 197);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
   border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   float: right;
 }
 
@@ -260,7 +255,7 @@
 .react-datepicker__day:hover {
   cursor: pointer;
   border-radius: 8px;
-  background-color: rgb(255, 208, 138);
+  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
 }
 
 .react-datepicker__day-name {
@@ -273,14 +268,14 @@
 
 .react-datepicker__day--selected {
   border-radius: 10px;
-  background-color: rgb(255, 186, 81);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
 }
 
 .react-datepicker__navigation {
   z-index: 11;
   display: flex;
   position: absolute;
-  /* align-items: center; */
   text-indent: -9999px;
   height: 20px;
   width: 20px;
@@ -297,7 +292,7 @@
   background-image: url("arrow-48.png");
   background-size: 20px;
   transform: rotate(-90deg);
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .react-datepicker__navigation--next {
@@ -306,5 +301,5 @@
   background-image: url("arrow-48.png");
   background-size: 20px;
   transform: rotate(90deg);
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
 }
