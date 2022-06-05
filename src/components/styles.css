@@ -4,11 +4,15 @@
   height: 20px;
   width: 90%;
   position: relative;
-  background-color: rgb(255, 226, 197);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);  
   border-radius: 20px;
   padding: 10px 0 10px 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+::placeholder {
+  color: rgb(0, 0, 0);
+  opacity: 1;
 }
 
 .searchbar__title {
@@ -18,13 +22,14 @@
 
 .searchbar_input_title {
   border: none;
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   float: left;
   width: 100%;
   height: 20px;
+  color: white;
 }
 
 .searchbar_input_title:focus {
@@ -38,41 +43,35 @@
 .searchbar__city {
   width: 40%;
   padding-left: 10px;
-  border-left: 2px solid rgb(255, 186, 81);
+  border-left: 3px solid rgb(0, 0, 0);
 }
 .searchbar_input_city {
   width: 80%;
   border: none;
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   float: left;
   height: 20px;
+  color: white;
 }
-
-/* .input__submit {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    margin: 0px;
-    border-radius: 35px;
-    right: 5px;
-    border: none;
-} */
 
 .concertlist__box {
   /* display: flex; */
   max-width: 800px;
   width: 90%;
   position: relative;
-  background-color: rgb(255, 226, 197);
+  /* background-color: rgb(255, 0, 208); */
+  /* background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  
   border-radius: 20px;
   margin-top: 20px;
   /* margin-bottom: 20px; */
   padding: 10px 0 10px 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .concertitem__box {
@@ -81,7 +80,7 @@
   margin: 0 20px 0 20px;
   font-size: 30px;
   /* width: 90%; */
-  border-bottom: 2px solid rgb(255, 186, 81);
+  border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 .concertitem__box:last-child {
@@ -100,41 +99,43 @@
 }
 
 .concertitem__title a {
-  color: black;
+  color: white;
   text-decoration: none;
   transition: 0.2s;
 }
 
 .concertitem__title a:hover {
-  color: rgb(255, 186, 81);
+  color: rgb(0, 0, 0);
 }
 
-.concertitem__location_city {
+.concertitem__location {
   font-size: 16px;
   font-weight: 400;
   padding: 2px 0 2px 5px;
 }
 
-.concertitem__location_city a {
-  color: black;
+.concertitem__location a {
+  color: rgb(255, 255, 255);
   text-decoration: none;
-  transition: 0.2s;  
+  transition: 0.2s;
+  font-weight: 500;
 }
 
-.concertitem__location_city a:hover {
-  color: rgb(255, 186, 81);  
+.concertitem__location a:hover {
+  color: rgb(0, 0, 0);  
 }
 
 .concertitem__date {
-  font-size: 18px;
-  /* font-weight: 400; */
-  padding: 2px 0 2px 5px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 5px 0px 2px 5px;
 }
 
 .pagination {
   margin-top: 40px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
+  color:rgb(0, 0, 0)
 }
 
 .pagination ul {
@@ -144,28 +145,30 @@
 
 .pagination ul li {
   display: inline-block;
-  /* padding: 10px 10px 5px 10px; */
-  /* padding: 10px; */
-  /* width: 25px;
-    height: 20px; */
+  line-height: 35px;
 }
 
 .pagination ul li a {
   display: block;
-  width: 35px;
-  height: 35px;
-  line-height: 40px;
+  width: 36px;
+  height: 36px;
 }
 
-.pagination ul li:hover {
+.pagination ul li a:hover {
   border-radius: 10px;
-  background-color: rgb(255, 208, 138);
+  border: 3px solid rgb(0, 0, 0);
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
 }
 
-.pagination ul li.selected {
+.pagination ul li.selected a {
   border-radius: 10px;
-  background-color: rgb(255, 186, 81);
+  border: 3px solid rgb(0, 0, 0);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(13deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
 }
 
 .noconcerts {
@@ -183,14 +186,14 @@
 }
 
 .contribute__box a {
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 400;
   transition: 0.2s;
 }
 
 .contribute__box a:hover {
-  color: rgb(255, 186, 81);
+  color: rgba(255,3,225,1);
 }
 
 .datepicker-button__container {
@@ -199,7 +202,7 @@
 }
 
 .datepicker-button {
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
 }
@@ -209,10 +212,9 @@
 }
 
 .datepicker__container {
-  background-color: rgb(255, 226, 197);
+  background: rgb(31,20,255);
+  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
   border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   float: right;
 }
 
@@ -220,7 +222,7 @@
   max-width: 800px;
   width: 90%;
   position: absolute;
-  margin-top: 204px;
+  margin-top: 206px;
   z-index: 10;
 }
 
@@ -254,17 +256,24 @@
 .react-datepicker__day {
   width: 25px;
   height: 18px;
-  padding: 5px;
+  padding: 8px;
+  line-height: 24px;
 }
 
 .react-datepicker__day:hover {
+  /* width: 25px;
+  height: 18px; */
+  padding: 5px;  
+  border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 8px;
-  background-color: rgb(255, 208, 138);
+  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
 }
 
 .react-datepicker__day-name {
-  width: 35px;
+  width: 25px;
+  height: 18px;
+  padding: 8px;
 }
 
 .react-datepicker__month {
@@ -272,15 +281,17 @@
 }
 
 .react-datepicker__day--selected {
+  padding: 5px;
   border-radius: 10px;
-  background-color: rgb(255, 186, 81);
+  border: 3px solid rgb(0, 0, 0);
+  background: rgb(31,20,255);
+  background: linear-gradient(13deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
 }
 
 .react-datepicker__navigation {
   z-index: 11;
   display: flex;
   position: absolute;
-  /* align-items: center; */
   text-indent: -9999px;
   height: 20px;
   width: 20px;
@@ -297,7 +308,7 @@
   background-image: url("arrow-48.png");
   background-size: 20px;
   transform: rotate(-90deg);
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .react-datepicker__navigation--next {
@@ -306,5 +317,5 @@
   background-image: url("arrow-48.png");
   background-size: 20px;
   transform: rotate(90deg);
-  background-color: rgb(255, 226, 197);
+  background-color: rgba(255, 255, 255, 0);
 }
