@@ -4,10 +4,7 @@ import ConcertList from "./components/ConcertList";
 import { Concert } from "./model";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
-import ReactGA from "react-ga";
 import Calendar from "./components/Calendar";
-
-ReactGA.initialize("UA-225379065-1");
 
 type State = {
   baseUrl: string;
@@ -47,7 +44,6 @@ const toISOStringWithTimezone = (date: Date): string => {
 class App extends Component {
   state: State = {
     baseUrl: "https://api.croncert.ch/api/events",
-    // baseUrl: "http://localhost:5000/api/events",
     totalPages: 0,
     page: 1,
     concerts: [],
@@ -81,7 +77,6 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    ReactGA.pageview(window.location.pathname);
     this.getConcerts();
   }
 
