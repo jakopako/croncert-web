@@ -20,13 +20,7 @@ const Footer = () => {
         />
       </a>
       <div className="contribute__box">
-        <a
-          href="https://github.com/jakopako/croncert-config"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Contribute
-        </a>
+        <a href="/contribute">Contribute</a>
       </div>
     </div>
   );
