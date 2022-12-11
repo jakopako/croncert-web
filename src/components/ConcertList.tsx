@@ -28,7 +28,8 @@ const ConcertList = ({
                 concert.title +
                 concert.date +
                 concert.location +
-                concert.sourceUrl
+                concert.sourceUrl +
+                concert.url
               }
               title={concert.title}
               location={concert.location}
