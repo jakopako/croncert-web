@@ -24,9 +24,16 @@ const SearchBar = ({
     e.preventDefault();
     setCalendarIsOpen(!calendarIsOpen);
   };
+  const onSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+  };
   return (
     <div className="searchbar__box">
-      <form className="searchbar__title" onChange={handleTitleChange}>
+      <form
+        className="searchbar__title"
+        onChange={handleTitleChange}
+        onSubmit={onSubmit}
+      >
         <input
           id="titlesearch"
           type="input"
@@ -34,7 +41,11 @@ const SearchBar = ({
           className="searchbar_input_title"
         />
       </form>
-      <form className="searchbar__city" onChange={handleCityChange}>
+      <form
+        className="searchbar__city"
+        onChange={handleCityChange}
+        onSubmit={onSubmit}
+      >
         <input
           id="citysearch"
           type="input"
