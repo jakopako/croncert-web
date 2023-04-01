@@ -52,7 +52,7 @@ const Contribute = () => {
         First of all, I'm not a frontend guy (might be obvious 😅). So if you
         want to make a better, more beautiful looking website please do so! Or
         just improve this one. Then there's of course the dataset itself. Right
-        now there are approximately 70 different concert venues that are being
+        now there are approximately 120 different concert venues that are being
         scraped regularely and those venues are mostly located in Europe. If you
         know cool, small venues in your area it'd be huge if you opened a pull
         request in the repository that holds the{" "}
