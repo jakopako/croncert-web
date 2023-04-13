@@ -16,6 +16,7 @@ type State = {
   concerts: Array<Concert>;
   titleSearchTerm: string;
   citySearchTerm: string;
+  allCities: string[];
   calendarIsOpen: boolean;
   date: Date;
   dateSelected: boolean;
@@ -52,6 +53,7 @@ class App extends Component {
     concerts: [],
     titleSearchTerm: "",
     citySearchTerm: "",
+    allCities: [],
     calendarIsOpen: false,
     date: new Date(),
     dateSelected: false,
@@ -79,8 +81,18 @@ class App extends Component {
     });
   }
 
+  async getCities() {
+    const url = this.state.baseUrl + "/city";
+    const res = await fetch(url);
+    const res_json = await res.json();
+    this.setState({
+      allCities: res_json["data"],
+    });
+  }
+
   async componentDidMount() {
     this.getConcerts();
+    this.getCities();
   }
 
   handlePageClick = (event: { selected: number }) => {
@@ -129,11 +141,23 @@ class App extends Component {
     );
   };
 
-  handleCityChange = (event: React.FormEvent<HTMLFormElement>) => {
+  handleCitySubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     this.setState(
       {
         citySearchTerm: event.currentTarget.citysearch.value,
+        page: 1,
+      },
+      () => {
+        this.getConcerts();
+      }
+    );
+  };
+
+  triggerCitySubmit = (s: string) => {
+    this.setState(
+      {
+        citySearchTerm: s,
         page: 1,
       },
       () => {
@@ -179,9 +203,11 @@ class App extends Component {
                   </span>
                   <SearchBar
                     handleTitleChange={this.handleTitleChange}
-                    handleCityChange={this.handleCityChange}
+                    onCitySubmit={this.handleCitySubmit}
+                    triggerCitySubmit={this.triggerCitySubmit}
                     calendarIsOpen={this.state.calendarIsOpen}
                     setCalendarIsOpen={this.setCalendarIsOpen}
+                    citySuggestions={this.state.allCities}
                   />
                   <Calendar
                     isOpen={this.state.calendarIsOpen}
