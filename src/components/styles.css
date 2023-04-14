@@ -178,7 +178,8 @@
 
 .noconcerts a {
   text-decoration: none;
-  color: rgba(255,3,225,1);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 .noconcerts a:hover {
@@ -367,6 +368,7 @@ p a:hover {
   float: right;
   width: 40%;
   min-width: 140px;
+  text-align: left;
 }
 
 .suggestions {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import calendarIcon from "./icon-calendar-96.png";
+import { NoConcerts } from "./NoConcerts";
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -57,6 +58,7 @@ const SearchBar = ({
       }
       // User pressed the up arrow
       else if (e.keyCode === 38) {
+        e.preventDefault();
         if (activeSuggestion === 0) {
           return;
         }
@@ -87,30 +89,43 @@ const SearchBar = ({
     triggerCitySubmit(e.currentTarget.innerText.toString());
   };
 
-  const suggestionsListComponent = (
-    <div className="suggestions-wrapper__container">
-      <div className="suggestions-wrapper">
-        <ul className="suggestions">
-          {filteredSuggestions.map((suggestion, index) => {
-            let className;
+  let suggestionsListComponent;
+  if (filteredSuggestions.length) {
+    suggestionsListComponent = (
+      <div className="suggestions-wrapper__container">
+        <div className="suggestions-wrapper">
+          <ul className="suggestions">
+            {filteredSuggestions.map((suggestion, index) => {
+              let className;
 
-            // Flag the active suggestion with a class
-            if (index === activeSuggestion) {
-              className = "suggestion-active";
-            }
+              // Flag the active suggestion with a class
+              if (index === activeSuggestion) {
+                className = "suggestion-active";
+              }
 
-            return (
-              <li className={className} key={suggestion} onClick={onCityClick}>
-                {suggestion}
-              </li>
-            );
-          })}
-        </ul>
+              return (
+                <li
+                  className={className}
+                  key={suggestion}
+                  onClick={onCityClick}
+                >
+                  {suggestion}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-    </div>
-  );
-
-  // TODO have an empty list with link to contribution page
+    );
+  } else {
+    suggestionsListComponent = (
+      <div className="suggestions-wrapper__container">
+        <div className="suggestions-wrapper">
+          <NoConcerts />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="searchbar__box">
