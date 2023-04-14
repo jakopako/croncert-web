@@ -37,9 +37,16 @@ const SearchBar = ({
   const onCityChange = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const userInput = e.currentTarget.citysearch.value;
-    const filteredSuggestions = citySuggestions.filter(
-      (suggestion) =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    // https://stackoverflow.com/questions/11815883/convert-non-ascii-characters-umlauts-accents-to-their-closest-ascii-equiva
+    const combining = /[\u0300-\u036F]/g;
+    const filteredSuggestions = citySuggestions.filter((suggestion) =>
+      suggestion
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(combining, "")
+        .startsWith(
+          userInput.toLowerCase().normalize("NFKD").replace(combining, "")
+        )
     );
     setFilteredSuggestions(filteredSuggestions);
     setActiveSuggestion(0);
@@ -48,7 +55,6 @@ const SearchBar = ({
   };
 
   const onKeyDown = (e: { preventDefault: () => void; keyCode: number }) => {
-    // e.preventDefault();
     if (showSuggestions && userCityInput) {
       // User pressed the enter key
       if (e.keyCode === 13) {
@@ -64,7 +70,6 @@ const SearchBar = ({
         }
 
         setActiveSuggestion(activeSuggestion - 1);
-        // setUserCityInput(filteredSuggestions[activeSuggestion]);
       }
       // User pressed the down arrow
       else if (e.keyCode === 40) {
@@ -73,7 +78,6 @@ const SearchBar = ({
         }
 
         setActiveSuggestion(activeSuggestion + 1);
-        // setUserCityInput(filteredSuggestions[activeSuggestion]);
       }
       // TODO on ESC close list
     }
