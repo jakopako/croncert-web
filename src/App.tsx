@@ -47,9 +47,11 @@ const toISOStringWithTimezone = (date: Date): string => {
   );
 };
 
+const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
+
 class App extends Component {
   state: State = {
-    baseUrl: "https://api.croncert.ch/api/events",
+    baseUrl: baseUrlFromEnv,
     totalPages: 0,
     page: 1,
     concerts: [],
