@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 import "./App.css";
 import ConcertList from "./components/ConcertList";
 import { Concert } from "./model";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
+import Filter from "./components/Filter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contribute from "./components/Contribute";
 import CroncertLogo from "./components/CroncertLogo";
@@ -18,8 +19,9 @@ type State = {
   citySearchTerm: string;
   allCities: string[];
   calendarIsOpen: boolean;
-  date: Date;
-  dateSelected: boolean;
+  filterIsOpen: boolean;
+  date: Date | undefined;
+  radius: number;
 };
 
 const toISOStringWithTimezone = (date: Date): string => {
@@ -55,8 +57,9 @@ class App extends Component {
     citySearchTerm: "",
     allCities: [],
     calendarIsOpen: false,
-    date: new Date(),
-    dateSelected: false,
+    filterIsOpen: false,
+    date: undefined,
+    radius: 0,
   };
 
   async getConcerts() {
@@ -67,8 +70,10 @@ class App extends Component {
       "&title=" +
       this.state.titleSearchTerm +
       "&city=" +
-      this.state.citySearchTerm;
-    if (this.state.dateSelected) {
+      this.state.citySearchTerm +
+      "&radius=" +
+      this.state.radius;
+    if (this.state.date) {
       url +=
         "&date=" + encodeURIComponent(toISOStringWithTimezone(this.state.date));
     }
@@ -116,11 +121,12 @@ class App extends Component {
     );
   };
 
-  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     this.setState(
       {
         page: 1,
+        filterIsOpen: false,
       },
       () => {
         this.getConcerts();
@@ -172,18 +178,31 @@ class App extends Component {
         page: 1,
         calendarIsOpen: false,
         date: date,
-        dateSelected: true,
-      },
-      () => {
-        console.log(toISOStringWithTimezone(date));
-        this.getConcerts();
       }
+      // () => {
+      //   console.log(toISOStringWithTimezone(date));
+      //   this.getConcerts();
+      // }
     );
+  };
+
+  handleRadiusChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      page: 1,
+      radius: event.currentTarget.valueAsNumber,
+    });
   };
 
   setCalendarIsOpen = (value: boolean) => {
     this.setState({
       calendarIsOpen: value,
+    });
+    console.log(this.state.calendarIsOpen);
+  };
+
+  setFilterIsOpen = (value: boolean) => {
+    this.setState({
+      filterIsOpen: value,
     });
   };
 
@@ -202,12 +221,23 @@ class App extends Component {
                     Find upcoming concerts near you.
                   </span>
                   <SearchBar
+                    setCalendarIsOpen={this.setCalendarIsOpen}
                     handleTitleChange={this.handleTitleChange}
                     onCitySubmit={this.handleCitySubmit}
                     triggerCitySubmit={this.triggerCitySubmit}
-                    calendarIsOpen={this.state.calendarIsOpen}
-                    setCalendarIsOpen={this.setCalendarIsOpen}
+                    filterIsOpen={this.state.filterIsOpen}
+                    setFilterIsOpen={this.setFilterIsOpen}
                     citySuggestions={this.state.allCities}
+                  />
+                  <Filter
+                    date={this.state.date}
+                    handleDateChange={this.handleDateChange}
+                    setCalendarIsOpen={this.setCalendarIsOpen}
+                    filterIsOpen={this.state.filterIsOpen}
+                    calendarIsOpen={this.state.calendarIsOpen}
+                    radius={this.state.radius}
+                    handleRadiusChange={this.handleRadiusChange}
+                    handleApplyFilter={this.handleSubmit}
                   />
                   <Calendar
                     isOpen={this.state.calendarIsOpen}

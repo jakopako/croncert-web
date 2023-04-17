@@ -4,8 +4,8 @@
   height: 20px;
   width: 90%;
   position: relative;
-  background: rgb(31,20,255);
-  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);  
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
   border-radius: 20px;
   padding: 10px 0 10px 0;
 }
@@ -45,6 +45,7 @@
   padding-left: 10px;
   border-left: 3px solid rgb(0, 0, 0);
 }
+
 .searchbar_input_city {
   width: 80%;
   border: none;
@@ -65,9 +66,9 @@
   /* background-color: rgb(255, 0, 208); */
   /* background: rgb(31,20,255);
   background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
-  background: rgb(31,20,255);
-  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
-  
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+
   border-radius: 20px;
   margin-top: 20px;
   /* margin-bottom: 20px; */
@@ -122,7 +123,7 @@
 }
 
 .concertitem__location a:hover {
-  color: rgb(0, 0, 0);  
+  color: rgb(0, 0, 0);
 }
 
 .concertitem__date {
@@ -135,7 +136,7 @@
   margin-top: 40px;
   font-size: 15px;
   font-weight: 500;
-  color:rgb(0, 0, 0)
+  color: rgb(0, 0, 0)
 }
 
 .pagination ul {
@@ -160,7 +161,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
+  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
 }
 
 .pagination ul li.selected a {
@@ -168,7 +169,7 @@
   border: 3px solid rgb(0, 0, 0);
   width: 30px;
   height: 30px;
-  background: linear-gradient(13deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
 }
 
 .noconcerts {
@@ -183,7 +184,7 @@
 }
 
 .noconcerts a:hover {
-  color: rgba(31,20,255,1);
+  color: rgba(31, 20, 255, 1);
   transition: 0.2s;
 }
 
@@ -204,7 +205,135 @@
 }
 
 .contribute__box a:hover {
-  color: rgba(255,3,225,1);
+  color: rgba(255, 3, 225, 1);
+}
+
+.filter-button__container {
+  margin: 0;
+  padding-right: 12px;
+}
+
+.filter-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+}
+
+.filter-button:hover {
+  cursor: pointer;
+}
+
+.filter-wrapper__container {
+  max-width: 800px;
+  width: 90%;
+  position: absolute;
+  margin-top: 206px;
+  z-index: 10;
+}
+
+.filter__container {
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  border-radius: 20px;
+  float: right;
+  /* position: relative; */
+}
+
+.filter__item {
+  width: 220px;
+  height: 22px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  /* position: relative; */
+}
+
+.filter__container img {
+  float: right;
+  margin-left: 2px;
+}
+
+.filter__container input {
+  float: left;
+  cursor: pointer;
+  appearance: none;
+  width: 120px;
+  height: 3px;
+  background: black;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 2px;
+}
+
+.filter__container span {
+  width: 60px;
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.filter__container input:hover {
+  opacity: .7;
+}
+
+.filter__container input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px black solid;
+  background: rgba(255, 3, 225, 1);
+  cursor: pointer;
+}
+
+.filter__container .filter__item {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.datepicker-date__container {
+  all: unset;
+  cursor: pointer;
+  border: none;
+  background: rgb(0, 0, 0, 0);
+  width: 100%;
+  height: 22px;
+  margin-right: 10px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.filter__container>button {
+  all: unset;
+  border-radius: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  background: rgb(0, 0, 0, 0);
+  font-size: 16px;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  font-weight: 500;
+}
+
+.filter__container>button:hover {
+  cursor: pointer;
+  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  transition: 0.5s;
+}
+
+.datepicker-remove-date {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 16px;
+  color: black;
 }
 
 .datepicker-button__container {
@@ -216,6 +345,7 @@
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
+  margin-right: 5px;
 }
 
 .datepicker-button:hover {
@@ -223,8 +353,8 @@
 }
 
 .datepicker__container {
-  background: rgb(31,20,255);
-  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
   border-radius: 20px;
   float: right;
 }
@@ -233,7 +363,7 @@
   max-width: 800px;
   width: 90%;
   position: absolute;
-  margin-top: 206px;
+  margin-top: 280px;
   z-index: 10;
 }
 
@@ -274,11 +404,11 @@
 .react-datepicker__day:hover {
   /* width: 25px;
   height: 18px; */
-  padding: 5px;  
+  padding: 5px;
   border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 8px;
-  background: linear-gradient(13deg, rgba(31,20,255,0.5) 0%, rgba(255,3,225,0.5) 76%);
+  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
 }
 
 .react-datepicker__day-name {
@@ -295,8 +425,8 @@
   padding: 5px;
   border-radius: 10px;
   border: 3px solid rgb(0, 0, 0);
-  background: rgb(31,20,255);
-  background: linear-gradient(13deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  background: rgb(31, 20, 255);
+  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
 }
 
 .react-datepicker__navigation {
@@ -339,7 +469,7 @@ p {
 
 p a {
   text-decoration: none;
-  color: rgba(255,3,225,1);
+  color: rgba(255, 3, 225, 1);
 }
 
 p a:visited {
@@ -347,7 +477,7 @@ p a:visited {
 }
 
 p a:hover {
-  color: rgba(31,20,255,1);
+  color: rgba(31, 20, 255, 1);
   transition: 0.2s;
 }
 
@@ -362,8 +492,8 @@ p a:hover {
 }
 
 .suggestions-wrapper {
-  background: rgb(31,20,255);
-  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 76%);
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
   border-radius: 20px;
   float: right;
   width: 40%;

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import calendarIcon from "./icon-calendar-96.png";
+import filterIcon from "./uiFilter-512.webp";
 import { NoConcerts } from "./NoConcerts";
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
   onCitySubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   triggerCitySubmit: (s: string) => void;
-  // handleDateChange: (date: Date) => void;
-  calendarIsOpen: boolean;
   setCalendarIsOpen: (value: boolean) => void;
+  filterIsOpen: boolean;
+  setFilterIsOpen: (value: boolean) => void;
   citySuggestions: Array<string>;
 }
 
@@ -16,8 +16,9 @@ const SearchBar = ({
   handleTitleChange,
   onCitySubmit,
   triggerCitySubmit,
-  calendarIsOpen,
   setCalendarIsOpen,
+  filterIsOpen,
+  setFilterIsOpen,
   citySuggestions,
 }: Props) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
@@ -25,9 +26,10 @@ const SearchBar = ({
   const [showSuggestions, setShowSuggestions] = useState<Boolean>(false);
   const [userCityInput, setUserCityInput] = useState<string>("");
 
-  const handleClick = (e: { preventDefault: () => void }) => {
+  const handleFilterClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setCalendarIsOpen(!calendarIsOpen);
+    setFilterIsOpen(!filterIsOpen);
+    setCalendarIsOpen(false);
   };
 
   const onSubmit = (e: { preventDefault: () => void }) => {
@@ -159,25 +161,16 @@ const SearchBar = ({
           onKeyDown={onKeyDown}
         />
       </form>
-      <div className="datepicker-button__container">
+      <div className="filter-button__container">
         <button
-          className="datepicker-button"
-          onClick={handleClick}
+          className="filter-button"
+          onClick={handleFilterClick}
           type="submit"
         >
-          <img src={calendarIcon} width="20" height="20" alt="calendar icon" />
+          <img src={filterIcon} width="22" height="22" alt="filter icon" />
         </button>
       </div>
       {showSuggestions && userCityInput && suggestionsListComponent}
-      {/* <div className="datepicker__container">
-        {isOpen && (
-          <DatePicker
-            selected={startDate}
-            onChange={handleDateSelectorChange}
-            inline
-          />
-        )}
-      </div> */}
     </div>
   );
 };
