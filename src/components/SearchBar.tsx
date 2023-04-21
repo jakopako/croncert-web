@@ -145,6 +145,7 @@ const SearchBar = ({
           type="input"
           placeholder="Title"
           className="searchbar_input_title"
+          autoFocus
         />
       </form>
       <form
