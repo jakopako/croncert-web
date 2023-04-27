@@ -3,11 +3,11 @@ import React from "react";
 const CroncertLogo = () => {
   return (
     <div className="croncert-logo-container">
-      <a href="https://croncert.ch">
+      <a href={`${window.location.protocol}//${window.location.host}`}>
         <svg
-          width="70"
-          height="90"
-          viewBox="0 0 91 112"
+          width="150"
+          height="80"
+          viewBox="0 0 150 112"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -18,9 +18,9 @@ const CroncertLogo = () => {
             </linearGradient>
           </defs>
           <path
-            d="M69 24C61.5 11.5 52 6.5 39 6.5C26 6.5 6 19 6 54.5C6 90 26.5 103.5 39 103.5C51.5 103.5 58.5 98.5 69 88.5M69 88.5C77.5 80.4047 79.5 73.4999 79.5 66.4999C79.5 59.4999 76.4999 50.9999 69 50.9999C61.5 50.9999 57.5 58.4999 57.5 66.4999C57.5 74.4999 61.5 80.5 69 88.5ZM69 88.5L82.5 103.5"
+            d="M71 21.5C66.5 15 59 6 42 6C25 6 6.5 16.0001 6.5 51.5C6.5 87 29.5 97.5 42 97.5C54.5 97.5 85 97.5 94.5 97.5C123 97.5 135.5 86.5 133 64.5C130.5 42.5 94.5 23.5 66.5 55"
             stroke="url(#linear)"
-            stroke-width="12"
+            stroke-width="13"
             stroke-linecap="square"
           />
         </svg>
