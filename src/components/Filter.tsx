@@ -76,7 +76,7 @@ const Filter = ({
               />
             </button>
           </div>
-          <button onClick={handleApplyFilter}>Apply</button>
+          {/* <button onClick={handleApplyFilter}>Apply</button> */}
         </div>
       )}
     </div>

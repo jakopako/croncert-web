@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import "./App.css";
 import ConcertList from "./components/ConcertList";
 import { Concert } from "./model";
@@ -6,7 +6,12 @@ import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
 import Filter from "./components/Filter";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useSearchParams,
+} from "react-router-dom";
 import Contribute from "./components/Contribute";
 import CroncertLogo from "./components/CroncertLogo";
 
@@ -49,219 +54,248 @@ const toISOStringWithTimezone = (date: Date): string => {
 
 const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
 
-class App extends Component {
-  state: State = {
-    baseUrl: baseUrlFromEnv,
-    totalPages: 0,
-    page: 1,
-    concerts: [],
-    titleSearchTerm: "",
-    citySearchTerm: "",
-    allCities: [],
-    calendarIsOpen: false,
-    filterIsOpen: false,
-    date: undefined,
-    radius: 0,
-  };
+function SearchPage() {
+  const [baseUrl, setBaseUrl] = useState(baseUrlFromEnv);
+  const [totalPages, setTotalPages] = useState(0);
+  const [page, setPage] = useState(1);
+  const [concerts, setConcerts] = useState([]);
+  const [titleSearchTerm, setTitleSearchTerm] = useState("");
+  const [citySearchTerm, setCitySearchTerm] = useState("");
+  const [allCities, setAllCities] = useState([]);
+  const [calendarIsOpen, setCalendarIsOpen] = useState(false);
+  const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [radius, setRadius] = useState(0);
 
-  async getConcerts() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const getConcerts = async (
+    pageVar: number,
+    titleVar: string,
+    cityVar: string,
+    radiusVar: number,
+    dateVar: Date | undefined
+  ) => {
     var url =
-      this.state.baseUrl +
+      baseUrl +
       "?page=" +
-      this.state.page +
+      pageVar +
       "&title=" +
-      this.state.titleSearchTerm +
+      titleVar +
       "&city=" +
-      this.state.citySearchTerm +
+      cityVar +
       "&radius=" +
-      this.state.radius;
-    if (this.state.date) {
-      url +=
-        "&date=" + encodeURIComponent(toISOStringWithTimezone(this.state.date));
+      radiusVar;
+    if (dateVar) {
+      url += "&date=" + encodeURIComponent(toISOStringWithTimezone(dateVar));
     }
+
     const res = await fetch(url);
     const res_json = await res.json();
-    this.setState({
-      totalPages: res_json["last_page"],
-      page: res_json["page"],
-      concerts: res_json["data"],
-    });
-  }
+    // only update state if data still relevant
+    console.log(pageVar, titleVar, cityVar, radiusVar, dateVar);
+    console.log(page, titleSearchTerm, citySearchTerm, radius, date);
+    if (
+      pageVar === page &&
+      titleVar === titleSearchTerm &&
+      cityVar === citySearchTerm &&
+      radiusVar === radius &&
+      dateVar === date
+    ) {
+      setTotalPages(res_json["last_page"]);
+      setConcerts(res_json["data"]);
+    }
+  };
 
-  async getCities() {
-    const url = this.state.baseUrl + "/city";
+  const getCities = async () => {
+    const url = baseUrl + "/city";
     const res = await fetch(url);
     const res_json = await res.json();
-    this.setState({
-      allCities: res_json["data"],
-    });
-  }
-
-  async componentDidMount() {
-    this.getConcerts();
-    this.getCities();
-  }
-
-  handlePageClick = (event: { selected: number }) => {
-    this.setState({ page: event.selected + 1 }, () => {
-      this.getConcerts();
-    });
-    window.scrollTo(0, 0);
+    setAllCities(res_json["data"]);
   };
 
-  handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    this.setState(
-      {
-        titleSearchTerm: event.currentTarget.titlesearch.value,
-        citySearchTerm: event.currentTarget.citysearch.value,
-        page: 1,
-      },
-      () => {
-        this.getConcerts();
+  useEffect(() => {
+    // getConcerts(page, titleSearchTerm, citySearchTerm, radius, date);
+    const controller = new AbortController();
+    (async () => {
+      var url =
+        baseUrl +
+        "?page=" +
+        page +
+        "&title=" +
+        titleSearchTerm +
+        "&city=" +
+        citySearchTerm +
+        "&radius=" +
+        radius;
+      if (date) {
+        url += "&date=" + encodeURIComponent(toISOStringWithTimezone(date));
       }
-    );
-  };
 
-  handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    this.setState(
-      {
-        page: 1,
-        filterIsOpen: false,
-      },
-      () => {
-        this.getConcerts();
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        if (!controller.signal.aborted) {
+          if (res.ok) {
+            const res_json = await res.json();
+            setTotalPages(res_json["last_page"]);
+            setConcerts(res_json["data"]);
+          }
+        }
+      } catch (error) {
+        //
       }
-    );
-  };
-
-  handleTitleChange = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    this.setState(
-      {
-        titleSearchTerm: event.currentTarget.titlesearch.value,
-        page: 1,
-      },
-      () => {
-        this.getConcerts();
-      }
-    );
-  };
-
-  handleCitySubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    this.setState(
-      {
-        citySearchTerm: event.currentTarget.citysearch.value,
-        page: 1,
-      },
-      () => {
-        this.getConcerts();
-      }
-    );
-  };
-
-  triggerCitySubmit = (s: string) => {
-    this.setState(
-      {
-        citySearchTerm: s,
-        page: 1,
-      },
-      () => {
-        this.getConcerts();
-      }
-    );
-  };
-
-  handleDateChange = (date: Date) => {
-    this.setState(
-      {
-        page: 1,
-        calendarIsOpen: false,
-        date: date,
-      }
-      // () => {
-      //   console.log(toISOStringWithTimezone(date));
-      //   this.getConcerts();
+      // only update state if data still relevant
+      // console.log(pageVar, titleVar, cityVar, radiusVar, dateVar);
+      // console.log(page, titleSearchTerm, citySearchTerm, radius, date);
+      // if (
+      //   pageVar === page &&
+      //   titleVar === titleSearchTerm &&
+      //   cityVar === citySearchTerm &&
+      //   radiusVar === radius &&
+      //   dateVar === date
+      // ) {
       // }
-    );
-  };
-
-  handleRadiusChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      page: 1,
-      radius: event.currentTarget.valueAsNumber,
+    })();
+    setSearchParams({
+      title: titleSearchTerm,
+      city: citySearchTerm,
+      radius: radius.toString(),
+      page: page.toString(),
     });
-  };
+    if (date) {
+      setSearchParams({
+        title: titleSearchTerm,
+        city: citySearchTerm,
+        radius: radius.toString(),
+        page: page.toString(),
+        date: encodeURIComponent(toISOStringWithTimezone(date)),
+      });
+    }
+    console.log("fired");
+    return () => {
+      controller.abort();
+    };
+    // }, [titleSearchTerm]);
+  }, [titleSearchTerm, citySearchTerm, date, radius, page]);
 
-  setCalendarIsOpen = (value: boolean) => {
-    this.setState({
-      calendarIsOpen: value,
-    });
-    console.log(this.state.calendarIsOpen);
-  };
+  useEffect(() => {
+    getCities();
+    const titleParam = searchParams.get("title");
+    if (titleParam) {
+      setTitleSearchTerm(titleParam);
+    }
+    const cityParam = searchParams.get("city");
+    if (cityParam) {
+      setCitySearchTerm(cityParam);
+    }
+    const radiusParam = searchParams.get("radius");
+    if (radiusParam) {
+      setRadius(Number(radiusParam));
+    }
+    const pageParam = searchParams.get("page");
+    if (pageParam) {
+      setPage(Number(pageParam));
+    }
+  }, []);
 
-  setFilterIsOpen = (value: boolean) => {
-    this.setState({
-      filterIsOpen: value,
-    });
-  };
-
-  render() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <div className="App">
-                  <CroncertLogo />
-
-                  <span className="subtitle">
-                    Find upcoming concerts near you.
-                  </span>
-                  <SearchBar
-                    setCalendarIsOpen={this.setCalendarIsOpen}
-                    handleTitleChange={this.handleTitleChange}
-                    onCitySubmit={this.handleCitySubmit}
-                    triggerCitySubmit={this.triggerCitySubmit}
-                    filterIsOpen={this.state.filterIsOpen}
-                    setFilterIsOpen={this.setFilterIsOpen}
-                    citySuggestions={this.state.allCities}
-                  />
-                  <Filter
-                    date={this.state.date}
-                    handleDateChange={this.handleDateChange}
-                    setCalendarIsOpen={this.setCalendarIsOpen}
-                    filterIsOpen={this.state.filterIsOpen}
-                    calendarIsOpen={this.state.calendarIsOpen}
-                    radius={this.state.radius}
-                    handleRadiusChange={this.handleRadiusChange}
-                    handleApplyFilter={this.handleSubmit}
-                  />
-                  <Calendar
-                    isOpen={this.state.calendarIsOpen}
-                    date={this.state.date}
-                    handleDateChange={this.handleDateChange}
-                  />
-                  <ConcertList
-                    concerts={this.state.concerts}
-                    page={this.state.page}
-                    totalPages={this.state.totalPages}
-                    handlePagination={this.handlePageClick}
-                  />
-                  <Footer />
-                </div>
-              </div>
-            }
-          />
-          <Route path="/contribute" element={<Contribute />} />
-        </Routes>
-      </BrowserRouter>
-    );
+  function handlePageClick(event: { selected: number }) {
+    setPage(event.selected + 1);
+    window.scrollTo(0, 0);
   }
+
+  function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    setPage(1);
+    setFilterIsOpen(false);
+  }
+
+  function handleTitleChange(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setTitleSearchTerm(event.currentTarget.titlesearch.value);
+    setPage(1);
+  }
+
+  function handleCitySubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setCitySearchTerm(event.currentTarget.citysearch.value);
+    setPage(1);
+  }
+
+  function triggerCitySubmit(s: string) {
+    setCitySearchTerm(s);
+    setPage(1);
+  }
+
+  function handleDateChange(date: Date) {
+    setPage(1);
+    setCalendarIsOpen(false);
+    setDate(date);
+  }
+
+  function handleRadiusChange(event: ChangeEvent<HTMLInputElement>) {
+    setPage(1);
+    setRadius(event.currentTarget.valueAsNumber);
+  }
+
+  return (
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route
+    //       path="/"
+    //       element={
+    <div>
+      <div className="App">
+        <CroncertLogo />
+
+        <span className="subtitle">Find upcoming concerts near you.</span>
+        <SearchBar
+          setCalendarIsOpen={setCalendarIsOpen}
+          handleTitleChange={handleTitleChange}
+          onCitySubmit={handleCitySubmit}
+          triggerCitySubmit={triggerCitySubmit}
+          filterIsOpen={filterIsOpen}
+          setFilterIsOpen={setFilterIsOpen}
+          citySuggestions={allCities}
+        />
+        <Filter
+          date={date}
+          handleDateChange={handleDateChange}
+          setCalendarIsOpen={setCalendarIsOpen}
+          filterIsOpen={filterIsOpen}
+          calendarIsOpen={calendarIsOpen}
+          radius={radius}
+          handleRadiusChange={handleRadiusChange}
+          handleApplyFilter={handleSubmit}
+        />
+        <Calendar
+          isOpen={calendarIsOpen}
+          date={date}
+          handleDateChange={handleDateChange}
+        />
+        <ConcertList
+          concerts={concerts}
+          page={page}
+          totalPages={totalPages}
+          handlePagination={handlePageClick}
+        />
+        <Footer />
+      </div>
+    </div>
+    //       }
+    //     />
+    //     <Route path="/contribute" element={<Contribute />} />
+    //   </Routes>
+    // </BrowserRouter>
+  );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/contribute" element={<Contribute />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
