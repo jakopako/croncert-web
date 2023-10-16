@@ -115,7 +115,6 @@ function SearchPage() {
   };
 
   useEffect(() => {
-    // getConcerts(page, titleSearchTerm, citySearchTerm, radius, date);
     const controller = new AbortController();
     (async () => {
       var url =
@@ -142,19 +141,8 @@ function SearchPage() {
           }
         }
       } catch (error) {
-        //
+        // ignore
       }
-      // only update state if data still relevant
-      // console.log(pageVar, titleVar, cityVar, radiusVar, dateVar);
-      // console.log(page, titleSearchTerm, citySearchTerm, radius, date);
-      // if (
-      //   pageVar === page &&
-      //   titleVar === titleSearchTerm &&
-      //   cityVar === citySearchTerm &&
-      //   radiusVar === radius &&
-      //   dateVar === date
-      // ) {
-      // }
     })();
     setSearchParams({
       title: titleSearchTerm,
@@ -175,7 +163,6 @@ function SearchPage() {
     return () => {
       controller.abort();
     };
-    // }, [titleSearchTerm]);
   }, [titleSearchTerm, citySearchTerm, date, radius, page]);
 
   useEffect(() => {
