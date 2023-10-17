@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import filterIcon from "./uiFilter-512.webp";
 import { NoConcerts } from "./NoConcerts";
 
@@ -10,6 +10,8 @@ interface Props {
   filterIsOpen: boolean;
   setFilterIsOpen: (value: boolean) => void;
   citySuggestions: Array<string>;
+  initialTitle: string;
+  initialCity: string;
 }
 
 const SearchBar = ({
@@ -20,11 +22,25 @@ const SearchBar = ({
   filterIsOpen,
   setFilterIsOpen,
   citySuggestions,
+  initialTitle,
+  initialCity,
 }: Props) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0);
   const [showSuggestions, setShowSuggestions] = useState<Boolean>(false);
   const [userCityInput, setUserCityInput] = useState<string>("");
+
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      console.log(initialTitle, initialTitle.length);
+      console.log(initialCity);
+      if (initialTitle.length == 0) {
+        ref.current.focus();
+      }
+    }
+  }, []);
 
   const handleFilterClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -145,7 +161,8 @@ const SearchBar = ({
           type="input"
           placeholder="Title"
           className="searchbar_input_title"
-          autoFocus
+          defaultValue={initialTitle}
+          ref={ref}
         />
       </form>
       <form
@@ -158,7 +175,7 @@ const SearchBar = ({
           type="input"
           placeholder="City"
           className="searchbar_input_city"
-          value={userCityInput}
+          value={userCityInput || initialCity}
           onKeyDown={onKeyDown}
         />
       </form>
