@@ -66,12 +66,12 @@ export function SearchPage() {
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
 
-  const getCities = async () => {
-    const url = baseUrl + "/city";
-    const res = await fetch(url);
-    const res_json = await res.json();
-    setAllCities(res_json["data"]);
-  };
+  // const getCities = async () => {
+  //   const url = baseUrl + "/city";
+  //   const res = await fetch(url);
+  //   const res_json = await res.json();
+  //   setAllCities(res_json["data"]);
+  // };
 
   useEffect(() => {
     // fetch new list of concerts
@@ -120,10 +120,24 @@ export function SearchPage() {
     return () => {
       controller.abort();
     };
-  }, [titleSearchTerm, citySearchTerm, date, radius, page]);
+  }, [
+    titleSearchTerm,
+    citySearchTerm,
+    date,
+    radius,
+    page,
+    baseUrl,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
-    getCities();
+    (async () => {
+      const url = baseUrl + "/city";
+      const res = await fetch(url);
+      const res_json = await res.json();
+      setAllCities(res_json["data"]);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handlePageClick(event: { selected: number }) {

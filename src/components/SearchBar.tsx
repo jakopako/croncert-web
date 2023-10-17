@@ -28,7 +28,7 @@ const SearchBar = ({
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0);
   const [showSuggestions, setShowSuggestions] = useState<Boolean>(false);
-  const [userCityInput, setUserCityInput] = useState<string>("");
+  const [userCityInput, setUserCityInput] = useState<string>(initialCity);
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -36,10 +36,11 @@ const SearchBar = ({
     if (ref.current) {
       console.log(initialTitle, initialTitle.length);
       console.log(initialCity);
-      if (initialTitle.length == 0) {
+      if (initialTitle.length === 0) {
         ref.current.focus();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleFilterClick = (e: { preventDefault: () => void }) => {
@@ -175,7 +176,7 @@ const SearchBar = ({
           type="input"
           placeholder="City"
           className="searchbar_input_city"
-          value={userCityInput || initialCity}
+          value={userCityInput}
           onKeyDown={onKeyDown}
         />
       </form>
