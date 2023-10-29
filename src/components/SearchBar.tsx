@@ -34,8 +34,6 @@ const SearchBar = ({
 
   useEffect(() => {
     if (ref.current) {
-      console.log(initialTitle, initialTitle.length);
-      console.log(initialCity);
       if (initialTitle.length === 0) {
         ref.current.focus();
       }
@@ -166,6 +164,13 @@ const SearchBar = ({
           ref={ref}
         />
       </form>
+      <div className="hidden-city-suggestions">
+        {citySuggestions.map((suggestion) => {
+          return (
+            <a href={"?city=" + suggestion}>{"Concerts in " + suggestion}</a>
+          );
+        })}
+      </div>
       <form
         className="searchbar__city"
         onSubmit={onCitySubmit}

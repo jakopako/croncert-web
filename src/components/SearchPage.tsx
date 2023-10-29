@@ -66,13 +66,6 @@ export function SearchPage() {
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
 
-  // const getCities = async () => {
-  //   const url = baseUrl + "/city";
-  //   const res = await fetch(url);
-  //   const res_json = await res.json();
-  //   setAllCities(res_json["data"]);
-  // };
-
   useEffect(() => {
     // fetch new list of concerts
     const controller = new AbortController();
@@ -139,6 +132,12 @@ export function SearchPage() {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (citySearchTerm) {
+      document.title = "Concerts in " + citySearchTerm;
+    }
+  }, [citySearchTerm]);
 
   function handlePageClick(event: { selected: number }) {
     setPage(event.selected + 1);
