@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CroncertLogo from "./CroncertLogo";
 
-const Contribute = () => {
+interface Props {
+  baseUrlFromEnv: string;
+}
+
+const Contribute = ({ baseUrlFromEnv }: Props) => {
+  const [nrVenues, setNrVenues] = useState(0);
+  useEffect(() => {
+    (async () => {
+      const url = baseUrlFromEnv + "/location";
+      const res = await fetch(url);
+      const res_json = await res.json();
+      setNrVenues(res_json["data"].length);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
       <CroncertLogo />
@@ -52,7 +67,7 @@ const Contribute = () => {
         First of all, I'm not a frontend guy (might be obvious 😅). So if you
         want to make a better, more beautiful looking website please do so! Or
         just improve this one. Then there's of course the dataset itself. Right
-        now there are approximately 120 different concert venues that are being
+        now there are <b>{nrVenues}</b> different concert venues that are being
         scraped regularely and those venues are mostly located in Europe. If you
         know cool, small venues in your area it'd be huge if you opened a pull
         request in the repository that holds the{" "}
@@ -66,6 +81,7 @@ const Contribute = () => {
         repositories, play around with the code, open issues & open pull
         requests!
       </p>
+      <br></br>
       Cheers, Jakob
       <p></p>
     </div>

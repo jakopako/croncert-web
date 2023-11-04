@@ -35,9 +35,11 @@ const fromISOStringWithtimezone = (dateString: string): Date => {
   return new Date(dateString);
 };
 
-const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
+interface Props {
+  baseUrlFromEnv: string;
+}
 
-export function SearchPage() {
+export function SearchPage({ baseUrlFromEnv }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [baseUrl] = useState(baseUrlFromEnv);
