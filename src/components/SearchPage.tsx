@@ -31,7 +31,7 @@ const toISOStringWithTimezone = (date: Date): string => {
 };
 
 const fromISOStringWithtimezone = (dateString: string): Date => {
-  console.log(dateString);
+  // console.log(dateString);
   return new Date(dateString);
 };
 
@@ -104,7 +104,6 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
       const elapsed = new Date().getTime() - start;
       const toWait = 500 - elapsed;
       if (toWait > 0) await delay(toWait);
-      console.log(elapsed);
       setLoading(false);
     })();
 
