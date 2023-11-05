@@ -61,7 +61,7 @@
 .concertlist__box {
   /* display: flex; */
   max-width: 800px;
-  min-height: 1100px;
+  min-height: 1110px;
   width: 90%;
   position: relative;
   /* background-color: rgb(255, 0, 208); */
@@ -73,6 +73,8 @@
   border-radius: 20px;
   margin-top: 20px;
   padding: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .concertitem__box {
@@ -131,13 +133,16 @@
 }
 
 .pagination {
-  margin-top: 40px;
+  margin-top: auto;
   font-size: 15px;
   font-weight: 500;
   color: rgb(0, 0, 0);
-  bottom: 0;
+  /* bottom: 0; */
   /* position: absolute; */
-  width: 100%;
+  /* vertical-align: bottom; */
+  /* width: 100%; */
+  /* align-self: flex-end; */
+  /* display: flex; */
 }
 
 .pagination ul {
