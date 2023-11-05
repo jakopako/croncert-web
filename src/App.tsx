@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contribute from "./components/Contribute";
-import { SearchPage } from "./components/SearchPage";
+import SearchPage from "./components/SearchPage";
 
 const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
 

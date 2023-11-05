@@ -39,9 +39,9 @@ interface Props {
   baseUrlFromEnv: string;
 }
 
-export function SearchPage({ baseUrlFromEnv }: Props) {
+const SearchPage = ({ baseUrlFromEnv }: Props) => {
+  const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [baseUrl] = useState(baseUrlFromEnv);
   const [totalPages, setTotalPages] = useState(0);
   const [concerts, setConcerts] = useState([]);
@@ -68,8 +68,11 @@ export function SearchPage({ baseUrlFromEnv }: Props) {
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
 
+  const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
   useEffect(() => {
     // fetch new list of concerts
+    const start = new Date().getTime();
     const controller = new AbortController();
     (async () => {
       var url =
@@ -98,6 +101,11 @@ export function SearchPage({ baseUrlFromEnv }: Props) {
       } catch (error) {
         // ignore
       }
+      const elapsed = new Date().getTime() - start;
+      const toWait = 500 - elapsed;
+      if (toWait > 0) await delay(toWait);
+      console.log(elapsed);
+      setLoading(false);
     })();
 
     let newSearchParams = new URLSearchParams();
@@ -213,6 +221,7 @@ export function SearchPage({ baseUrlFromEnv }: Props) {
           handleDateChange={handleDateChange}
         />
         <ConcertList
+          loading={loading}
           concerts={concerts}
           page={page}
           totalPages={totalPages}
@@ -222,4 +231,6 @@ export function SearchPage({ baseUrlFromEnv }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default SearchPage;

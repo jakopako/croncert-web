@@ -61,6 +61,7 @@
 .concertlist__box {
   /* display: flex; */
   max-width: 800px;
+  min-height: 1100px;
   width: 90%;
   position: relative;
   /* background-color: rgb(255, 0, 208); */
@@ -71,16 +72,13 @@
 
   border-radius: 20px;
   margin-top: 20px;
-  /* margin-bottom: 20px; */
   padding: 10px 0 10px 0;
 }
 
 .concertitem__box {
-  /* display: flex; */
   padding: 10px 0 10px 0;
   margin: 0 20px 0 20px;
   font-size: 30px;
-  /* width: 90%; */
   border-bottom: 3px solid rgb(0, 0, 0);
 }
 
@@ -136,7 +134,10 @@
   margin-top: 40px;
   font-size: 15px;
   font-weight: 500;
-  color: rgb(0, 0, 0)
+  color: rgb(0, 0, 0);
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .pagination ul {
@@ -236,7 +237,6 @@
   background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
   border-radius: 20px;
   float: right;
-  /* position: relative; */
 }
 
 .filter__item {
@@ -245,7 +245,6 @@
   margin: 10px;
   display: flex;
   align-items: center;
-  /* position: relative; */
 }
 
 .filter__container img {
@@ -402,8 +401,6 @@
 }
 
 .react-datepicker__day:hover {
-  /* width: 25px;
-  height: 18px; */
   padding: 5px;
   border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
@@ -484,10 +481,8 @@ p a:hover {
 .suggestions-wrapper__container {
   max-width: 800px;
   width: 96%;
-  /* min-width: 520px; */
   position: absolute;
   margin-top: 34px;
-  /* margin-right: 10px; */
   z-index: 11;
 }
 
@@ -503,7 +498,6 @@ p a:hover {
 
 .suggestions {
   position: relative;
-  /* display: inline-block; */
   margin: 0;
   padding: 10px;
   vertical-align: baseline;
@@ -523,8 +517,6 @@ p a:hover {
 
 .suggestions .suggestion-active,
 .suggestions li:hover {
-  /* background-color: #008f68; */
-  /* color: #fae042; */
   cursor: pointer;
   font-weight: 600;
   border-radius: 10px;
@@ -533,4 +525,9 @@ p a:hover {
 
 .hidden-city-suggestions {
   display: none;
+}
+
+.loading {
+  margin: 40px;
+  font-weight: 600;
 }

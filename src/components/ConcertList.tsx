@@ -3,9 +3,11 @@ import { Concert } from "../model";
 import ConcertItem from "./ConcertItem";
 import ReactPaginate from "react-paginate";
 import { NoConcerts } from "./NoConcerts";
+import { LoadingPage } from "./LoadingPage";
 import "./styles.css";
 
 interface Props {
+  loading: boolean;
   concerts: Concert[];
   page: number;
   totalPages: number;
@@ -14,6 +16,7 @@ interface Props {
 
 const ConcertList = ({
   concerts,
+  loading,
   page,
   totalPages,
   handlePagination,
@@ -21,7 +24,9 @@ const ConcertList = ({
   return (
     <div className="concertlist__box">
       <div>
-        {concerts &&
+        {loading && <LoadingPage />}
+        {!loading &&
+          concerts &&
           concerts.map((concert) => (
             <ConcertItem
               key={
@@ -40,10 +45,10 @@ const ConcertList = ({
               sourceUrl={concert.sourceUrl}
             ></ConcertItem>
           ))}
-        {!concerts && <NoConcerts />}
+        {!concerts && !loading && <NoConcerts />}
       </div>
       <div className="pagination">
-        {concerts && (
+        {concerts && !loading && (
           <ReactPaginate
             breakLabel="..."
             nextLabel=">"
