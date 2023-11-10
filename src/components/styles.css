@@ -4,8 +4,8 @@
   height: 20px;
   width: 90%;
   position: relative;
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(193deg, rgb(48, 42, 177) 0%, rgb(160, 57, 148) 76%);
   border-radius: 20px;
   padding: 10px 0 10px 0;
 }
@@ -67,8 +67,8 @@
   /* background-color: rgb(255, 0, 208); */
   /* background: rgb(31,20,255);
   background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(193deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
 
   border-radius: 20px;
   margin-top: 20px;
@@ -167,7 +167,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
+  background: linear-gradient(13deg, rgba(48, 42, 177, 0.5) 0%, rgba(160, 57, 148, 0.5) 76%);
 }
 
 .pagination ul li.selected a {
@@ -175,7 +175,7 @@
   border: 3px solid rgb(0, 0, 0);
   width: 30px;
   height: 30px;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: linear-gradient(13deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
 }
 
 .noconcerts {
@@ -190,7 +190,7 @@
 }
 
 .noconcerts a:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgba(48, 42, 177, 1);
   transition: 0.2s;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .contribute__box a:hover {
-  color: rgba(255, 3, 225, 1);
+  color: rgba(160, 57, 148, 1);
 }
 
 .filter-button__container {
@@ -238,8 +238,8 @@
 }
 
 .filter__container {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(193deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
   border-radius: 20px;
   float: right;
 }
@@ -290,7 +290,7 @@
   height: 15px;
   border-radius: 50%;
   border: 1px black solid;
-  background: rgba(255, 3, 225, 1);
+  background: rgba(160, 57, 148, 1);
   cursor: pointer;
 }
 
@@ -328,7 +328,7 @@
 
 .filter__container>button:hover {
   cursor: pointer;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: linear-gradient(13deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
   transition: 0.5s;
 }
 
@@ -357,8 +357,8 @@
 }
 
 .datepicker__container {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(193deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
   border-radius: 20px;
   float: right;
 }
@@ -410,7 +410,7 @@
   border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 8px;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
+  background: linear-gradient(13deg, rgba(48, 42, 177, 0.5) 0%, rgba(160, 57, 148, 0.5) 76%);
 }
 
 .react-datepicker__day-name {
@@ -427,8 +427,8 @@
   padding: 5px;
   border-radius: 10px;
   border: 3px solid rgb(0, 0, 0);
-  background: rgb(31, 20, 255);
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(13deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
 }
 
 .react-datepicker__navigation {
@@ -471,7 +471,7 @@ p {
 
 p a {
   text-decoration: none;
-  color: rgba(255, 3, 225, 1);
+  color: rgba(160, 57, 148, 1);
 }
 
 p a:visited {
@@ -479,7 +479,7 @@ p a:visited {
 }
 
 p a:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgba(48, 42, 177, 1);
   transition: 0.2s;
 }
 
@@ -492,8 +492,8 @@ p a:hover {
 }
 
 .suggestions-wrapper {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(48, 42, 177);
+  background: linear-gradient(193deg, rgba(48, 42, 177, 1) 0%, rgba(160, 57, 148, 1) 76%);
   border-radius: 20px;
   float: right;
   width: 40%;
