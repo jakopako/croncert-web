@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import Calendar from "./Calendar";
 import Filter from "./Filter";
+import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
 
@@ -67,6 +68,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [allCities, setAllCities] = useState([]);
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const [notificationsIsOpen, setNotificationsIsOpen] = useState(true);
 
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -208,7 +210,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           date={date}
           handleDateChange={handleDateChange}
           setCalendarIsOpen={setCalendarIsOpen}
-          filterIsOpen={filterIsOpen}
+          isOpen={filterIsOpen}
           calendarIsOpen={calendarIsOpen}
           radius={radius}
           handleRadiusChange={handleRadiusChange}
@@ -218,6 +220,12 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           isOpen={calendarIsOpen}
           date={date}
           handleDateChange={handleDateChange}
+        />
+        <Notifications
+          isOpen={notificationsIsOpen}
+          title={titleSearchTerm}
+          city={citySearchTerm}
+          radius={radius}
         />
         <ConcertList
           loading={loading}

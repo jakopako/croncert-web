@@ -3,7 +3,8 @@ import React from "react";
 export const NoConcerts = () => {
   return (
     <div className="noconcerts">
-      No concerts found. Want to <a href="/contribute">contribute</a>?
+      No concerts found. Want to <a href="/contribute">contribute</a>? Or set up
+      a notification?
     </div>
   );
 };

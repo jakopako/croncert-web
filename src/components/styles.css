@@ -536,3 +536,17 @@ p a:hover {
   margin: 40px;
   font-weight: 600;
 }
+
+.notifications-wrapper__container {
+  max-width: 500px;
+  width: 90%;
+  position: absolute;
+  margin-top: 300px;
+  z-index: 10;
+}
+
+.notifications__container {
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  border-radius: 20px;
+}
