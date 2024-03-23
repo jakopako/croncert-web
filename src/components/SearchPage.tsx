@@ -43,7 +43,10 @@ interface Props {
 const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [baseUrl] = useState(baseUrlFromEnv);
+  const [baseUrlEvents] = useState(baseUrlFromEnv + "/api/events");
+  const [baseUrlNotifications] = useState(
+    baseUrlFromEnv + "/api/notifications"
+  );
   const [totalPages, setTotalPages] = useState(0);
   const [concerts, setConcerts] = useState([]);
   const [titleSearchTerm, setTitleSearchTerm] = useState(
@@ -68,6 +71,8 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [allCities, setAllCities] = useState([]);
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
+
+  // notifications
   const [notificationsIsOpen, setNotificationsIsOpen] = useState(true);
 
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
@@ -78,7 +83,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
     const controller = new AbortController();
     (async () => {
       var url =
-        baseUrl +
+        baseUrlEvents +
         "?page=" +
         page +
         "&title=" +
@@ -130,13 +135,13 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
     date,
     radius,
     page,
-    baseUrl,
+    baseUrlEvents,
     setSearchParams,
   ]);
 
   useEffect(() => {
     (async () => {
-      const url = baseUrl + "/city";
+      const url = baseUrlEvents + "/city";
       const res = await fetch(url);
       const res_json = await res.json();
       setAllCities(res_json["data"]);
@@ -226,6 +231,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           title={titleSearchTerm}
           city={citySearchTerm}
           radius={radius}
+          baseUrl={baseUrlNotifications}
         />
         <ConcertList
           loading={loading}
