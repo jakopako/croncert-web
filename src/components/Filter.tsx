@@ -3,7 +3,7 @@ import radiusIcon from "./radius.png";
 import calendarIcon from "./icon-calendar-96.png";
 
 interface Props {
-  filterIsOpen: boolean;
+  isOpen: boolean;
   radius: number;
   date: Date | undefined;
   handleDateChange: (date: Date) => void;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Filter = ({
-  filterIsOpen,
+  isOpen,
   radius,
   date,
   handleDateChange,
@@ -35,7 +35,7 @@ const Filter = ({
 
   return (
     <div className="filter-wrapper__container">
-      {filterIsOpen && (
+      {isOpen && (
         <div className="filter__container">
           <div className="filter__item">
             <input

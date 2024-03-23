@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import Calendar from "./Calendar";
 import Filter from "./Filter";
+import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
 
@@ -42,7 +43,10 @@ interface Props {
 const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [baseUrl] = useState(baseUrlFromEnv);
+  const [baseUrlEvents] = useState(baseUrlFromEnv + "/api/events");
+  const [baseUrlNotifications] = useState(
+    baseUrlFromEnv + "/api/notifications"
+  );
   const [totalPages, setTotalPages] = useState(0);
   const [concerts, setConcerts] = useState([]);
   const [titleSearchTerm, setTitleSearchTerm] = useState(
@@ -68,6 +72,9 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [filterIsOpen, setFilterIsOpen] = useState(false);
 
+  // notifications
+  const [notificationsIsOpen, setNotificationsIsOpen] = useState(true);
+
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
   useEffect(() => {
@@ -76,7 +83,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
     const controller = new AbortController();
     (async () => {
       var url =
-        baseUrl +
+        baseUrlEvents +
         "?page=" +
         page +
         "&title=" +
@@ -128,13 +135,13 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
     date,
     radius,
     page,
-    baseUrl,
+    baseUrlEvents,
     setSearchParams,
   ]);
 
   useEffect(() => {
     (async () => {
-      const url = baseUrl + "/city";
+      const url = baseUrlEvents + "/city";
       const res = await fetch(url);
       const res_json = await res.json();
       setAllCities(res_json["data"]);
@@ -208,7 +215,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           date={date}
           handleDateChange={handleDateChange}
           setCalendarIsOpen={setCalendarIsOpen}
-          filterIsOpen={filterIsOpen}
+          isOpen={filterIsOpen}
           calendarIsOpen={calendarIsOpen}
           radius={radius}
           handleRadiusChange={handleRadiusChange}
@@ -218,6 +225,14 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           isOpen={calendarIsOpen}
           date={date}
           handleDateChange={handleDateChange}
+        />
+        <Notifications
+          isOpen={notificationsIsOpen}
+          setIsOpen={setNotificationsIsOpen}
+          title={titleSearchTerm}
+          city={citySearchTerm}
+          radius={radius}
+          baseUrl={baseUrlNotifications}
         />
         <ConcertList
           loading={loading}

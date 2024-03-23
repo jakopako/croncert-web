@@ -156,6 +156,7 @@ const SearchBar = ({
         onSubmit={onSubmit}
       >
         <input
+          autoComplete="off"
           id="titlesearch"
           type="input"
           placeholder="Title"
@@ -177,6 +178,7 @@ const SearchBar = ({
         onChange={onCityChange}
       >
         <input
+          autoComplete="off"
           id="citysearch"
           type="input"
           placeholder="City"
