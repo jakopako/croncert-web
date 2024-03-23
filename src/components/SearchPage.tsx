@@ -228,6 +228,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
         />
         <Notifications
           isOpen={notificationsIsOpen}
+          setIsOpen={setNotificationsIsOpen}
           title={titleSearchTerm}
           city={citySearchTerm}
           radius={radius}

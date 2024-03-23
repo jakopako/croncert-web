@@ -555,9 +555,12 @@ p a:hover {
 .noti_form {
   padding: 10px 0 5px 0;
   border: none;
-  border-bottom: 3px solid rgb(0, 0, 0);
   width: 100%;
   float: left;
+}
+
+.noti_form:not(:nth-last-child(2)) {
+  border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 .noti_input {
@@ -586,4 +589,78 @@ p a:hover {
   float: left;
   height: 20px;
   color: white;
+}
+.noti_form img {
+  float: right;
+  margin-left: 2px;
+}
+
+.noti_form .range-slider {
+  float: left;
+  cursor: pointer;
+  appearance: none;
+  width: 120px;
+  height: 3px;
+  background: black;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.noti_form .range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px black solid;
+  background: rgba(255, 3, 225, 1);
+  cursor: pointer;
+}
+
+.noti_form span {
+  width: 60px;
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.noti-button__container {
+  padding-right: 12px;
+}
+
+.noti-button {
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px black solid;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.noti-button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.close-noti-container {
+  float: right;
+}
+
+.close-noti-container button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.close-noti-container button:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
 }

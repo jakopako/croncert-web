@@ -1,14 +1,23 @@
-import React, { HTMLAttributeAnchorTarget, useState } from "react";
+import React, { useState } from "react";
+import radiusIcon from "./radius.png";
 
 interface Props {
   isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
   title: string;
   city: string;
   radius: number;
   baseUrl: string;
 }
 
-const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
+const Notifications = ({
+  isOpen,
+  setIsOpen,
+  title,
+  city,
+  radius,
+  baseUrl,
+}: Props) => {
   const [titleNotification, setTitleNotification] = useState(title);
   const [cityNotification, setCityNotification] = useState(city);
   const [radiusNotification, setRadiusNotification] = useState(radius);
@@ -53,8 +62,18 @@ const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
     <div className="notifications-wrapper__container">
       {isOpen && (
         <div className="notifications__container">
+          <div className="close-noti-container">
+            <button
+              onClick={function (event) {
+                setIsOpen(false);
+              }}
+            >
+              X
+            </button>
+          </div>
           <form className="noti_form">
             <input
+              autoComplete="off"
               id="titlenotification"
               type="input"
               placeholder="Title"
@@ -67,6 +86,7 @@ const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
           </form>
           <form className="noti_form">
             <input
+              autoComplete="off"
               id="citynotification"
               type="input"
               placeholder="City"
@@ -79,6 +99,7 @@ const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
           </form>
           <form className="noti_form">
             <input
+              autoComplete="off"
               id="emailnotification"
               type="input"
               placeholder="foo@bar.com"
@@ -88,7 +109,7 @@ const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
               }}
             />
           </form>
-          <form className="noti_form_range">
+          <form className="noti_form">
             <input
               type="range"
               min={0}
@@ -100,21 +121,25 @@ const Notifications = ({ isOpen, title, city, radius, baseUrl }: Props) => {
                 setRadiusNotification(event.currentTarget.valueAsNumber);
               }}
             />
+            <span className="range-slider__value">{radiusNotification} km</span>
+            <img src={radiusIcon} width="22" height="22" alt="radius icon" />
           </form>
-          <button
-            className="noti_subscribe_button"
-            type="submit"
-            onClick={function (event) {
-              handleNotiSubmit(
-                titleNotification,
-                cityNotification,
-                radiusNotification,
-                emailNotification
-              );
-            }}
-          >
-            Subscribe
-          </button>
+          <div className="noti-button__container">
+            <button
+              className="noti-button"
+              type="submit"
+              onClick={function (event) {
+                handleNotiSubmit(
+                  titleNotification,
+                  cityNotification,
+                  radiusNotification,
+                  emailNotification
+                );
+              }}
+            >
+              Subscribe
+            </button>
+          </div>
         </div>
       )}
     </div>
