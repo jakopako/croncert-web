@@ -73,7 +73,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
   const [filterIsOpen, setFilterIsOpen] = useState(false);
 
   // notifications
-  const [notificationsIsOpen, setNotificationsIsOpen] = useState(true);
+  const [notificationsIsOpen, setNotificationsIsOpen] = useState(false);
 
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 

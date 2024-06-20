@@ -190,7 +190,7 @@
 }
 
 .noconcerts a:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgb(0, 0, 0);
   transition: 0.2s;
 }
 
@@ -206,7 +206,7 @@
 }
 
 .noconcerts button:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgb(0, 0, 0);
   transition: 0.2s;
   cursor: pointer;
 }
@@ -570,14 +570,32 @@ p a:hover {
 }
 
 .noti_form {
-  padding: 10px 0 5px 0;
+  padding: 12px 0 5px 0;
   border: none;
   width: 100%;
   float: left;
 }
 
-.noti_form:not(:nth-last-child(2)) {
+.noti_form:not(:nth-last-child(3)) {
   border-bottom: 3px solid rgb(0, 0, 0);
+}
+
+.noti-error-message {
+  padding: 20px 0 0 0;
+  border: none;
+  width: 100%;
+  float: left;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgb(208, 0, 0);
+  height: 20px;
+}
+
+.noti-success {
+  padding: 40px 0 10px 0;
+  width: 100%;
+  /* float: left; */
 }
 
 .noti_input {
@@ -610,6 +628,7 @@ p a:hover {
 .noti_form img {
   float: right;
   margin-left: 2px;
+  margin-right: 10px;
 }
 
 .noti_form .range-slider {
@@ -658,11 +677,16 @@ p a:hover {
   border-radius: 20px;
 }
 
-.noti-button:hover {
+.noti-button:hover:enabled {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: .2s;
   transition: opacity .2s;
+}
+
+.noti-button:disabled {
+  cursor: default;
+  border: 2px rgb(78, 78, 78) solid;
 }
 
 .close-noti-container {
