@@ -12,6 +12,7 @@ interface Props {
   citySuggestions: Array<string>;
   initialTitle: string;
   initialCity: string;
+  setNotificationIsOpen: (value: boolean) => void;
 }
 
 const SearchBar = ({
@@ -24,6 +25,7 @@ const SearchBar = ({
   citySuggestions,
   initialTitle,
   initialCity,
+  setNotificationIsOpen,
 }: Props) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0);
@@ -142,7 +144,7 @@ const SearchBar = ({
     suggestionsListComponent = (
       <div className="suggestions-wrapper__container">
         <div className="suggestions-wrapper">
-          <NoConcerts />
+          <NoConcerts setNotificationIsOpen={setNotificationIsOpen} />
         </div>
       </div>
     );

@@ -12,6 +12,7 @@ interface Props {
   page: number;
   totalPages: number;
   handlePagination: (selectedItem: { selected: number }) => void;
+  setNotificationIsOpen: (value: boolean) => void;
 }
 
 const ConcertList = ({
@@ -20,6 +21,7 @@ const ConcertList = ({
   page,
   totalPages,
   handlePagination,
+  setNotificationIsOpen,
 }: Props) => {
   return (
     <div className="concertlist__box">
@@ -45,7 +47,9 @@ const ConcertList = ({
               sourceUrl={concert.sourceUrl}
             ></ConcertItem>
           ))}
-        {!concerts && !loading && <NoConcerts />}
+        {!concerts && !loading && (
+          <NoConcerts setNotificationIsOpen={setNotificationIsOpen} />
+        )}
       </div>
       <div className="pagination">
         {concerts && !loading && (

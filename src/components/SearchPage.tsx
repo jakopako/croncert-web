@@ -210,6 +210,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           citySuggestions={allCities}
           initialTitle={titleSearchTerm}
           initialCity={citySearchTerm}
+          setNotificationIsOpen={setNotificationsIsOpen}
         />
         <Filter
           date={date}
@@ -240,6 +241,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           page={page}
           totalPages={totalPages}
           handlePagination={handlePageClick}
+          setNotificationIsOpen={setNotificationsIsOpen}
         />
         <Footer />
       </div>
