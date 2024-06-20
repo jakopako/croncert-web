@@ -24,13 +24,11 @@ const Notifications = ({
   const [emailNotification, setEmailNotification] = useState("");
   const [subSucc, setSubSucc] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const [succMsg, setSuccMsg] = useState("");
 
   const resetNotiForm = () => {
     setIsOpen(false);
     setSubSucc(false);
     setErrMsg("");
-    setSuccMsg("");
     setTitleNotification(title);
     setCityNotification(city);
     setRadiusNotification(radius);
@@ -64,7 +62,6 @@ const Notifications = ({
           console.log(res_json);
           if (res.ok) {
             setSubSucc(true);
-            setSuccMsg(res_json["message"]);
           } else {
             setErrMsg(res_json["message"]);
           }
