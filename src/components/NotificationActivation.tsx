@@ -47,7 +47,7 @@ const NotificationActivation = ({ baseUrlFromEnv }: Props) => {
       <CroncertLogo />
       <h2>{header}</h2>
       <p>{message}</p>
-      {success && queryTitle != "" && (
+      {success && queryTitle !== "" && (
         <div>
           <p>
             <b>Title:</b> {queryTitle}
