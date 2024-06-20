@@ -190,8 +190,25 @@
 }
 
 .noconcerts a:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgb(0, 0, 0);
   transition: 0.2s;
+}
+
+.noconcerts button {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.noconcerts button:hover {
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .footer__box {
@@ -535,4 +552,156 @@ p a:hover {
 .loading {
   margin: 40px;
   font-weight: 600;
+}
+
+.notifications-wrapper__container {
+  max-width: 300px;
+  width: 90%;
+  position: absolute;
+  margin-top: 300px;
+  z-index: 10;
+}
+
+.notifications__container {
+  background: rgb(31, 20, 255);
+  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
+}
+
+.noti_form {
+  padding: 12px 0 5px 0;
+  border: none;
+  width: 100%;
+  float: left;
+}
+
+.noti_form:not(:nth-last-child(3)) {
+  border-bottom: 3px solid rgb(0, 0, 0);
+}
+
+.noti-error-message {
+  padding: 20px 0 0 0;
+  border: none;
+  width: 100%;
+  float: left;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgb(208, 0, 0);
+  height: 20px;
+}
+
+.noti-success {
+  padding: 40px 0 10px 0;
+  width: 100%;
+  /* float: left; */
+}
+
+.noti_input {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+  height: 20px;
+  color: white;
+}
+
+.noti_input:focus {
+  outline: none;
+}
+
+.noti_form_city {
+  padding: 10px 0 10px 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  width: 90%;
+  float: left;
+  height: 20px;
+  color: white;
+}
+.noti_form img {
+  float: right;
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.noti_form .range-slider {
+  float: left;
+  cursor: pointer;
+  appearance: none;
+  width: 120px;
+  height: 3px;
+  background: black;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.noti_form .range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px black solid;
+  background: rgba(255, 3, 225, 1);
+  cursor: pointer;
+}
+
+.noti_form span {
+  width: 60px;
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.noti-button__container {
+  padding-right: 12px;
+}
+
+.noti-button {
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px black solid;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.noti-button:hover:enabled {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.noti-button:disabled {
+  cursor: default;
+  border: 2px rgb(78, 78, 78) solid;
+}
+
+.close-noti-container {
+  float: right;
+}
+
+.close-noti-container button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.close-noti-container button:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
 }

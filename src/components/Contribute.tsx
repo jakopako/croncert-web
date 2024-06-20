@@ -9,7 +9,7 @@ const Contribute = ({ baseUrlFromEnv }: Props) => {
   const [nrVenues, setNrVenues] = useState(0);
   useEffect(() => {
     (async () => {
-      const url = baseUrlFromEnv + "/location";
+      const url = baseUrlFromEnv + "/api/events/location";
       const res = await fetch(url);
       const res_json = await res.json();
       setNrVenues(res_json["data"].length);
