@@ -4,14 +4,16 @@
   height: 20px;
   width: 90%;
   position: relative;
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
-  border-radius: 20px;
+  background: rgb(236, 246, 192);
+  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
+  /* border-radius: 20px; */
+  border: 1px solid black;
+  /* border-style: solid; */
   padding: 10px 0 10px 0;
 }
 
 ::placeholder {
-  color: rgb(0, 0, 0);
+  color: rgb(146, 153, 121);
   opacity: 1;
 }
 
@@ -24,12 +26,12 @@
   border: none;
   background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 16px;
   float: left;
   width: 100%;
   height: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .searchbar_input_title:focus {
@@ -43,7 +45,7 @@
 .searchbar__city {
   width: 40%;
   padding-left: 10px;
-  border-left: 3px solid rgb(0, 0, 0);
+  border-left: 1px solid rgb(0, 0, 0);
 }
 
 .searchbar_input_city {
@@ -51,11 +53,11 @@
   border: none;
   background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 16px;
   float: left;
   height: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .concertlist__box {
@@ -67,10 +69,11 @@
   /* background-color: rgb(255, 0, 208); */
   /* background: rgb(31,20,255);
   background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(219, 218, 255);
+  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
 
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  border: 1px solid black;
   margin-top: 20px;
   padding: 10px 0 10px 0;
   display: flex;
@@ -81,12 +84,12 @@
   padding: 10px 0 10px 0;
   margin: 0 20px 0 20px;
   font-size: 30px;
-  border-bottom: 3px solid rgb(0, 0, 0);
+  /* border-bottom: 1px solid rgb(0, 0, 0); */
 }
 
-.concertitem__box:last-child {
+/* .concertitem__box:last-child {
   border-bottom: none;
-}
+} */
 
 .concertitem__field {
   position: relative;
@@ -95,48 +98,52 @@
 
 .concertitem__title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 200;
   padding: 5px;
 }
 
 .concertitem__title a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   transition: 0.2s;
 }
 
 .concertitem__title a:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(198, 136, 20);
 }
 
 .concertitem__location {
   font-size: 16px;
-  font-weight: 400;
+  /* font-weight: 400; */
   padding: 2px 0 2px 5px;
 }
 
 .concertitem__location a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   transition: 0.2s;
-  font-weight: 500;
+  /* font-weight: 500; */
 }
 
 .concertitem__location a:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(198, 136, 20);
 }
 
 .concertitem__date {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 24px;
+  /* font-weight: 300; */
   padding: 5px 0px 2px 5px;
+  /* text-align: right; */
 }
 
 .pagination {
   margin-top: auto;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  /* font-weight: 500; */
   color: rgb(0, 0, 0);
+  background-color: rgb(255, 205, 212);
+  border: 1px solid black;
+  margin-top: 20px;
   /* bottom: 0; */
   /* position: absolute; */
   /* vertical-align: bottom; */
@@ -148,6 +155,7 @@
 .pagination ul {
   list-style: none;
   padding: 0;
+  margin: 10px 10px 6px 10px;
 }
 
 .pagination ul li {
@@ -157,25 +165,27 @@
 
 .pagination ul li a {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  border: 1px solid rgb(255, 205, 212);
+  /* height: 36px; */
 }
 
 .pagination ul li a:hover {
-  border-radius: 10px;
-  border: 3px solid rgb(0, 0, 0);
-  width: 30px;
+  /* border-radius: 10px; */
+  border: 1px solid rgb(0, 0, 0);
+  width: 40px;
   height: 30px;
   cursor: pointer;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
+  /* background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%); */
 }
 
 .pagination ul li.selected a {
-  border-radius: 10px;
-  border: 3px solid rgb(0, 0, 0);
-  width: 30px;
+  /* border-radius: 10px; */
+  border: 1px solid rgb(0, 0, 0);
+  width: 40px;
   height: 30px;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
+  background: rgb(230, 167, 176);
+  /* background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
 }
 
 .noconcerts {
@@ -221,14 +231,14 @@
 }
 
 .contribute__box a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: 400;
   transition: 0.2s;
 }
 
 .contribute__box a:hover {
-  color: rgba(255, 3, 225, 1);
+  color: rgb(198, 136, 20);
 }
 
 .filter-button__container {
@@ -247,31 +257,38 @@
 }
 
 .filter-wrapper__container {
-  max-width: 800px;
+  max-width: 802px;
   width: 90%;
   position: absolute;
-  margin-top: 206px;
+  margin-top: 205px;
   z-index: 10;
 }
 
 .filter__container {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
-  border-radius: 20px;
+  background: rgb(236, 246, 192);
+  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
+  /* border-radius: 20px; */
+  border: 1px solid black;
   float: right;
 }
 
 .filter__item {
-  width: 220px;
+  width: 230px;
   height: 22px;
-  margin: 10px;
+  margin: 20px;
   display: flex;
   align-items: center;
 }
 
+.filter__item > img {
+  /* margin-left: 2px; */
+  margin-right: 2px;
+}
+
 .filter__container img {
   float: right;
-  margin-left: 2px;
+  /* margin-left: 2px;
+  margin-right: 2px; */
 }
 
 .filter__container input {
@@ -288,11 +305,11 @@
 }
 
 .filter__container span {
-  width: 60px;
+  width: 80px;
   margin-left: 5px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
+  /* font-size: 16px; */
+  /* font-weight: 600; */
+  color: rgb(0, 0, 0);
 }
 
 .filter__container input:hover {
@@ -307,14 +324,14 @@
   height: 15px;
   border-radius: 50%;
   border: 1px black solid;
-  background: rgba(255, 3, 225, 1);
+  background: rgb(193, 205, 141);
   cursor: pointer;
 }
 
 .filter__container .filter__item {
   color: black;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .datepicker-date__container {
@@ -324,11 +341,10 @@
   background: rgb(0, 0, 0, 0);
   width: 100%;
   height: 22px;
-  margin-right: 10px;
-  margin-left: 5px;
+  /* margin-right: 20px; */
+  margin-left: 3px;
   display: flex;
   align-items: center;
-  color: white;
 }
 
 .filter__container>button {
@@ -343,11 +359,11 @@
   font-weight: 500;
 }
 
-.filter__container>button:hover {
+/* .filter__container>button:hover {
   cursor: pointer;
   background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
   transition: 0.5s;
-}
+} */
 
 .datepicker-remove-date {
   cursor: pointer;
@@ -366,7 +382,8 @@
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
-  margin-right: 5px;
+  /* margin-right: 5px; */
+  margin-left: 5px;
 }
 
 .datepicker-button:hover {
@@ -374,17 +391,18 @@
 }
 
 .datepicker__container {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
-  border-radius: 20px;
+  background: rgb(236, 246, 192);
+  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
+  /* border-radius: 20px; */
+  border: 1px solid black;
   float: right;
 }
 
 .datepicker-wrapper__container {
-  max-width: 800px;
+  max-width: 802px;
   width: 90%;
   position: absolute;
-  margin-top: 280px;
+  margin-top: 310px;
   z-index: 10;
 }
 
@@ -418,16 +436,25 @@
 .react-datepicker__day {
   width: 25px;
   height: 18px;
-  padding: 8px;
-  line-height: 24px;
+  padding: 7px;
+  border: 1px solid rgb(236, 246, 192);
+  /* line-height: 24px; */
 }
 
 .react-datepicker__day:hover {
-  padding: 5px;
-  border: 3px solid rgb(0, 0, 0);
+  padding: 7px;
+  border: 1px solid rgb(0, 0, 0);
   cursor: pointer;
-  border-radius: 8px;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%);
+  /* border-radius: 8px; */
+  /* background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%); */
+}
+
+.react-datepicker__day--selected {
+  padding: 7px;
+  /* border-radius: 10px; */
+  border: 1px solid rgb(0, 0, 0);
+  background: rgb(193, 205, 141);
+  /* background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
 }
 
 .react-datepicker__day-name {
@@ -438,14 +465,6 @@
 
 .react-datepicker__month {
   margin-top: 2px;
-}
-
-.react-datepicker__day--selected {
-  padding: 5px;
-  border-radius: 10px;
-  border: 3px solid rgb(0, 0, 0);
-  background: rgb(31, 20, 255);
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
 }
 
 .react-datepicker__navigation {
@@ -480,15 +499,20 @@
   background-color: rgba(255, 255, 255, 0);
 }
 
+.react-datepicker__day--outside-month {
+  color: rgb(176, 176, 176);
+}
+
 p {
   text-align: left;
   max-width: 600px;
   padding: 0 20px 0 20px;
+  line-height: 20px;
 }
 
 p a {
   text-decoration: none;
-  color: rgba(255, 3, 225, 1);
+  color: rgb(198, 136, 20);
 }
 
 p a:visited {
@@ -496,7 +520,7 @@ p a:visited {
 }
 
 p a:hover {
-  color: rgba(31, 20, 255, 1);
+  color: rgb(0, 0, 0);
   transition: 0.2s;
 }
 
@@ -504,14 +528,15 @@ p a:hover {
   max-width: 800px;
   width: 96%;
   position: absolute;
-  margin-top: 34px;
+  margin-top: 41px;
   z-index: 11;
 }
 
 .suggestions-wrapper {
-  background: rgb(31, 20, 255);
-  background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
-  border-radius: 20px;
+  background: rgb(236, 246, 192);
+  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
+  /* border-radius: 20px; */
+  border: 1px solid black;
   float: right;
   width: 40%;
   min-width: 140px;

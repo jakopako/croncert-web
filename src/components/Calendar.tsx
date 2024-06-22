@@ -10,11 +10,11 @@ interface Props {
 const Calendar = ({ isOpen, date, handleDateChange }: Props) => {
   return (
     <div className="datepicker-wrapper__container">
-      <div className="datepicker__container">
-        {isOpen && (
+      {isOpen && (
+        <div className="datepicker__container">
           <DatePicker selected={date} onChange={handleDateChange} inline />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

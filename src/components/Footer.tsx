@@ -1,6 +1,7 @@
 import React from "react";
 import logoWhite from "./github_white.png";
 import logoPink from "./github_pink.png";
+import logoBlack from "./github.png";
 
 const Footer = () => {
   return (
@@ -15,8 +16,8 @@ const Footer = () => {
           alt="Github Logo"
           width="30"
           height="30"
-          onMouseOver={(e) => (e.currentTarget.src = logoPink)}
-          onMouseOut={(e) => (e.currentTarget.src = logoWhite)}
+          onMouseOver={(e) => (e.currentTarget.src = logoWhite)}
+          onMouseOut={(e) => (e.currentTarget.src = logoBlack)}
         />
       </a>
       <div className="contribute__box">

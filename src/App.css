@@ -6,8 +6,8 @@
   align-items: center;
   /* justify-content: center; */
   /* font-size: calc(10px + 2vmin); */
-  color: rgb(255, 255, 255);
-  background-color: black;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 235, 199);
 }
 
 .heading {
@@ -16,7 +16,7 @@
 }
 
 .subtitle {
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 20px;
   font-size: 15px;
 }

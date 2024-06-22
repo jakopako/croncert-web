@@ -1,7 +1,6 @@
 import React from "react";
 import { Concert } from "../model";
 import ConcertItem from "./ConcertItem";
-import ReactPaginate from "react-paginate";
 import { NoConcerts } from "./NoConcerts";
 import { LoadingPage } from "./LoadingPage";
 import "./styles.css";
@@ -9,18 +8,18 @@ import "./styles.css";
 interface Props {
   loading: boolean;
   concerts: Concert[];
-  page: number;
-  totalPages: number;
-  handlePagination: (selectedItem: { selected: number }) => void;
+  // page: number;
+  // totalPages: number;
+  // handlePagination: (selectedItem: { selected: number }) => void;
   setNotificationIsOpen: (value: boolean) => void;
 }
 
 const ConcertList = ({
   concerts,
   loading,
-  page,
-  totalPages,
-  handlePagination,
+  // page,
+  // totalPages,
+  // handlePagination,
   setNotificationIsOpen,
 }: Props) => {
   return (
@@ -49,19 +48,6 @@ const ConcertList = ({
           ))}
         {!concerts && !loading && (
           <NoConcerts setNotificationIsOpen={setNotificationIsOpen} />
-        )}
-      </div>
-      <div className="pagination">
-        {concerts && !loading && (
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePagination}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            pageCount={totalPages}
-            previousLabel="<"
-          />
         )}
       </div>
     </div>
