@@ -190,13 +190,13 @@
 
 .noconcerts {
   padding: 20px;
-  font-weight: 400;
+  /* font-weight: 400; */
 }
 
 .noconcerts a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
+  color: rgb(198, 136, 20);
+  font-weight: 300;
 }
 
 .noconcerts a:hover {
@@ -206,8 +206,8 @@
 
 .noconcerts button {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
+  color: rgb(198, 136, 20);
+  font-weight: 300;
   font-family: inherit;
   font-size: 16px;
   border: none;
