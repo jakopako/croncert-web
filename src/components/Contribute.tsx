@@ -67,9 +67,9 @@ const Contribute = ({ baseUrlFromEnv }: Props) => {
         First of all, I'm not a frontend guy (might be obvious 😅). So if you
         want to make a better, more beautiful looking website please do so! Or
         just improve this one. Then there's of course the dataset itself. Right
-        now there are <b>{nrVenues}</b> different concert venues that are being
-        scraped regularely and those venues are mostly located in Europe. If you
-        know cool, small venues in your area it'd be huge if you opened a pull
+        now there are {nrVenues} different concert venues that are being scraped
+        regularely and those venues are mostly located in Europe. If you know
+        cool, small venues in your area it'd be huge if you opened a pull
         request in the repository that holds the{" "}
         <a href="https://github.com/jakopako/croncert-config">
           scraper configuration.

@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import radiusIcon from "./radius.png";
 import calendarIcon from "./icon-calendar-96.png";
+import { format } from "date-fns";
 
 interface Props {
   isOpen: boolean;
@@ -8,7 +9,6 @@ interface Props {
   date: Date | undefined;
   handleDateChange: (date: Date) => void;
   handleRadiusChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleApplyFilter: (event: React.MouseEvent<HTMLButtonElement>) => void;
   calendarIsOpen: boolean;
   setCalendarIsOpen: (value: boolean) => void;
 }
@@ -19,7 +19,6 @@ const Filter = ({
   date,
   handleDateChange,
   handleRadiusChange,
-  handleApplyFilter,
   calendarIsOpen,
   setCalendarIsOpen,
 }: Props) => {
@@ -55,12 +54,12 @@ const Filter = ({
               className="datepicker-date__container"
               onClick={handleCalendarClick}
             >
-              {date && date.toLocaleDateString()}
+              {date && format(date, "d/M/yy")}
               {!date && "select date"}
             </button>
             {date && (
               <button className="datepicker-remove-date" onClick={resetDate}>
-                X
+                x
               </button>
             )}
             <button
@@ -76,7 +75,6 @@ const Filter = ({
               />
             </button>
           </div>
-          {/* <button onClick={handleApplyFilter}>Apply</button> */}
         </div>
       )}
     </div>

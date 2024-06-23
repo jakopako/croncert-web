@@ -7,6 +7,7 @@ import Filter from "./Filter";
 import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
+import ReactPaginate from "react-paginate";
 
 const toISOStringWithTimezone = (date: Date): string => {
   const tzOffset = -date.getTimezoneOffset();
@@ -160,12 +161,6 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
     window.scrollTo(0, 0);
   }
 
-  function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    setPage(1);
-    setFilterIsOpen(false);
-  }
-
   function handleTitleChange(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setTitleSearchTerm(event.currentTarget.titlesearch.value);
@@ -220,7 +215,6 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
           calendarIsOpen={calendarIsOpen}
           radius={radius}
           handleRadiusChange={handleRadiusChange}
-          handleApplyFilter={handleSubmit}
         />
         <Calendar
           isOpen={calendarIsOpen}
@@ -238,11 +232,24 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
         <ConcertList
           loading={loading}
           concerts={concerts}
-          page={page}
-          totalPages={totalPages}
-          handlePagination={handlePageClick}
+          // page={page}
+          // totalPages={totalPages}
+          // handlePagination={handlePageClick}
           setNotificationIsOpen={setNotificationsIsOpen}
         />
+        <div className="pagination">
+          {concerts && !loading && (
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={1}
+              pageCount={totalPages}
+              previousLabel="<"
+            />
+          )}
+        </div>
         <Footer />
       </div>
     </div>

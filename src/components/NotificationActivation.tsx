@@ -56,7 +56,7 @@ const NotificationActivation = ({ baseUrlFromEnv }: Props) => {
             <b>City:</b> {queryCity}
           </p>
           <p>
-            <b>Radius:</b> {queryRadius}
+            <b>Radius:</b> {queryRadius} km
           </p>
           <p>
             <b>Email:</b> {queryEmail}
