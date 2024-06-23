@@ -5,10 +5,7 @@
   width: 90%;
   position: relative;
   background: rgb(236, 246, 192);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-  /* border-radius: 20px; */
   border: 1px solid black;
-  /* border-style: solid; */
   padding: 10px 0 10px 0;
 }
 
@@ -61,18 +58,11 @@
 }
 
 .concertlist__box {
-  /* display: flex; */
   max-width: 800px;
   min-height: 1110px;
   width: 90%;
   position: relative;
-  /* background-color: rgb(255, 0, 208); */
-  /* background: rgb(31,20,255);
-  background: linear-gradient(193deg, rgba(31,20,255,1) 0%, rgba(255,3,225,1) 41%, rgba(255,244,0,1) 100%); */
   background: rgb(219, 218, 255);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-
-  /* border-radius: 20px; */
   border: 1px solid black;
   margin-top: 20px;
   padding: 10px 0 10px 0;
@@ -84,12 +74,7 @@
   padding: 10px 0 10px 0;
   margin: 0 20px 0 20px;
   font-size: 30px;
-  /* border-bottom: 1px solid rgb(0, 0, 0); */
 }
-
-/* .concertitem__box:last-child {
-  border-bottom: none;
-} */
 
 .concertitem__field {
   position: relative;
@@ -131,25 +116,16 @@
 
 .concertitem__date {
   font-size: 24px;
-  /* font-weight: 300; */
   padding: 5px 0px 2px 5px;
-  /* text-align: right; */
 }
 
 .pagination {
   margin-top: auto;
   font-size: 16px;
-  /* font-weight: 500; */
   color: rgb(0, 0, 0);
   background-color: rgb(255, 205, 212);
   border: 1px solid black;
   margin-top: 20px;
-  /* bottom: 0; */
-  /* position: absolute; */
-  /* vertical-align: bottom; */
-  /* width: 100%; */
-  /* align-self: flex-end; */
-  /* display: flex; */
 }
 
 .pagination ul {
@@ -167,30 +143,24 @@
   display: block;
   width: 40px;
   border: 1px solid rgb(255, 205, 212);
-  /* height: 36px; */
 }
 
 .pagination ul li a:hover {
-  /* border-radius: 10px; */
   border: 1px solid rgb(0, 0, 0);
   width: 40px;
   height: 30px;
   cursor: pointer;
-  /* background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%); */
 }
 
 .pagination ul li.selected a {
-  /* border-radius: 10px; */
   border: 1px solid rgb(0, 0, 0);
   width: 40px;
   height: 30px;
   background: rgb(230, 167, 176);
-  /* background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
 }
 
 .noconcerts {
   padding: 20px;
-  /* font-weight: 400; */
 }
 
 .noconcerts a {
@@ -266,8 +236,6 @@
 
 .filter__container {
   background: rgb(236, 246, 192);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-  /* border-radius: 20px; */
   border: 1px solid black;
   float: right;
 }
@@ -281,14 +249,11 @@
 }
 
 .filter__item > img {
-  /* margin-left: 2px; */
   margin-right: 2px;
 }
 
 .filter__container img {
   float: right;
-  /* margin-left: 2px;
-  margin-right: 2px; */
 }
 
 .filter__container input {
@@ -301,14 +266,11 @@
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
-  border-radius: 2px;
 }
 
 .filter__container span {
   width: 80px;
   margin-left: 5px;
-  /* font-size: 16px; */
-  /* font-weight: 600; */
   color: rgb(0, 0, 0);
 }
 
@@ -318,7 +280,6 @@
 
 .filter__container input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  /* Override default look */
   appearance: none;
   width: 15px;
   height: 15px;
@@ -331,7 +292,6 @@
 .filter__container .filter__item {
   color: black;
   font-size: 16px;
-  /* font-weight: 300; */
 }
 
 .datepicker-date__container {
@@ -341,7 +301,6 @@
   background: rgb(0, 0, 0, 0);
   width: 100%;
   height: 22px;
-  /* margin-right: 20px; */
   margin-left: 3px;
   display: flex;
   align-items: center;
@@ -349,7 +308,6 @@
 
 .filter__container>button {
   all: unset;
-  border-radius: 20px;
   border: 2px solid rgb(0, 0, 0);
   background: rgb(0, 0, 0, 0);
   font-size: 16px;
@@ -359,12 +317,6 @@
   font-weight: 500;
 }
 
-/* .filter__container>button:hover {
-  cursor: pointer;
-  background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%);
-  transition: 0.5s;
-} */
-
 .datepicker-remove-date {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0);
@@ -372,7 +324,6 @@
   font-size: 16px;
   font-family: inherit;
   color: black;
-  /* font-weight: 200; */
 }
 
 .datepicker-button__container {
@@ -384,7 +335,6 @@
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
-  /* margin-right: 5px; */
   margin-left: 5px;
 }
 
@@ -394,8 +344,6 @@
 
 .datepicker__container {
   background: rgb(236, 246, 192);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-  /* border-radius: 20px; */
   border: 1px solid black;
   float: right;
 }
@@ -440,23 +388,18 @@
   height: 18px;
   padding: 7px;
   border: 1px solid rgb(236, 246, 192);
-  /* line-height: 24px; */
 }
 
 .react-datepicker__day:hover {
   padding: 7px;
   border: 1px solid rgb(0, 0, 0);
   cursor: pointer;
-  /* border-radius: 8px; */
-  /* background: linear-gradient(13deg, rgba(31, 20, 255, 0.5) 0%, rgba(255, 3, 225, 0.5) 76%); */
 }
 
 .react-datepicker__day--selected {
   padding: 7px;
-  /* border-radius: 10px; */
   border: 1px solid rgb(0, 0, 0);
   background: rgb(193, 205, 141);
-  /* background: linear-gradient(13deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
 }
 
 .react-datepicker__day-name {
@@ -536,8 +479,6 @@ p a:hover {
 
 .suggestions-wrapper {
   background: rgb(236, 246, 192);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-  /* border-radius: 20px; */
   border: 1px solid black;
   float: right;
   width: 40%;
@@ -560,16 +501,14 @@ p a:hover {
 
 .suggestions li {
   padding: 0.5rem;
-  font-weight: 400;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
 }
 
 .suggestions .suggestion-active,
 .suggestions li:hover {
   cursor: pointer;
-  font-weight: 600;
-  border-radius: 10px;
-  border: 3px solid rgb(0, 0, 0);
+  font-weight: 400;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 .hidden-city-suggestions {
@@ -578,7 +517,6 @@ p a:hover {
 
 .loading {
   margin: 40px;
-  /* font-weight: 600; */
 }
 
 .notifications-wrapper__container {
@@ -591,8 +529,6 @@ p a:hover {
 
 .notifications__container {
   background: rgb(236, 246, 192);
-  /* background: linear-gradient(193deg, rgba(31, 20, 255, 1) 0%, rgba(255, 3, 225, 1) 76%); */
-  /* border-radius: 20px; */
   border: 1px solid black;
   padding: 10px 20px 10px 20px;
 }
@@ -615,7 +551,6 @@ p a:hover {
   float: left;
   font-family: inherit;
   font-weight: 500;
-  /* font-size: 14px; */
   color: rgb(208, 0, 0);
   height: 20px;
 }
@@ -623,7 +558,6 @@ p a:hover {
 .noti-success {
   padding: 40px 0 10px 0;
   width: 100%;
-  /* float: left; */
 }
 
 .noti_input {
@@ -646,12 +580,9 @@ p a:hover {
   border: none;
   background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  /* font-weight: 500; */
-  /* font-size: 16px; */
   width: 90%;
   float: left;
   height: 20px;
-  /* color: white; */
 }
 .noti_form img {
   float: right;
@@ -675,7 +606,6 @@ p a:hover {
 
 .noti_form .range-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  /* Override default look */
   appearance: none;
   width: 15px;
   height: 15px;
@@ -688,9 +618,6 @@ p a:hover {
 .noti_form span {
   width: 60px;
   margin-left: 5px;
-  /* font-size: 12px; */
-  /* font-weight: 600; */
-  /* color: white; */
 }
 
 .noti-button__container {
@@ -703,7 +630,6 @@ p a:hover {
   border: 1px black solid;
   padding: 10px;
   font-family: inherit;
-  /* border-radius: 20px; */
 }
 
 .noti-button:hover:enabled {
@@ -726,11 +652,9 @@ p a:hover {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   font-family: inherit;
-  /* font-weight: 500; */
   font-size: 16px;
 }
 
 .close-noti-container button:hover {
   cursor: pointer;
-  color: rgb(255, 255, 255);
 }
