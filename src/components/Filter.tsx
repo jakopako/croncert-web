@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import radiusIcon from "./radius.png";
 import calendarIcon from "./icon-calendar-96.png";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 
 interface Props {
   isOpen: boolean;
@@ -59,7 +59,7 @@ const Filter = ({
             </button>
             {date && (
               <button className="datepicker-remove-date" onClick={resetDate}>
-                X
+                x
               </button>
             )}
             <button

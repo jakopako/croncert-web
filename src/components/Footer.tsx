@@ -1,6 +1,5 @@
 import React from "react";
 import logoWhite from "./github_white.png";
-import logoPink from "./github_pink.png";
 import logoBlack from "./github.png";
 
 const Footer = () => {
@@ -12,7 +11,7 @@ const Footer = () => {
         rel="noreferrer noopener"
       >
         <img
-          src={logoWhite}
+          src={logoBlack}
           alt="Github Logo"
           width="30"
           height="30"

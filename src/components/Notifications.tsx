@@ -82,7 +82,7 @@ const Notifications = ({
                 resetNotiForm();
               }}
             >
-              X
+              x
             </button>
           </div>
           {!subSucc && (
