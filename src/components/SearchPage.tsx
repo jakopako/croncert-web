@@ -7,6 +7,7 @@ import Filter from "./Filter";
 import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
+import ContributeHeader from "./ContributeHeader";
 import ReactPaginate from "react-paginate";
 
 const toISOStringWithTimezone = (date: Date): string => {
@@ -191,6 +192,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
 
   return (
     <div>
+      <ContributeHeader />
       <div className="App">
         <CroncertLogo />
 
