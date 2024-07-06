@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 
-interface Props {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
-}
-
 const ContributeHeader = () => {
   const [isOpen, setIsOpen] = useState(true);
   if (isOpen) {
