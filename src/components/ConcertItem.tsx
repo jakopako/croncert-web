@@ -30,7 +30,9 @@ const ConcertItem = ({
       </div>
       <div className="concertitem__field">
         <div className="concertitem__date">
-          {format(parseISO(date), "d/M/yy HH:mm")}
+          {new Date(date).toLocaleDateString() +
+            " " +
+            format(parseISO(date), "HH:mm")}
         </div>
       </div>
     </div>
