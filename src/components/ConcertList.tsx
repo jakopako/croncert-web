@@ -8,20 +8,10 @@ import "./styles.css";
 interface Props {
   loading: boolean;
   concerts: Concert[];
-  // page: number;
-  // totalPages: number;
-  // handlePagination: (selectedItem: { selected: number }) => void;
   setNotificationIsOpen: (value: boolean) => void;
 }
 
-const ConcertList = ({
-  concerts,
-  loading,
-  // page,
-  // totalPages,
-  // handlePagination,
-  setNotificationIsOpen,
-}: Props) => {
+const ConcertList = ({ concerts, loading, setNotificationIsOpen }: Props) => {
   return (
     <div className="concertlist__box">
       <div>
@@ -44,6 +34,7 @@ const ConcertList = ({
               url={concert.url}
               date={concert.date}
               sourceUrl={concert.sourceUrl}
+              genres={concert.genres}
             ></ConcertItem>
           ))}
         {!concerts && !loading && (

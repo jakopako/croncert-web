@@ -6,5 +6,6 @@ export type Concert = {
   url: string;
   date: string;
   sourceUrl: string;
+  genres: string[];
 }
 

@@ -6,10 +6,10 @@ const ConcertItem = ({
   title,
   location,
   city,
-  comment,
   url,
   date,
   sourceUrl,
+  genres,
 }: Concert) => {
   return (
     <div className="concertitem__box">
@@ -18,6 +18,14 @@ const ConcertItem = ({
           <a href={url} target="_blank" rel="noreferrer noopener">
             {title}
           </a>
+        </div>
+      </div>
+      <div className="concertitem__field">
+        <div className="concertitem__genres">
+          {genres &&
+            genres.map((genre) => (
+              <div className="concertitem__genre">{genre}</div>
+            ))}
         </div>
       </div>
       <div className="concertitem__field">

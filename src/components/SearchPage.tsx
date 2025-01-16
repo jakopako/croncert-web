@@ -192,7 +192,7 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
 
   return (
     <div>
-      <ContributeHeader />
+      {/* <ContributeHeader /> */}
       <div className="App">
         <CroncertLogo />
 
@@ -234,9 +234,6 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
         <ConcertList
           loading={loading}
           concerts={concerts}
-          // page={page}
-          // totalPages={totalPages}
-          // handlePagination={handlePageClick}
           setNotificationIsOpen={setNotificationsIsOpen}
         />
         <div className="pagination">
