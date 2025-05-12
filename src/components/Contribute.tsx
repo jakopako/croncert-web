@@ -41,7 +41,9 @@ const Contribute = ({ baseUrlFromEnv }: Props) => {
         provides the actual concert data. The source code can be found{" "}
         <a href="https://github.com/jakopako/event-api">here</a> and the swagger
         documentation can be found{" "}
-        <a href="https://api.croncert.ch/api/swagger/index.html#/">here.</a>{" "}
+        <a href="https://api.concertcloud.live/api/swagger/index.html#/">
+          here.
+        </a>{" "}
         Note that the endpoints for fetching the data are publicly available for
         anyone to use.
       </p>
