@@ -52,4 +52,4 @@ https://www.concertcloud.live/?city=Vienna
 https://www.concertcloud.live/?city=Winterthur
 https://www.concertcloud.live/?city=Yverdon-les-Bains
 https://www.concertcloud.live/?city=Zug
-https://www.concertcloud.live/?city=Zurich"
+https://www.concertcloud.live/?city=Zurich
