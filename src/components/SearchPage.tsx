@@ -92,7 +92,8 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
         "&city=" +
         citySearchTerm +
         "&radius=" +
-        radius;
+        radius +
+        "&type=concert";
       if (date) {
         url += "&date=" + encodeURIComponent(toISOStringWithTimezone(date));
       }
