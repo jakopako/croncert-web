@@ -72,13 +72,24 @@ const Notifications = ({
     })();
   };
 
+  const isSubmitButtonDisabled =
+    !titleNotification || !cityNotification || !emailNotification;
+
+  const labelStyle: React.CSSProperties = {
+    fontWeight: "bold",
+    display: "block",
+    textAlign: "left",
+    fontSize: "0.95em",
+    marginBottom: "2px",
+  };
+
   return (
     <div className="notifications-wrapper__container">
       {isOpen && (
         <div className="notifications__container">
           <div className="close-noti-container">
             <button
-              onClick={function (event) {
+              onClick={function (_event) {
                 resetNotiForm();
               }}
             >
@@ -88,22 +99,13 @@ const Notifications = ({
           {!subSucc && (
             <div>
               <form className="noti_form">
-                <label
-                  htmlFor="titlenotification"
-                  style={{
-                    fontWeight: "bold",
-                    display: "block",
-                    textAlign: "left",
-                    fontSize: "0.95em",
-                    marginBottom: "2px",
-                  }}
-                >
+                <label htmlFor="titlenotification" style={labelStyle}>
                   Title <span style={{ color: "red" }}>*</span>
                 </label>
                 <input
                   autoComplete="off"
                   id="titlenotification"
-                  type="input"
+                  type="text"
                   className="noti_input"
                   defaultValue={titleNotification}
                   onChange={function (
@@ -114,22 +116,13 @@ const Notifications = ({
                 />
               </form>
               <form className="noti_form">
-                <label
-                  htmlFor="citynotification"
-                  style={{
-                    fontWeight: "bold",
-                    display: "block",
-                    textAlign: "left",
-                    fontSize: "0.95em",
-                    marginBottom: "2px",
-                  }}
-                >
+                <label htmlFor="citynotification" style={labelStyle}>
                   City <span style={{ color: "red" }}>*</span>
                 </label>
                 <input
                   autoComplete="off"
                   id="citynotification"
-                  type="input"
+                  type="text"
                   className="noti_input"
                   defaultValue={cityNotification}
                   onChange={function (
@@ -140,22 +133,13 @@ const Notifications = ({
                 />
               </form>
               <form className="noti_form">
-                <label
-                  htmlFor="emailnotification"
-                  style={{
-                    fontWeight: "bold",
-                    display: "block",
-                    textAlign: "left",
-                    fontSize: "0.95em",
-                    marginBottom: "2px",
-                  }}
-                >
+                <label htmlFor="emailnotification" style={labelStyle}>
                   Email address <span style={{ color: "red" }}>*</span>
                 </label>
                 <input
                   autoComplete="off"
                   id="emailnotification"
-                  type="input"
+                  type="email"
                   className="noti_input"
                   onChange={function (
                     event: React.ChangeEvent<HTMLInputElement>
@@ -193,15 +177,9 @@ const Notifications = ({
                 <button
                   className="noti-button"
                   type="submit"
-                  disabled={
-                    !titleNotification ||
-                    !cityNotification ||
-                    !emailNotification
-                  }
+                  disabled={isSubmitButtonDisabled}
                   style={
-                    !titleNotification ||
-                    !cityNotification ||
-                    !emailNotification
+                    isSubmitButtonDisabled
                       ? {
                           backgroundColor: "#eee",
                           color: "#aaa",
@@ -211,7 +189,7 @@ const Notifications = ({
                         }
                       : {}
                   }
-                  onClick={function (event) {
+                  onClick={function (_event) {
                     handleNotiSubmit(
                       titleNotification,
                       cityNotification,
