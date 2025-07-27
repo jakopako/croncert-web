@@ -3,9 +3,10 @@ import CroncertLogo from "./CroncertLogo";
 
 interface Props {
   baseUrlFromEnv: string;
+  emailStringFromEnv: string;
 }
 
-const Contribute = ({ baseUrlFromEnv }: Props) => {
+const Contribute = ({ baseUrlFromEnv, emailStringFromEnv }: Props) => {
   const [nrVenues, setNrVenues] = useState(0);
   useEffect(() => {
     (async () => {
@@ -82,6 +83,11 @@ const Contribute = ({ baseUrlFromEnv }: Props) => {
         fixing. So if you want to contribute in any way feel free to browse the
         repositories, play around with the code, open issues & open pull
         requests!
+      </p>
+      <h2>Contact</h2>
+      <p>
+        If you have any questions, suggestions or just want to chat about this
+        project you can contact me via email at {emailStringFromEnv}.
       </p>
       <br></br>
       Cheers, Jakob

@@ -7,6 +7,7 @@ import NotificationActivation from "./components/NotificationActivation";
 import NotificationDeletion from "./components/NotificationDeletion";
 
 const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
+const emailStringFromEnv: string = process.env.REACT_APP_FEEDBACK_EMAIL || "";
 
 export default function App() {
   return (
@@ -18,7 +19,12 @@ export default function App() {
         />
         <Route
           path="/contribute"
-          element={<Contribute baseUrlFromEnv={baseUrlFromEnv} />}
+          element={
+            <Contribute
+              baseUrlFromEnv={baseUrlFromEnv}
+              emailStringFromEnv={emailStringFromEnv}
+            />
+          }
         />
         <Route
           path="/activate-notification"
