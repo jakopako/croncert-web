@@ -88,11 +88,22 @@ const Notifications = ({
           {!subSucc && (
             <div>
               <form className="noti_form">
+                <label
+                  htmlFor="titlenotification"
+                  style={{
+                    fontWeight: "bold",
+                    display: "block",
+                    textAlign: "left",
+                    fontSize: "0.95em",
+                    marginBottom: "2px",
+                  }}
+                >
+                  Title <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   autoComplete="off"
                   id="titlenotification"
                   type="input"
-                  placeholder="Title"
                   className="noti_input"
                   defaultValue={titleNotification}
                   onChange={function (
@@ -103,11 +114,22 @@ const Notifications = ({
                 />
               </form>
               <form className="noti_form">
+                <label
+                  htmlFor="citynotification"
+                  style={{
+                    fontWeight: "bold",
+                    display: "block",
+                    textAlign: "left",
+                    fontSize: "0.95em",
+                    marginBottom: "2px",
+                  }}
+                >
+                  City <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   autoComplete="off"
                   id="citynotification"
                   type="input"
-                  placeholder="City"
                   className="noti_input"
                   defaultValue={cityNotification}
                   onChange={function (
@@ -118,11 +140,22 @@ const Notifications = ({
                 />
               </form>
               <form className="noti_form">
+                <label
+                  htmlFor="emailnotification"
+                  style={{
+                    fontWeight: "bold",
+                    display: "block",
+                    textAlign: "left",
+                    fontSize: "0.95em",
+                    marginBottom: "2px",
+                  }}
+                >
+                  Email address <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   autoComplete="off"
                   id="emailnotification"
                   type="input"
-                  placeholder="foo@bar.com"
                   className="noti_input"
                   onChange={function (
                     event: React.ChangeEvent<HTMLInputElement>
@@ -164,6 +197,19 @@ const Notifications = ({
                     !titleNotification ||
                     !cityNotification ||
                     !emailNotification
+                  }
+                  style={
+                    !titleNotification ||
+                    !cityNotification ||
+                    !emailNotification
+                      ? {
+                          backgroundColor: "#eee",
+                          color: "#aaa",
+                          border: "1px solid #ccc",
+                          cursor: "not-allowed",
+                          opacity: 0.7,
+                        }
+                      : {}
                   }
                   onClick={function (event) {
                     handleNotiSubmit(

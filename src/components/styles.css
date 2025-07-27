@@ -656,11 +656,6 @@ p a:hover {
   transition: opacity .2s;
 }
 
-.noti-button:disabled {
-  cursor: default;
-  border: 1px rgb(78, 78, 78) solid;
-}
-
 .close-noti-container {
   float: right;
 }
