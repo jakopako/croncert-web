@@ -2,7 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contribute from "./components/Contribute";
-import SearchPage from "./components/SearchPage";
+import Search from "./components/Search";
+import Status from "./components/Status";
 import NotificationActivation from "./components/NotificationActivation";
 import NotificationDeletion from "./components/NotificationDeletion";
 
@@ -13,10 +14,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<SearchPage baseUrlFromEnv={baseUrlFromEnv} />}
-        />
+        <Route path="/" element={<Search baseUrlFromEnv={baseUrlFromEnv} />} />
         <Route
           path="/contribute"
           element={
@@ -25,6 +23,10 @@ export default function App() {
               emailStringFromEnv={emailStringFromEnv}
             />
           }
+        />
+        <Route
+          path="/status"
+          element={<Status baseUrlFromEnv={baseUrlFromEnv} />}
         />
         <Route
           path="/activate-notification"

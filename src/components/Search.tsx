@@ -41,7 +41,7 @@ interface Props {
   baseUrlFromEnv: string;
 }
 
-const SearchPage = ({ baseUrlFromEnv }: Props) => {
+const Search = ({ baseUrlFromEnv }: Props) => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [baseUrlEvents] = useState(baseUrlFromEnv + "/api/events");
@@ -255,4 +255,4 @@ const SearchPage = ({ baseUrlFromEnv }: Props) => {
   );
 };
 
-export default SearchPage;
+export default Search;

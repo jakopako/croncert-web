@@ -9,3 +9,11 @@ export type Concert = {
   genres: string[];
 }
 
+export type Status = {
+  scraperName: string;
+  nrItems: number;
+  nrErrors: number;
+  lastScrapeStart: string;
+  lastScrapeEnd: string;
+  scraperLogs: string;
+}

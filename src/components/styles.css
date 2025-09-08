@@ -213,18 +213,18 @@
   display: flex;
 }
 
-.contribute__box {
-  padding: 10px;
+.footer__component {
+  padding: 10px 0 10px 10px;
 }
 
-.contribute__box a {
+.footer__component a {
   color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: 400;
   transition: 0.2s;
 }
 
-.contribute__box a:hover {
+.footer__component a:hover {
   color: rgb(198, 136, 20);
 }
 
@@ -711,7 +711,7 @@ p a:hover {
 /* .contribute__link a {
   float: right;
 } */
- .contribute__box {
+ .footer__box {
   padding: 10px;
 }
 
