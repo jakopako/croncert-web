@@ -44,43 +44,6 @@ const Status = ({ baseUrlFromEnv }: Props) => {
       <CroncertLogo />
       <h2>Scraper Status</h2>
       <br />
-      {/* Legend for status icons */}
-      <div style={{ marginBottom: "16px", fontSize: "1em", textAlign: "left" }}>
-        <ul
-          style={{
-            listStyle: "none",
-            paddingLeft: 0,
-            margin: "8px 0 0 0",
-            display: "flex",
-            gap: "24px",
-          }}
-        >
-          <li>
-            <span role="img" aria-label="Info">
-              ℹ️
-            </span>{" "}
-            <strong>Status Legend:</strong>
-          </li>
-          <li>
-            <span role="img" aria-label="No items">
-              ⚠️
-            </span>{" "}
-            No items found
-          </li>
-          <li>
-            <span role="img" aria-label="Errors">
-              ❌
-            </span>{" "}
-            Errors occurred
-          </li>
-          <li>
-            <span role="img" aria-label="OK">
-              ✅
-            </span>{" "}
-            All OK
-          </li>
-        </ul>
-      </div>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -139,14 +102,29 @@ const Status = ({ baseUrlFromEnv }: Props) => {
                     : "N/A"}
                 </td>
                 <td style={{ paddingRight: columnPadding }}>
-                  {s.nrErrors === 0
-                    ? (() => {
-                        if (s.nrItems === 0) {
-                          return "⚠️";
-                        }
-                        return "✅";
-                      })()
-                    : "❌"}
+                  {s.nrErrors === 0 ? (
+                    (() => {
+                      if (s.nrItems === 0) {
+                        return (
+                          <span
+                            title="No items found"
+                            style={{ cursor: "help" }}
+                          >
+                            ⚠️
+                          </span>
+                        );
+                      }
+                      return (
+                        <span title="All OK" style={{ cursor: "help" }}>
+                          ✅
+                        </span>
+                      );
+                    })()
+                  ) : (
+                    <span title="Errors occurred" style={{ cursor: "help" }}>
+                      ❌
+                    </span>
+                  )}
                 </td>
               </tr>
             ))}
