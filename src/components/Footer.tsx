@@ -19,8 +19,12 @@ const Footer = () => {
           onMouseOut={(e) => (e.currentTarget.src = logoBlack)}
         />
       </a>
-      <div className="contribute__box">
+      <div className="footer__component">
         <a href="/contribute">Contribute</a>
+      </div>
+
+      <div className="footer__component">
+        <a href="/status">Status</a>
       </div>
     </div>
   );
