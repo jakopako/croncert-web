@@ -253,8 +253,8 @@
 .filter-wrapper__container {
   max-width: 802px;
   width: 90%;
-  position: fixed;
   margin-top: 205px;
+  position: absolute;
   z-index: 10;
 }
 
