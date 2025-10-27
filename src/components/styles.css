@@ -472,6 +472,10 @@
   color: rgb(176, 176, 176);
 }
 
+.react-datepicker__day--today {
+  background: rgb(193, 205, 141);
+}
+
 p {
   text-align: left;
   max-width: 600px;
