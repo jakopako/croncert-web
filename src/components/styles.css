@@ -59,7 +59,7 @@
 
 .concertlist__box {
   max-width: 800px;
-  min-height: 1110px;
+  min-height: 900px;
   width: 90%;
   position: relative;
   background: rgb(219, 218, 255);
@@ -83,7 +83,7 @@
 
 .concertitem__title {
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 500;
   padding: 5px 5px 2px 5px;
 }
 
@@ -132,8 +132,15 @@
 }
 
 .concertitem__date {
-  font-size: 24px;
+  font-size: 20px;
   padding: 5px 0px 2px 5px;
+  font-weight: 600;
+}
+
+.concertitem__time {
+  font-size: 16px;
+  padding: 5px 0px 2px 5px;
+  font-weight: 500;
 }
 
 .pagination {

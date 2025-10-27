@@ -170,7 +170,7 @@ const SearchBar = ({
       <div className="hidden-city-suggestions">
         {citySuggestions.map((suggestion) => {
           return (
-            <a href={"?city=" + suggestion}>
+            <a href={"?city=" + suggestion} key={suggestion}>
               {"Concerts in " + suggestion + ". "}
             </a>
           );
