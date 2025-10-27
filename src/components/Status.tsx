@@ -65,9 +65,6 @@ const Status = ({ baseUrlFromEnv }: Props) => {
               maxWidth: "1200px",
               fontSize: "1em",
               margin: "0 auto",
-              // background: "white",
-              // borderRadius: "8px",
-              // boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
             }}
           >
             <thead>

@@ -13,15 +13,15 @@ const CroncertLogo = () => {
         >
           <defs>
             <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#000000" />
-              <stop offset="100%" stop-color="#000000" />
+              <stop offset="0%" stopColor="#000000" />
+              <stop offset="100%" stopColor="#000000" />
             </linearGradient>
           </defs>
           <path
             d="M71 21.5C66.5 15 59 6 42 6C25 6 6.5 16.0001 6.5 51.5C6.5 87 29.5 97.5 42 97.5C54.5 97.5 85 97.5 94.5 97.5C123 97.5 135.5 86.5 133 64.5C130.5 42.5 94.5 23.5 66.5 55"
             stroke="url(#linear)"
-            stroke-width="13"
-            stroke-linecap="square"
+            strokeWidth="13"
+            strokeLinecap="square"
           />
         </svg>
       </a>

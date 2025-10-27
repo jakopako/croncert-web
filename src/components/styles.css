@@ -59,7 +59,7 @@
 
 .concertlist__box {
   max-width: 800px;
-  min-height: 1110px;
+  min-height: 900px;
   width: 90%;
   position: relative;
   background: rgb(219, 218, 255);
@@ -83,7 +83,7 @@
 
 .concertitem__title {
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 500;
   padding: 5px 5px 2px 5px;
 }
 
@@ -132,8 +132,15 @@
 }
 
 .concertitem__date {
-  font-size: 24px;
+  font-size: 20px;
   padding: 5px 0px 2px 5px;
+  font-weight: 600;
+}
+
+.concertitem__time {
+  font-size: 16px;
+  padding: 5px 0px 2px 5px;
+  font-weight: 500;
 }
 
 .pagination {
@@ -246,8 +253,8 @@
 .filter-wrapper__container {
   max-width: 802px;
   width: 90%;
-  position: fixed;
   margin-top: 205px;
+  position: absolute;
   z-index: 10;
 }
 
@@ -463,6 +470,10 @@
 
 .react-datepicker__day--outside-month {
   color: rgb(176, 176, 176);
+}
+
+.react-datepicker__day--today {
+  background: rgb(193, 205, 141);
 }
 
 p {
