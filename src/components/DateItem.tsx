@@ -1,5 +1,13 @@
 import React from "react";
 import { format } from "date-fns";
+import styled from "styled-components";
+import { ConcertItemField, ConcertItemWrapper } from "./ConcertItem";
+
+const ConcertItemDate = styled.div`
+  font-size: 20px;
+  padding: 5px 0px 2px 5px;
+  font-weight: 600;
+`;
 
 interface Props {
   date: Date | undefined;
@@ -7,12 +15,12 @@ interface Props {
 
 export const DateItem = ({ date }: Props) => {
   return (
-    <div className="concertitem__box">
-      <div className="concertitem__field">
-        <div className="concertitem__date">
+    <ConcertItemWrapper>
+      <ConcertItemField>
+        <ConcertItemDate>
           {date ? format(date, "EE, d. MMM. yyyy") : ""}
-        </div>
-      </div>
-    </div>
+        </ConcertItemDate>
+      </ConcertItemField>
+    </ConcertItemWrapper>
   );
 };
