@@ -1,8 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+
+const CroncertLogoWrapper = styled.div`
+  margin: 20px 0 10px 0;
+`;
 
 const CroncertLogo = () => {
   return (
-    <div className="croncert-logo-container">
+    <CroncertLogoWrapper>
       <a href={`${window.location.protocol}//${window.location.host}`}>
         <svg
           width="150"
@@ -25,7 +30,7 @@ const CroncertLogo = () => {
           />
         </svg>
       </a>
-    </div>
+    </CroncertLogoWrapper>
   );
 };
 
