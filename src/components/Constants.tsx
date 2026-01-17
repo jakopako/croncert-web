@@ -14,7 +14,6 @@ export const FilterBackgroundColor = "rgb(236, 246, 192)";
 export const FilterSliderColor = "rgb(0, 0, 0)";
 export const FilterThumbColor = "rgb(193, 205, 141)";
 export const GreyTextColor = "rgb(176, 176, 176)";
-export const ContributeHeaderBackgroundColor = "rgb(255, 102, 0)";
 export const NotificationsBackgroundColor = "rgb(236, 246, 192)";
 export const ErrorMessageColor = "rgb(208, 0, 0)";
 export const BorderColor = "rgb(0, 0, 0)";
