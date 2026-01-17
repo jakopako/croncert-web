@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
+import styled from "styled-components";
 import ConcertList from "./ConcertList";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
@@ -8,6 +9,12 @@ import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
 import ReactPaginate from "react-paginate";
+import {
+  PaginationBackgroundColor,
+  TextColor,
+  BorderColor,
+  PaginationSelectedBackgroundColor,
+} from "./Constants";
 
 const toISOStringWithTimezone = (date: Date): string => {
   const tzOffset = -date.getTimezoneOffset();
@@ -36,6 +43,52 @@ const fromISOStringWithtimezone = (dateString: string): Date => {
   // console.log(dateString);
   return new Date(dateString);
 };
+
+const Subtitle = styled.span`
+  font-weight: 300;
+  margin-bottom: 20px;
+  font-size: 15px;
+`;
+
+const PaginationContainer = styled.div`
+  margin-top: auto;
+  font-size: 16px;
+  color: ${TextColor};
+  background-color: ${PaginationBackgroundColor};
+  border: 1px solid ${BorderColor};
+  margin-top: 20px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 10px 6px 10px;
+  }
+
+  ul li {
+    display: inline-block;
+    line-height: 35px;
+  }
+
+  ul li a {
+    display: block;
+    width: 40px;
+    border: 1px solid ${PaginationBackgroundColor};
+
+    &:hover {
+      border: 1px solid ${BorderColor};
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+
+  ul li.selected a {
+    border: 1px solid ${BorderColor};
+    width: 40px;
+    height: 30px;
+    background: ${PaginationSelectedBackgroundColor};
+  }
+`;
 
 interface Props {
   baseUrlFromEnv: string;
@@ -196,7 +249,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
       <div className="App">
         <CroncertLogo />
 
-        <span className="subtitle">Find upcoming concerts near you.</span>
+        <Subtitle>Find upcoming concerts near you.</Subtitle>
         <SearchBar
           setCalendarIsOpen={setCalendarIsOpen}
           handleTitleChange={handleTitleChange}
@@ -236,7 +289,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
           concerts={concerts}
           setNotificationIsOpen={setNotificationsIsOpen}
         />
-        <div className="pagination">
+        <PaginationContainer>
           {concerts && !loading && (
             <ReactPaginate
               breakLabel="..."
@@ -248,7 +301,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
               previousLabel="<"
             />
           )}
-        </div>
+        </PaginationContainer>
         <Footer />
       </div>
     </div>

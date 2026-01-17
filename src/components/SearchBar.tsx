@@ -1,6 +1,113 @@
 import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import filterIcon from "./uiFilter-512.webp";
 import { NoConcerts } from "./NoConcerts";
+import {
+  SearchBarBackgroundColor,
+  BorderColor,
+  TextColor,
+  PlaceholderTextColor,
+} from "./Constants";
+
+const SearchbarBox = styled.div`
+  display: flex;
+  max-width: 800px;
+  height: 20px;
+  width: 90%;
+  position: relative;
+  background: ${SearchBarBackgroundColor};
+  border: 1px solid ${BorderColor};
+  padding: 10px 0 10px 0;
+`;
+
+const SearchbarTitleForm = styled.form`
+  width: 60%;
+  padding-left: 20px;
+`;
+
+const SearchbarCityForm = styled.form`
+  width: 40%;
+  padding-left: 10px;
+  border-left: 1px solid ${BorderColor};
+`;
+
+const SearchbarInput = styled.input`
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  float: left;
+  height: 20px;
+  color: ${TextColor};
+  width: 100%;
+
+  &::placeholder {
+    color: ${PlaceholderTextColor};
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const HiddenCitySuggestions = styled.div`
+  display: none;
+`;
+
+const SuggestionsWrapperContainer = styled.div`
+  max-width: 800px;
+  width: 96%;
+  position: absolute;
+  margin-top: 41px;
+  z-index: 11;
+`;
+
+const SuggestionsWrapper = styled.div`
+  background: ${SearchBarBackgroundColor};
+  border: 1px solid ${BorderColor};
+  float: right;
+  width: 40%;
+  min-width: 140px;
+  text-align: left;
+`;
+
+const SuggestionsList = styled.ul`
+  position: relative;
+  margin: 0;
+  padding: 10px;
+  vertical-align: baseline;
+  list-style: none;
+  text-align: left;
+
+  li {
+    padding: 0.5rem;
+    border: 1px solid transparent;
+
+    &:hover,
+    &.suggestion-active {
+      cursor: pointer;
+      font-weight: 400;
+      border: 1px solid ${BorderColor};
+    }
+  }
+`;
+
+const FilterButtonContainer = styled.div`
+  margin: 0;
+  padding-right: 12px;
+`;
+
+const FilterButton = styled.button`
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 interface Props {
   handleTitleChange: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -64,8 +171,8 @@ const SearchBar = ({
         .normalize("NFKD")
         .replace(combining, "")
         .startsWith(
-          userInput.toLowerCase().normalize("NFKD").replace(combining, "")
-        )
+          userInput.toLowerCase().normalize("NFKD").replace(combining, ""),
+        ),
     );
     setFilteredSuggestions(filteredSuggestions);
     setActiveSuggestion(0);
@@ -115,9 +222,9 @@ const SearchBar = ({
   let suggestionsListComponent;
   if (filteredSuggestions.length) {
     suggestionsListComponent = (
-      <div className="suggestions-wrapper__container">
-        <div className="suggestions-wrapper">
-          <ul className="suggestions">
+      <SuggestionsWrapperContainer>
+        <SuggestionsWrapper>
+          <SuggestionsList>
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -136,38 +243,33 @@ const SearchBar = ({
                 </li>
               );
             })}
-          </ul>
-        </div>
-      </div>
+          </SuggestionsList>
+        </SuggestionsWrapper>
+      </SuggestionsWrapperContainer>
     );
   } else {
     suggestionsListComponent = (
-      <div className="suggestions-wrapper__container">
-        <div className="suggestions-wrapper">
+      <SuggestionsWrapperContainer>
+        <SuggestionsWrapper>
           <NoConcerts setNotificationIsOpen={setNotificationIsOpen} />
-        </div>
-      </div>
+        </SuggestionsWrapper>
+      </SuggestionsWrapperContainer>
     );
   }
 
   return (
-    <div className="searchbar__box">
-      <form
-        className="searchbar__title"
-        onChange={handleTitleChange}
-        onSubmit={onSubmit}
-      >
-        <input
+    <SearchbarBox>
+      <SearchbarTitleForm onChange={handleTitleChange} onSubmit={onSubmit}>
+        <SearchbarInput
           autoComplete="off"
           id="titlesearch"
           type="input"
           placeholder="Title"
-          className="searchbar_input_title"
           defaultValue={initialTitle}
           ref={ref}
         />
-      </form>
-      <div className="hidden-city-suggestions">
+      </SearchbarTitleForm>
+      <HiddenCitySuggestions>
         {citySuggestions.map((suggestion) => {
           return (
             <a href={"?city=" + suggestion} key={suggestion}>
@@ -175,33 +277,24 @@ const SearchBar = ({
             </a>
           );
         })}
-      </div>
-      <form
-        className="searchbar__city"
-        onSubmit={onCitySubmit}
-        onChange={onCityChange}
-      >
-        <input
+      </HiddenCitySuggestions>
+      <SearchbarCityForm onSubmit={onCitySubmit} onChange={onCityChange}>
+        <SearchbarInput
           autoComplete="off"
           id="citysearch"
           type="input"
           placeholder="City"
-          className="searchbar_input_city"
           value={userCityInput}
           onKeyDown={onKeyDown}
         />
-      </form>
-      <div className="filter-button__container">
-        <button
-          className="filter-button"
-          onClick={handleFilterClick}
-          type="submit"
-        >
+      </SearchbarCityForm>
+      <FilterButtonContainer>
+        <FilterButton onClick={handleFilterClick} type="submit">
           <img src={filterIcon} width="22" height="22" alt="filter icon" />
-        </button>
-      </div>
+        </FilterButton>
+      </FilterButtonContainer>
       {showSuggestions && userCityInput && suggestionsListComponent}
-    </div>
+    </SearchbarBox>
   );
 };
 
