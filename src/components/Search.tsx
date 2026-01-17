@@ -46,15 +46,15 @@ const Search = ({ baseUrlFromEnv }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [baseUrlEvents] = useState(baseUrlFromEnv + "/api/events");
   const [baseUrlNotifications] = useState(
-    baseUrlFromEnv + "/api/notifications"
+    baseUrlFromEnv + "/api/notifications",
   );
   const [totalPages, setTotalPages] = useState(0);
   const [concerts, setConcerts] = useState([]);
   const [titleSearchTerm, setTitleSearchTerm] = useState(
-    searchParams.get("title") || ""
+    searchParams.get("title") || "",
   );
   const [citySearchTerm, setCitySearchTerm] = useState(
-    searchParams.get("city") || ""
+    searchParams.get("city") || "",
   );
   const radiusParam = searchParams.get("radius");
   let radiusDefault = 0;
@@ -103,7 +103,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
         if (!controller.signal.aborted) {
           if (res.ok) {
             const res_json = await res.json();
-            setTotalPages(res_json["last_page"]);
+            setTotalPages(res_json["lastPage"]);
             setConcerts(res_json["data"]);
           }
         }
@@ -125,7 +125,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
     if (date)
       newSearchParams.append(
         "date",
-        encodeURIComponent(toISOStringWithTimezone(date))
+        encodeURIComponent(toISOStringWithTimezone(date)),
       );
     setSearchParams(newSearchParams);
     return () => {
