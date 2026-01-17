@@ -245,7 +245,6 @@ const Search = ({ baseUrlFromEnv }: Props) => {
 
   return (
     <div>
-      {/* <ContributeHeader /> */}
       <div className="App">
         <CroncertLogo />
 
