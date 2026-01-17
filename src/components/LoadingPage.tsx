@@ -1,5 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
+const LoadingContainer = styled.div`
+  margin: 40px;
+`;
 
 export const LoadingPage = () => {
-  return <div className="loading">Loading...</div>;
+  return <LoadingContainer>Loading...</LoadingContainer>;
 };

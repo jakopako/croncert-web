@@ -4,6 +4,8 @@ import {
   LinkTextColor,
   LinkTextHoverColor,
   LinkColorTransitionDuration,
+  GenreTagBackgroundColor,
+  GenreTagTextColor,
 } from "./Constants";
 import { format, parseISO } from "date-fns";
 import styled from "styled-components";
@@ -40,9 +42,6 @@ const ConcertItemGenres = styled.div`
   flex-wrap: wrap;
   padding: 0px 0px 0px 5px;
 `;
-
-const GenreTagBackgroundColor = "rgb(0, 0, 0)";
-const GenreTagTextColor = "rgb(255, 255, 255)";
 
 const ConcertItemGenre = styled.div`
   font-size: 12px;
