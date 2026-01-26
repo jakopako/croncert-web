@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
+import arrowIcon from "./arrow-48.png";
 import {
   SearchBarBackgroundColor,
   BorderColor,
@@ -94,7 +95,7 @@ const DatepickerContainer = styled.div`
   .react-datepicker__navigation--previous {
     top: 13px;
     left: 15px;
-    background-image: url("arrow-48.png");
+    background-image: url(${arrowIcon});
     background-size: 20px;
     transform: rotate(-90deg);
     background-color: rgba(255, 255, 255, 0);
@@ -103,7 +104,7 @@ const DatepickerContainer = styled.div`
   .react-datepicker__navigation--next {
     top: 13px;
     right: 15px;
-    background-image: url("arrow-48.png");
+    background-image: url(${arrowIcon});
     background-size: 20px;
     transform: rotate(90deg);
     background-color: rgba(255, 255, 255, 0);
