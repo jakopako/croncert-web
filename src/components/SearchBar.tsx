@@ -17,6 +17,7 @@ const SearchbarBox = styled.div`
   position: relative;
   background: ${SearchBarBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   padding: 10px 0 10px 0;
 `;
 
