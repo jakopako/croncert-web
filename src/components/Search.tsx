@@ -79,12 +79,18 @@ const PaginationContainer = styled.div`
 
     &:hover {
       border: 1px solid ${BorderColor};
+      border-radius: 15px;
+      width: 40px;
+      height: 30px;
       cursor: pointer;
     }
   }
 
   ul li.selected a {
     border: 1px solid ${BorderColor};
+    border-radius: 15px;
+    width: 40px;
+    height: 30px;
     background: ${PaginationSelectedBackgroundColor};
   }
   
