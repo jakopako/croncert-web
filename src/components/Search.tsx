@@ -56,6 +56,7 @@ const PaginationContainer = styled.div`
   color: ${TextColor};
   background-color: ${PaginationBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   margin-top: 20px;
 
   ul {

@@ -20,6 +20,7 @@ const DatepickerWrapperContainer = styled.div`
 const DatepickerContainer = styled.div`
   background: ${SearchBarBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   float: right;
 
   .react-datepicker {
@@ -54,10 +55,12 @@ const DatepickerContainer = styled.div`
     height: 18px;
     padding: 7px;
     border: 1px solid ${SearchBarBackgroundColor};
+    border-radius: 15px;
 
     &:hover {
       padding: 7px;
       border: 1px solid ${BorderColor};
+      border-radius: 15px;
       cursor: pointer;
     }
   }
