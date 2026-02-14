@@ -14,6 +14,7 @@ const ConcertListBox = styled.div`
   position: relative;
   background: ${ConcertListBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   margin-top: 20px;
   padding: 10px 0 10px 0;
   display: flex;

@@ -17,6 +17,7 @@ const SearchbarBox = styled.div`
   position: relative;
   background: ${SearchBarBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   padding: 10px 0 10px 0;
 `;
 
@@ -67,6 +68,7 @@ const SuggestionsWrapperContainer = styled.div`
 const SuggestionsWrapper = styled.div`
   background: ${SearchBarBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   float: right;
   width: 40%;
   min-width: 140px;
@@ -90,6 +92,7 @@ const SuggestionsList = styled.ul`
       cursor: pointer;
       font-weight: 400;
       border: 1px solid ${BorderColor};
+      border-radius: 15px;
     }
   }
 `;

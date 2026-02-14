@@ -22,6 +22,7 @@ const FilterWrapperContainer = styled.div`
 const FilterContainer = styled.div`
   background: ${SearchBarBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   float: right;
 
   img {
