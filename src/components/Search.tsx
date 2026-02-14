@@ -62,13 +62,20 @@ const PaginationContainer = styled.div`
     list-style: none;
     padding: 0;
     margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   ul li {
   }
 
   ul li a {
+    width: 40px;
+    height: 30px;
     border: 1px solid ${PaginationBackgroundColor};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       border: 1px solid ${BorderColor};
