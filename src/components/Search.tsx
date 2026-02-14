@@ -8,6 +8,7 @@ import Filter from "./Filter";
 import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
+import arrowIcon from "./arrow-48.png";
 import ReactPaginate from "react-paginate";
 import {
   PaginationBackgroundColor,
@@ -87,6 +88,18 @@ const PaginationContainer = styled.div`
     width: 40px;
     height: 30px;
     background: ${PaginationSelectedBackgroundColor};
+  }
+  
+  ul li img {
+    width: 20px;
+  }
+  
+  ul li.next img {
+    transform: rotate(90deg);
+  }
+
+  ul li.previous img {
+    transform: rotate(-90deg);
   }
 `;
 
@@ -292,12 +305,12 @@ const Search = ({ baseUrlFromEnv }: Props) => {
           {concerts && !loading && (
             <ReactPaginate
               breakLabel="..."
-              nextLabel=">"
+              nextLabel={<img src={arrowIcon} alt="Next" />}
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               marginPagesDisplayed={1}
               pageCount={totalPages}
-              previousLabel="<"
+              previousLabel={<img src={arrowIcon} alt="Previous" />}
             />
           )}
         </PaginationContainer>
