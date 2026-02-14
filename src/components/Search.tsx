@@ -52,7 +52,6 @@ const Subtitle = styled.span`
 `;
 
 const PaginationContainer = styled.div`
-  margin-top: auto;
   font-size: 16px;
   color: ${TextColor};
   background-color: ${PaginationBackgroundColor};
@@ -62,31 +61,23 @@ const PaginationContainer = styled.div`
   ul {
     list-style: none;
     padding: 0;
-    margin: 10px 10px 6px 10px;
+    margin: 10px;
   }
 
   ul li {
-    display: inline-block;
-    line-height: 35px;
   }
 
   ul li a {
-    display: block;
-    width: 40px;
     border: 1px solid ${PaginationBackgroundColor};
 
     &:hover {
       border: 1px solid ${BorderColor};
-      width: 40px;
-      height: 30px;
       cursor: pointer;
     }
   }
 
   ul li.selected a {
     border: 1px solid ${BorderColor};
-    width: 40px;
-    height: 30px;
     background: ${PaginationSelectedBackgroundColor};
   }
   
