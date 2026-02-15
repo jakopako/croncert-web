@@ -67,9 +67,6 @@ const PaginationContainer = styled.div`
     flex-wrap: wrap;
   }
 
-  ul li {
-  }
-
   ul li a {
     width: 40px;
     height: 30px;
@@ -90,11 +87,11 @@ const PaginationContainer = styled.div`
     border-radius: 15px;
     background: ${PaginationSelectedBackgroundColor};
   }
-  
+
   ul li img {
     width: 20px;
   }
-  
+
   ul li.next img {
     transform: rotate(90deg);
   }
