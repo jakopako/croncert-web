@@ -8,6 +8,7 @@ import Filter from "./Filter";
 import Notifications from "./Notifications";
 import { useSearchParams } from "react-router-dom";
 import CroncertLogo from "./CroncertLogo";
+import arrowIcon from "./arrow-48.png";
 import ReactPaginate from "react-paginate";
 import {
   PaginationBackgroundColor,
@@ -51,7 +52,6 @@ const Subtitle = styled.span`
 `;
 
 const PaginationContainer = styled.div`
-  margin-top: auto;
   font-size: 16px;
   color: ${TextColor};
   background-color: ${PaginationBackgroundColor};
@@ -62,24 +62,22 @@ const PaginationContainer = styled.div`
   ul {
     list-style: none;
     padding: 0;
-    margin: 10px 10px 6px 10px;
-  }
-
-  ul li {
-    display: inline-block;
-    line-height: 35px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   ul li a {
-    display: block;
     width: 40px;
+    height: 30px;
     border: 1px solid ${PaginationBackgroundColor};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       border: 1px solid ${BorderColor};
       border-radius: 15px;
-      width: 40px;
-      height: 30px;
       cursor: pointer;
     }
   }
@@ -87,9 +85,19 @@ const PaginationContainer = styled.div`
   ul li.selected a {
     border: 1px solid ${BorderColor};
     border-radius: 15px;
-    width: 40px;
-    height: 30px;
     background: ${PaginationSelectedBackgroundColor};
+  }
+
+  ul li img {
+    width: 20px;
+  }
+
+  ul li.next img {
+    transform: rotate(90deg);
+  }
+
+  ul li.previous img {
+    transform: rotate(-90deg);
   }
 `;
 
@@ -295,12 +303,12 @@ const Search = ({ baseUrlFromEnv }: Props) => {
           {concerts && !loading && (
             <ReactPaginate
               breakLabel="..."
-              nextLabel=">"
+              nextLabel={<img src={arrowIcon} alt="Next" />}
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               marginPagesDisplayed={1}
               pageCount={totalPages}
-              previousLabel="<"
+              previousLabel={<img src={arrowIcon} alt="Previous" />}
             />
           )}
         </PaginationContainer>
