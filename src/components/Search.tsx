@@ -305,7 +305,7 @@ const Search = ({ baseUrlFromEnv }: Props) => {
               breakLabel="..."
               nextLabel={<img src={arrowIcon} alt="Next" />}
               onPageChange={handlePageClick}
-              pageRangeDisplayed={2}
+              pageRangeDisplayed={1}
               marginPagesDisplayed={1}
               pageCount={totalPages}
               previousLabel={<img src={arrowIcon} alt="Previous" />}
