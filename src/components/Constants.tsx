@@ -10,7 +10,6 @@ export const ConcertListBackgroundColor = "rgb(219, 218, 255)";
 export const PaginationBackgroundColor = "rgb(255, 205, 212)";
 export const PaginationSelectedBackgroundColor = "rgb(230, 167, 176)";
 export const NoConcertsLinkColor = "rgb(198, 136, 20)";
-export const FilterBackgroundColor = "rgb(236, 246, 192)";
 export const FilterSliderColor = "rgb(0, 0, 0)";
 export const FilterThumbColor = "rgb(193, 205, 141)";
 export const GreyTextColor = "rgb(176, 176, 176)";
