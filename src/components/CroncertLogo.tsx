@@ -18,8 +18,8 @@ const CroncertLogo = () => {
         >
           <defs>
             <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#000000" />
-              <stop offset="100%" stopColor="#000000" />
+              <stop offset="0%" stopColor="#46629e" />
+              <stop offset="100%" stopColor="#25468f" />
             </linearGradient>
           </defs>
           <path

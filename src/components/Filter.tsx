@@ -9,6 +9,8 @@ import {
   TextColor,
   FilterSliderColor,
   FilterThumbColor,
+  SearchBarGlowShadow,
+  SearchBarGlowBorderColor,
 } from "./Constants";
 
 const FilterWrapperContainer = styled.div`
@@ -28,6 +30,9 @@ const FilterContainer = styled.div`
   img {
     float: right;
   }
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 `;
 
 const FilterItem = styled.div`

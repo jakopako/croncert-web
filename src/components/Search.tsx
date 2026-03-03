@@ -12,7 +12,7 @@ import arrowIcon from "./arrow-48.png";
 import ReactPaginate from "react-paginate";
 import {
   PaginationBackgroundColor,
-  TextColor,
+  GreyTextColor,
   BorderColor,
   PaginationSelectedBackgroundColor,
 } from "./Constants";
@@ -41,7 +41,6 @@ const toISOStringWithTimezone = (date: Date): string => {
 };
 
 const fromISOStringWithtimezone = (dateString: string): Date => {
-  // console.log(dateString);
   return new Date(dateString);
 };
 
@@ -53,7 +52,7 @@ const Subtitle = styled.span`
 
 const PaginationContainer = styled.div`
   font-size: 16px;
-  color: ${TextColor};
+  color: ${GreyTextColor};
   background-color: ${PaginationBackgroundColor};
   border: 1px solid ${BorderColor};
   border-radius: 15px;
