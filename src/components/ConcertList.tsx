@@ -5,7 +5,12 @@ import { ConcertItem } from "./ConcertItem";
 import { DateItem } from "./DateItem";
 import { NoConcerts } from "./NoConcerts";
 import { LoadingPage } from "./LoadingPage";
-import { ConcertListBackgroundColor, BorderColor } from "./Constants";
+import {
+  ConcertListBackgroundColor,
+  BorderColor,
+  SearchBarGlowShadow,
+  SearchBarGlowBorderColor,
+} from "./Constants";
 
 const ConcertListBox = styled.div`
   max-width: 800px;

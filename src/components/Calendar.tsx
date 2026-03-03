@@ -5,15 +5,17 @@ import arrowIcon from "./arrow-48.png";
 import {
   SearchBarBackgroundColor,
   BorderColor,
-  GreyTextColor,
+  LightTextColor,
   FilterThumbColor,
+  SearchBarGlowBorderColor,
+  SearchBarGlowShadow,
 } from "./Constants";
 
 const DatepickerWrapperContainer = styled.div`
   max-width: 802px;
   width: 90%;
   position: absolute;
-  margin-top: 310px;
+  margin-top: 321px;
   z-index: 10;
 `;
 
@@ -22,6 +24,9 @@ const DatepickerContainer = styled.div`
   border: 1px solid ${BorderColor};
   border-radius: 15px;
   float: right;
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 
   .react-datepicker {
     position: relative;
@@ -114,7 +119,7 @@ const DatepickerContainer = styled.div`
   }
 
   .react-datepicker__day--outside-month {
-    color: ${GreyTextColor};
+    color: ${LightTextColor};
   }
 
   .react-datepicker__day--today {

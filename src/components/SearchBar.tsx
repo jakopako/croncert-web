@@ -9,7 +9,7 @@ import {
   PlaceholderTextColor,
   SearchBarGlowShadow,
   SearchBarGlowBorderColor,
-  GreyTextColor,
+  LightTextColor,
 } from "./Constants";
 
 const SearchbarBox = styled.div`
@@ -22,16 +22,9 @@ const SearchbarBox = styled.div`
   border: 1px solid ${BorderColor};
   border-radius: 15px;
   padding: 10px 0 10px 0;
-  transition:
-    box-shadow 0.18s ease,
-    border-color 0.18s ease;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 
-  &:hover,
-  &:focus-within {
-    box-shadow: ${SearchBarGlowShadow};
-    border-color: ${SearchBarGlowBorderColor};
-  }
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 `;
 
 const SearchbarTitleForm = styled.form`
@@ -53,7 +46,7 @@ const SearchbarInput = styled.input`
   font-size: 16px;
   float: left;
   height: 20px;
-  color: ${GreyTextColor};
+  color: ${LightTextColor};
   width: 100%;
 
   &::placeholder {

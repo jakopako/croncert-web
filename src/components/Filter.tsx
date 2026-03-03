@@ -71,6 +71,9 @@ const RangeSlider = styled.input`
     border: 1px solid ${BorderColor};
     background: ${FilterThumbColor};
     cursor: pointer;
+
+    box-shadow: ${SearchBarGlowShadow};
+    border-color: ${SearchBarGlowBorderColor};
   }
 
   &::-moz-range-thumb {
@@ -80,6 +83,9 @@ const RangeSlider = styled.input`
     border: 1px solid ${BorderColor};
     background: ${FilterThumbColor};
     cursor: pointer;
+
+    box-shadow: ${SearchBarGlowShadow};
+    border-color: ${SearchBarGlowBorderColor};
   }
 `;
 
