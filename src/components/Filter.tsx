@@ -14,6 +14,7 @@ import {
 } from "./Constants";
 
 const FilterWrapperContainer = styled.div`
+  color: ${TextColor};
   max-width: 802px;
   width: 90%;
   margin-top: 205px;

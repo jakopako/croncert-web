@@ -9,6 +9,8 @@ import {
 const NoConcertsContainer = styled.div`
   padding: 20px;
 
+  line-height: 1.5;
+
   a {
     text-decoration: none;
     color: ${NoConcertsLinkColor};

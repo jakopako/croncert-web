@@ -5,23 +5,33 @@ import {
   NotificationsBackgroundColor,
   BorderColor,
   TextColor,
+  LightTextColor,
   FilterSliderColor,
   FilterThumbColor,
   ErrorMessageColor,
+  SearchBarGlowShadow,
+  SearchBarGlowBorderColor,
+  PlaceholderTextColor,
+  DarkBackgroundColor,
 } from "./Constants";
 
 const NotificationsWrapperContainer = styled.div`
   max-width: 300px;
   width: 90%;
   position: absolute;
-  margin-top: 320px;
+  margin-top: 330px;
   z-index: 10;
 `;
 
 const NotificationsContainer = styled.div`
   background: ${NotificationsBackgroundColor};
   border: 1px solid ${BorderColor};
+  border-radius: 15px;
   padding: 10px 20px 10px 20px;
+  color: ${LightTextColor};
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 `;
 
 const NotiForm = styled.form`
@@ -31,12 +41,11 @@ const NotiForm = styled.form`
   float: left;
 
   &:not(:nth-last-child(3)) {
-    border-bottom: 1px solid ${BorderColor};
+    border-bottom: 1px solid ${DarkBackgroundColor};
   }
 `;
 
 const NotiLabel = styled.label`
-  font-weight: bold;
   display: block;
   text-align: left;
   font-size: 0.95em;
@@ -47,14 +56,19 @@ const NotiInput = styled.input`
   border: none;
   background-color: rgba(255, 255, 255, 0);
   font-family: inherit;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
   width: 100%;
   height: 20px;
-  color: ${TextColor};
+  color: ${LightTextColor};
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: ${PlaceholderTextColor};
+    opacity: 0.5;
   }
 `;
 
@@ -77,18 +91,24 @@ const RangeSlider = styled.input`
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: 1px solid ${BorderColor};
+    border: 1px solid ${DarkBackgroundColor};
     background: ${FilterThumbColor};
     cursor: pointer;
+
+    box-shadow: ${SearchBarGlowShadow};
+    border-color: ${SearchBarGlowBorderColor};
   }
 
   &::-moz-range-thumb {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: 1px solid ${BorderColor};
+    border: 1px solid ${DarkBackgroundColor};
     background: ${FilterThumbColor};
     cursor: pointer;
+
+    box-shadow: ${SearchBarGlowShadow};
+    border-color: ${SearchBarGlowBorderColor};
   }
 `;
 
@@ -245,14 +265,14 @@ const Notifications = ({
           {!subSucc && (
             <div>
               <NotiForm>
-                <NotiLabel htmlFor="titlenotification">
+                {/* <NotiLabel htmlFor="titlenotification">
                   Title <span style={{ color: "red" }}>*</span>
-                </NotiLabel>
+                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="titlenotification"
                   type="text"
-                  defaultValue={titleNotification}
+                  placeholder="Title *"
                   onChange={function (
                     event: React.ChangeEvent<HTMLInputElement>,
                   ) {
@@ -261,14 +281,14 @@ const Notifications = ({
                 />
               </NotiForm>
               <NotiForm>
-                <NotiLabel htmlFor="citynotification">
+                {/* <NotiLabel htmlFor="citynotification">
                   City <span style={{ color: "red" }}>*</span>
-                </NotiLabel>
+                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="citynotification"
                   type="text"
-                  defaultValue={cityNotification}
+                  placeholder="City *"
                   onChange={function (
                     event: React.ChangeEvent<HTMLInputElement>,
                   ) {
@@ -277,13 +297,14 @@ const Notifications = ({
                 />
               </NotiForm>
               <NotiForm>
-                <NotiLabel htmlFor="emailnotification">
+                {/* <NotiLabel htmlFor="emailnotification">
                   Email address <span style={{ color: "red" }}>*</span>
-                </NotiLabel>
+                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="emailnotification"
                   type="email"
+                  placeholder="Email address *"
                   onChange={function (
                     event: React.ChangeEvent<HTMLInputElement>,
                   ) {

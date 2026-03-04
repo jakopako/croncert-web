@@ -4,11 +4,12 @@ import styled from "styled-components";
 import arrowIcon from "./arrow-48.png";
 import {
   SearchBarBackgroundColor,
-  BorderColor,
-  LightTextColor,
-  FilterThumbColor,
+  DarkBorderColor,
+  LightTextTransparentColor,
   SearchBarGlowBorderColor,
   SearchBarGlowShadow,
+  DarkBackgroundColor,
+  TextColor,
 } from "./Constants";
 
 const DatepickerWrapperContainer = styled.div`
@@ -20,8 +21,9 @@ const DatepickerWrapperContainer = styled.div`
 `;
 
 const DatepickerContainer = styled.div`
+  color: ${TextColor};
   background: ${SearchBarBackgroundColor};
-  border: 1px solid ${BorderColor};
+  border: 1px solid ${DarkBorderColor};
   border-radius: 15px;
   float: right;
 
@@ -64,7 +66,7 @@ const DatepickerContainer = styled.div`
 
     &:hover {
       padding: 7px;
-      border: 1px solid ${BorderColor};
+      border: 1px solid ${DarkBorderColor};
       border-radius: 15px;
       cursor: pointer;
     }
@@ -72,8 +74,8 @@ const DatepickerContainer = styled.div`
 
   .react-datepicker__day--selected {
     padding: 7px;
-    border: 1px solid ${BorderColor};
-    background: ${FilterThumbColor};
+    border: 1px solid ${DarkBorderColor};
+    background: ${DarkBackgroundColor};
   }
 
   .react-datepicker__day-name {
@@ -119,11 +121,11 @@ const DatepickerContainer = styled.div`
   }
 
   .react-datepicker__day--outside-month {
-    color: ${LightTextColor};
+    color: ${LightTextTransparentColor};
   }
 
   .react-datepicker__day--today {
-    background: ${FilterThumbColor};
+    background: ${DarkBackgroundColor};
   }
 `;
 
