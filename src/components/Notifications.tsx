@@ -4,7 +4,6 @@ import radiusIcon from "./radius.png";
 import {
   NotificationsBackgroundColor,
   BorderColor,
-  TextColor,
   LightTextColor,
   FilterSliderColor,
   FilterThumbColor,
@@ -39,17 +38,16 @@ const NotiForm = styled.form`
   border: none;
   width: 100%;
   float: left;
+  display: flex;
+  align-items: center;
 
   &:not(:nth-last-child(3)) {
-    border-bottom: 1px solid ${DarkBackgroundColor};
+    border-bottom: 1px solid ${SearchBarGlowBorderColor};
   }
-`;
 
-const NotiLabel = styled.label`
-  display: block;
-  text-align: left;
-  font-size: 0.95em;
-  margin-bottom: 2px;
+  > img {
+    margin-right: 2px;
+  }
 `;
 
 const NotiInput = styled.input`
@@ -113,7 +111,7 @@ const RangeSlider = styled.input`
 `;
 
 const RangeSliderValue = styled.span`
-  width: 60px;
+  width: 80px;
   margin-left: 5px;
 `;
 
@@ -158,6 +156,10 @@ const NotiButton = styled.button`
   border: 1px solid ${BorderColor};
   padding: 10px;
   font-family: inherit;
+  border-radius: 15px;
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 
   &:hover:enabled {
     cursor: pointer;
@@ -169,9 +171,8 @@ const NotiButton = styled.button`
   &:disabled {
     background-color: #eee;
     color: #aaa;
-    border: 1px solid #ccc;
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 `;
 
@@ -265,9 +266,6 @@ const Notifications = ({
           {!subSucc && (
             <div>
               <NotiForm>
-                {/* <NotiLabel htmlFor="titlenotification">
-                  Title <span style={{ color: "red" }}>*</span>
-                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="titlenotification"
@@ -281,9 +279,6 @@ const Notifications = ({
                 />
               </NotiForm>
               <NotiForm>
-                {/* <NotiLabel htmlFor="citynotification">
-                  City <span style={{ color: "red" }}>*</span>
-                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="citynotification"
@@ -297,9 +292,6 @@ const Notifications = ({
                 />
               </NotiForm>
               <NotiForm>
-                {/* <NotiLabel htmlFor="emailnotification">
-                  Email address <span style={{ color: "red" }}>*</span>
-                </NotiLabel> */}
                 <NotiInput
                   autoComplete="off"
                   id="emailnotification"

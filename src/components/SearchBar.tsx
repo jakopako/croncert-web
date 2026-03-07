@@ -5,7 +5,6 @@ import { NoConcerts } from "./NoConcerts";
 import {
   SearchBarBackgroundColor,
   BorderColor,
-  TextColor,
   PlaceholderTextColor,
   SearchBarGlowShadow,
   SearchBarGlowBorderColor,

@@ -74,7 +74,6 @@ const PaginationContainer = styled.div`
   ul li a {
     width: 40px;
     height: 30px;
-    line-height: 40px;
     border: 1px solid ${PaginationBackgroundColor};
     justify-content: center;
     display: flex;

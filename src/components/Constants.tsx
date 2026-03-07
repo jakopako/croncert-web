@@ -18,7 +18,7 @@ export const NoConcertsLinkColor = TextColor;
 export const FilterSliderColor = "rgb(0, 0, 0)";
 export const FilterThumbColor = "rgb(188, 97, 97)";
 export const NotificationsBackgroundColor = ConcertListBackgroundColor;
-export const ErrorMessageColor = "rgb(208, 0, 0)";
+export const ErrorMessageColor = DarkBorderColor;
 
 // search bar glow
 export const SearchBarGlowColor = "rgb(59, 130, 246)";
