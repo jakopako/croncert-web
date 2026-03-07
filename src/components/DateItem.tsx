@@ -7,6 +7,8 @@ const ConcertItemDate = styled.div`
   font-size: 20px;
   padding: 5px 0px 2px 5px;
   font-weight: 600;
+
+  color: rgb(0, 20, 39);
 `;
 
 interface Props {

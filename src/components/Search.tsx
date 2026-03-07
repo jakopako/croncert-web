@@ -12,9 +12,11 @@ import arrowIcon from "./arrow-48.png";
 import ReactPaginate from "react-paginate";
 import {
   PaginationBackgroundColor,
-  TextColor,
-  BorderColor,
+  LightTextColor,
   PaginationSelectedBackgroundColor,
+  SearchBarGlowShadow,
+  SearchBarGlowBorderColor,
+  DarkBorderColor,
 } from "./Constants";
 
 const toISOStringWithTimezone = (date: Date): string => {
@@ -41,7 +43,6 @@ const toISOStringWithTimezone = (date: Date): string => {
 };
 
 const fromISOStringWithtimezone = (dateString: string): Date => {
-  // console.log(dateString);
   return new Date(dateString);
 };
 
@@ -53,16 +54,19 @@ const Subtitle = styled.span`
 
 const PaginationContainer = styled.div`
   font-size: 16px;
-  color: ${TextColor};
+  color: ${LightTextColor};
   background-color: ${PaginationBackgroundColor};
-  border: 1px solid ${BorderColor};
+  border: 1px solid ${DarkBorderColor};
   border-radius: 15px;
   margin-top: 20px;
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 
   ul {
     list-style: none;
     padding: 0;
-    margin: 10px;
+    margin: 8px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -71,19 +75,19 @@ const PaginationContainer = styled.div`
     width: 40px;
     height: 30px;
     border: 1px solid ${PaginationBackgroundColor};
+    justify-content: center;
     display: flex;
     align-items: center;
-    justify-content: center;
 
     &:hover {
-      border: 1px solid ${BorderColor};
+      border: 1px solid ${DarkBorderColor};
       border-radius: 15px;
       cursor: pointer;
     }
   }
 
   ul li.selected a {
-    border: 1px solid ${BorderColor};
+    border: 1px solid ${DarkBorderColor};
     border-radius: 15px;
     background: ${PaginationSelectedBackgroundColor};
   }

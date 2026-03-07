@@ -5,8 +5,10 @@ import { NoConcerts } from "./NoConcerts";
 import {
   SearchBarBackgroundColor,
   BorderColor,
-  TextColor,
   PlaceholderTextColor,
+  SearchBarGlowShadow,
+  SearchBarGlowBorderColor,
+  LightTextColor,
 } from "./Constants";
 
 const SearchbarBox = styled.div`
@@ -19,6 +21,9 @@ const SearchbarBox = styled.div`
   border: 1px solid ${BorderColor};
   border-radius: 15px;
   padding: 10px 0 10px 0;
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 `;
 
 const SearchbarTitleForm = styled.form`
@@ -40,12 +45,12 @@ const SearchbarInput = styled.input`
   font-size: 16px;
   float: left;
   height: 20px;
-  color: ${TextColor};
+  color: ${LightTextColor};
   width: 100%;
 
   &::placeholder {
     color: ${PlaceholderTextColor};
-    opacity: 1;
+    opacity: 0.5;
   }
 
   &:focus {
@@ -73,6 +78,9 @@ const SuggestionsWrapper = styled.div`
   width: 40%;
   min-width: 140px;
   text-align: left;
+
+  box-shadow: ${SearchBarGlowShadow};
+  border-color: ${SearchBarGlowBorderColor};
 `;
 
 const SuggestionsList = styled.ul`
