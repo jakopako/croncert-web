@@ -45,6 +45,10 @@ const TableHeader = styled.th`
   &:nth-child(6) {
     min-width: 80px;
   }
+
+  &:nth-child(7) {
+    min-width: 60px;
+  }
 `;
 
 const TableRow = styled.tr`
@@ -66,6 +70,83 @@ const StatusIcon = styled.span`
   cursor: help;
 `;
 
+const LogsButton = styled.button`
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 2px 8px;
+  color: inherit;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+
+const ModalTitle = styled.h3`
+  margin: 0;
+  font-size: 1.2em;
+`;
+
+const ModalCloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: inherit;
+  line-height: 1;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+const LogsContainer = styled.pre`
+  overflow-y: auto;
+  flex: 1;
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 0.85em;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+`;
+
 interface Props {
   baseUrlFromEnv: string;
 }
@@ -75,6 +156,10 @@ const Status = ({ baseUrlFromEnv }: Props) => {
   const [baseUrlStatus] = useState(baseUrlFromEnv + "/api/status");
   const [status, setStatus] = useState([]);
   const [pageSize, setPageSize] = useState(1);
+  const [logsModalOpen, setLogsModalOpen] = useState(false);
+  const [logsScraperName, setLogsScraperName] = useState("");
+  const [logsContent, setLogsContent] = useState("");
+  const [logsLoading, setLogsLoading] = useState(false);
 
   // Make one call to figure out how many items there are in total
   useEffect(() => {
@@ -102,6 +187,43 @@ const Status = ({ baseUrlFromEnv }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize]);
 
+  const openLogs = async (scraperName: string) => {
+    setLogsScraperName(scraperName);
+    setLogsContent("");
+    setLogsLoading(true);
+    setLogsModalOpen(true);
+    try {
+      const url =
+        baseUrlStatus +
+        "?name=" +
+        encodeURIComponent(scraperName) +
+        "&returnScraperLogs=true";
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`Request failed: ${res.status} ${res.statusText}`);
+      }
+      const resJson = await res.json();
+      const data = resJson["data"];
+      const logs =
+        data && data.length > 0 && data[0].scraperLogs
+          ? data[0].scraperLogs
+          : "No logs available.";
+      setLogsContent(logs);
+    } catch (err) {
+      setLogsContent(
+        `Failed to load logs: ${err instanceof Error ? err.message : String(err)}`
+      );
+    } finally {
+      setLogsLoading(false);
+    }
+  };
+
+  const closeLogs = () => {
+    setLogsModalOpen(false);
+    setLogsScraperName("");
+    setLogsContent("");
+  };
+
   return (
     <div className="App">
       <CroncertLogo />
@@ -120,6 +242,7 @@ const Status = ({ baseUrlFromEnv }: Props) => {
                 <TableHeader>Last Scrape</TableHeader>
                 <TableHeader>Scrape Duration</TableHeader>
                 <TableHeader>Status</TableHeader>
+                <TableHeader>Logs</TableHeader>
               </tr>
             </thead>
             <tbody>
@@ -171,11 +294,34 @@ const Status = ({ baseUrlFromEnv }: Props) => {
                       <StatusIcon title="Errors occurred">❌</StatusIcon>
                     )}
                   </TableCell>
+                  <TableCell>
+                    <LogsButton
+                      onClick={() => openLogs(s.scraperName)}
+                      title={`View logs for ${s.scraperName}`}
+                    >
+                      📋
+                    </LogsButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </tbody>
           </StatusTable>
         </ScrollContainer>
+      )}
+      {logsModalOpen && (
+        <ModalOverlay onClick={closeLogs}>
+          <ModalContent onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+            <ModalHeader>
+              <ModalTitle>Logs: {logsScraperName}</ModalTitle>
+              <ModalCloseButton onClick={closeLogs} aria-label="Close logs">
+                ✕
+              </ModalCloseButton>
+            </ModalHeader>
+            <LogsContainer>
+              {logsLoading ? "Loading logs..." : logsContent}
+            </LogsContainer>
+          </ModalContent>
+        </ModalOverlay>
       )}
       <br />
       <br />
