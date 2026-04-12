@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import CroncertLogo from "./CroncertLogo";
 import Footer from "./Footer";
+import { Status as StatusType } from "../model";
+import { DarkBorderColor, LightTextColor, BorderColor } from "./Constants";
 
 const StatusTitle = styled.h2`
   font-size: 1.5em;
@@ -90,7 +92,7 @@ const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,8 +100,9 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #fff;
-  color: #222;
+  background: ${DarkBorderColor};
+  color: ${LightTextColor};
+  border: 1px solid ${BorderColor};
   border-radius: 8px;
   padding: 24px;
   width: 90%;
@@ -107,7 +110,7 @@ const ModalContent = styled.div`
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
 `;
 
 const ModalHeader = styled.div`
@@ -138,13 +141,15 @@ const ModalCloseButton = styled.button`
 const LogsContainer = styled.pre`
   overflow-y: auto;
   flex: 1;
-  background: #f5f5f5;
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   padding: 12px;
   font-size: 0.85em;
   white-space: pre-wrap;
   word-break: break-word;
   margin: 0;
+  text-align: left;
+  color: ${LightTextColor};
 `;
 
 interface Props {
@@ -154,12 +159,14 @@ interface Props {
 const Status = ({ baseUrlFromEnv }: Props) => {
   const [loading, setLoading] = useState(true);
   const [baseUrlStatus] = useState(baseUrlFromEnv + "/api/status");
-  const [status, setStatus] = useState([]);
+  const [status, setStatus] = useState<StatusType[]>([]);
   const [pageSize, setPageSize] = useState(1);
   const [logsModalOpen, setLogsModalOpen] = useState(false);
   const [logsScraperName, setLogsScraperName] = useState("");
   const [logsContent, setLogsContent] = useState("");
   const [logsLoading, setLogsLoading] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Make one call to figure out how many items there are in total
   useEffect(() => {
@@ -187,7 +194,35 @@ const Status = ({ baseUrlFromEnv }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize]);
 
+  // Focus the close button when the modal opens
+  useEffect(() => {
+    if (logsModalOpen) {
+      closeButtonRef.current?.focus();
+    }
+  }, [logsModalOpen]);
+
+  // Close the modal on Escape key
+  useEffect(() => {
+    if (!logsModalOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeLogs();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [logsModalOpen]);
+
   const openLogs = async (scraperName: string) => {
+    // Cancel any in-flight request before starting a new one
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
     setLogsScraperName(scraperName);
     setLogsContent("");
     setLogsLoading(true);
@@ -198,7 +233,7 @@ const Status = ({ baseUrlFromEnv }: Props) => {
         "?name=" +
         encodeURIComponent(scraperName) +
         "&returnScraperLogs=true";
-      const res = await fetch(url);
+      const res = await fetch(url, { signal: controller.signal });
       if (!res.ok) {
         throw new Error(`Request failed: ${res.status} ${res.statusText}`);
       }
@@ -210,6 +245,9 @@ const Status = ({ baseUrlFromEnv }: Props) => {
           : "No logs available.";
       setLogsContent(logs);
     } catch (err) {
+      if (err instanceof Error && err.name === "AbortError") {
+        return;
+      }
       setLogsContent(
         `Failed to load logs: ${err instanceof Error ? err.message : String(err)}`
       );
@@ -246,7 +284,7 @@ const Status = ({ baseUrlFromEnv }: Props) => {
               </tr>
             </thead>
             <tbody>
-              {status.map((s: any, index) => (
+              {status.map((s: StatusType, index) => (
                 <TableRow key={index}>
                   <TableCell>
                     {s.scraperName}
@@ -296,8 +334,10 @@ const Status = ({ baseUrlFromEnv }: Props) => {
                   </TableCell>
                   <TableCell>
                     <LogsButton
+                      type="button"
                       onClick={() => openLogs(s.scraperName)}
                       title={`View logs for ${s.scraperName}`}
+                      aria-label={`View logs for ${s.scraperName}`}
                     >
                       📋
                     </LogsButton>
@@ -310,10 +350,22 @@ const Status = ({ baseUrlFromEnv }: Props) => {
       )}
       {logsModalOpen && (
         <ModalOverlay onClick={closeLogs}>
-          <ModalContent onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+          <ModalContent
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logs-modal-title"
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+          >
             <ModalHeader>
-              <ModalTitle>Logs: {logsScraperName}</ModalTitle>
-              <ModalCloseButton onClick={closeLogs} aria-label="Close logs">
+              <ModalTitle id="logs-modal-title">
+                Logs: {logsScraperName}
+              </ModalTitle>
+              <ModalCloseButton
+                type="button"
+                ref={closeButtonRef}
+                onClick={closeLogs}
+                aria-label="Close logs"
+              >
                 ✕
               </ModalCloseButton>
             </ModalHeader>
