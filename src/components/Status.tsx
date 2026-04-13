@@ -3,7 +3,12 @@ import styled from "styled-components";
 import CroncertLogo from "./CroncertLogo";
 import Footer from "./Footer";
 import { Status as StatusType } from "../model";
-import { DarkBorderColor, LightTextColor, BorderColor } from "./Constants";
+import {
+  DarkBorderColor,
+  LightTextColor,
+  BorderColor,
+  LinkTextHoverColor,
+} from "./Constants";
 
 const StatusTitle = styled.h2`
   font-size: 1.5em;
@@ -152,6 +157,10 @@ const LogsContainer = styled.pre`
   color: ${LightTextColor};
 `;
 
+const LogKeySpan = styled.span`
+  color: ${LinkTextHoverColor};
+`;
+
 interface Props {
   baseUrlFromEnv: string;
 }
@@ -262,6 +271,38 @@ const Status = ({ baseUrlFromEnv }: Props) => {
     setLogsContent("");
   };
 
+  // Highlight keys in "key=value" log lines
+  const renderLogs = (logs: string): React.ReactNode => {
+    const keyValueRegex = /(\b\w+)(=)/g;
+    return logs.split("\n").map((line, lineIndex, lines) => {
+      const parts: React.ReactNode[] = [];
+      let lastIndex = 0;
+      let match: RegExpExecArray | null;
+      keyValueRegex.lastIndex = 0;
+      while ((match = keyValueRegex.exec(line)) !== null) {
+        if (match.index > lastIndex) {
+          parts.push(line.slice(lastIndex, match.index));
+        }
+        parts.push(
+          <LogKeySpan key={`k-${lineIndex}-${match.index}`}>
+            {match[1]}
+          </LogKeySpan>
+        );
+        parts.push(match[2]);
+        lastIndex = match.index + match[0].length;
+      }
+      if (lastIndex < line.length) {
+        parts.push(line.slice(lastIndex));
+      }
+      return (
+        <React.Fragment key={lineIndex}>
+          {parts.length > 0 ? parts : line}
+          {lineIndex < lines.length - 1 ? "\n" : ""}
+        </React.Fragment>
+      );
+    });
+  };
+
   return (
     <div className="App">
       <CroncertLogo />
@@ -370,7 +411,7 @@ const Status = ({ baseUrlFromEnv }: Props) => {
               </ModalCloseButton>
             </ModalHeader>
             <LogsContainer>
-              {logsLoading ? "Loading logs..." : logsContent}
+              {logsLoading ? "Loading logs..." : renderLogs(logsContent)}
             </LogsContainer>
           </ModalContent>
         </ModalOverlay>
