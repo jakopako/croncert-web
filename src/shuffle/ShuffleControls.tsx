@@ -7,18 +7,11 @@ import {
   FilterThumbColor,
   GenreTagBackgroundColor,
   LightTextColor,
-  LinkTextHoverColor,
-  SearchBarGlowShadow,
-  TextColor,
 } from "../components/Constants";
 
 const ControlsBox = styled.div`
-  // background-color: ${DarkBorderColor};
-  // border-radius: 15px;
-  // box-shadow: ${SearchBarGlowShadow};
   color: ${LightTextColor};
   padding: 20px 0 0 0;
-  // margin-bottom: 20px;
 `;
 
 const Group = styled.div`
@@ -43,9 +36,6 @@ const ShuffleColumn = styled.div`
   background-color: ${DarkBorderColor};
   flex: 1 1 0;
   display: flex;
-  // padding-left: 24px;
-  // border-left: 1px solid rgba(255, 255, 255, 0.12);
-  // padding: 10px;
   border-radius: 15px;
   height: 70px;
 `;
