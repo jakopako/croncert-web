@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import Status from "./components/Status";
 import NotificationActivation from "./components/NotificationActivation";
 import NotificationDeletion from "./components/NotificationDeletion";
+import Shuffle from "./shuffle/Shuffle";
 
 const baseUrlFromEnv: string = process.env.REACT_APP_CONCERT_API_URL || "";
 const emailStringFromEnv: string = process.env.REACT_APP_FEEDBACK_EMAIL || "";
@@ -35,6 +36,10 @@ export default function App() {
         <Route
           path="/unsubscribe-notification"
           element={<NotificationDeletion baseUrlFromEnv={baseUrlFromEnv} />}
+        />
+        <Route
+          path="/shuffle"
+          element={<Shuffle baseUrlFromEnv={baseUrlFromEnv} />}
         />
       </Routes>
     </BrowserRouter>
