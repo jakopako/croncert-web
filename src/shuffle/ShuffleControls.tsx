@@ -1,68 +1,59 @@
 import { ChangeEvent } from "react";
 import styled from "styled-components";
-import { TIME_HORIZON_PRESETS, TimeHorizonKey } from "./presets";
 import { GeolocationStatus } from "./geo";
 import {
   DarkBorderColor,
   FilterSliderColor,
   FilterThumbColor,
   GenreTagBackgroundColor,
-  GenreTagTextColor,
   LightTextColor,
-  SearchBarBackgroundColor,
+  LinkTextHoverColor,
   SearchBarGlowShadow,
   TextColor,
 } from "../components/Constants";
 
 const ControlsBox = styled.div`
-  background-color: ${DarkBorderColor};
-  border-radius: 15px;
-  box-shadow: ${SearchBarGlowShadow};
+  // background-color: ${DarkBorderColor};
+  // border-radius: 15px;
+  // box-shadow: ${SearchBarGlowShadow};
   color: ${LightTextColor};
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 20px 0 0 0;
+  // margin-bottom: 20px;
 `;
 
 const Group = styled.div`
   margin-bottom: 16px;
 `;
 
-const FilterRow = styled.div`
+const ControlBar = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 24px;
-  margin-bottom: 16px;
+`;
 
-  > * {
-    flex: 1 1 260px;
-    margin-bottom: 0;
-  }
+const RadiusColumn = styled.div`
+  background-color: ${DarkBorderColor};
+  flex: 4 1 0;
+  padding: 15px;
+  border-radius: 15px;
+  height: 100%;
+`;
+
+const ShuffleColumn = styled.div`
+  background-color: ${DarkBorderColor};
+  flex: 1 1 0;
+  display: flex;
+  // padding-left: 24px;
+  // border-left: 1px solid rgba(255, 255, 255, 0.12);
+  // padding: 10px;
+  border-radius: 15px;
+  height: 70px;
 `;
 
 const GroupLabel = styled.div`
   font-size: 13px;
   opacity: 0.8;
   margin-bottom: 6px;
-`;
-
-const PresetRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const PresetButton = styled.button<{ $selected: boolean }>`
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: ${(props) => (props.$selected ? 700 : 400)};
-  cursor: pointer;
-  border: 1px solid
-    ${(props) =>
-      props.$selected ? SearchBarBackgroundColor : GenreTagTextColor};
-  background-color: ${(props) =>
-    props.$selected ? SearchBarBackgroundColor : "transparent"};
-  color: ${(props) => (props.$selected ? TextColor : LightTextColor)};
 `;
 
 const CityInput = styled.input`
@@ -77,7 +68,6 @@ const CityInput = styled.input`
 
 const RadiusSlider = styled.input`
   width: 100%;
-  max-width: 320px;
   cursor: pointer;
   appearance: none;
   height: 4px;
@@ -110,15 +100,20 @@ const RadiusValue = styled.span`
   margin-left: 8px;
 `;
 
-const SpinButton = styled.button`
+const ShuffleButton = styled.button`
+  flex: 1;
   border-radius: 15px;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   border: none;
-  background-color: ${GenreTagBackgroundColor};
-  color: ${GenreTagTextColor};
+  background-color: ${DarkBorderColor};
+  color: ${LightTextColor};
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
 
   &:disabled {
     opacity: 0.5;
@@ -129,8 +124,6 @@ const SpinButton = styled.button`
 interface Props {
   radiusKm: number;
   onRadiusChange: (radiusKm: number) => void;
-  timeHorizon: TimeHorizonKey;
-  onTimeHorizonChange: (key: TimeHorizonKey) => void;
   geoStatus: GeolocationStatus;
   manualCity: string;
   onManualCityChange: (city: string) => void;
@@ -141,8 +134,6 @@ interface Props {
 const ShuffleControls = ({
   radiusKm,
   onRadiusChange,
-  timeHorizon,
-  onTimeHorizonChange,
   geoStatus,
   manualCity,
   onManualCityChange,
@@ -155,15 +146,15 @@ const ShuffleControls = ({
 
   return (
     <ControlsBox>
-      <FilterRow>
-        <Group>
+      <ControlBar>
+        <RadiusColumn>
           <GroupLabel>
             How far are you willing to go?
             <RadiusValue>{radiusKm} km</RadiusValue>
           </GroupLabel>
           <RadiusSlider
             type="range"
-            min={0}
+            min={1}
             max={50}
             step={1}
             value={radiusKm}
@@ -171,25 +162,15 @@ const ShuffleControls = ({
               onRadiusChange(Number(e.target.value))
             }
           />
-        </Group>
+        </RadiusColumn>
 
-        <Group>
-          <GroupLabel>When?</GroupLabel>
-          <PresetRow>
-            {TIME_HORIZON_PRESETS.map((preset) => (
-              <PresetButton
-                key={preset.key}
-                type="button"
-                $selected={timeHorizon === preset.key}
-                onClick={() => onTimeHorizonChange(preset.key)}
-              >
-                {preset.label}
-              </PresetButton>
-            ))}
-          </PresetRow>
-        </Group>
-      </FilterRow>
-
+        <ShuffleColumn>
+          <ShuffleButton type="button" onClick={onSpin} disabled={!canSpin}>
+            {spinning ? "Shuffling..." : "Shuffle"}
+          </ShuffleButton>
+        </ShuffleColumn>
+      </ControlBar>
+      {/* // Todo: no city fallback. If geolocation is unavailable show error message */}
       {needsManualCity && (
         <Group>
           <GroupLabel>
@@ -207,10 +188,6 @@ const ShuffleControls = ({
           />
         </Group>
       )}
-
-      <SpinButton type="button" onClick={onSpin} disabled={!canSpin}>
-        {spinning ? "Finding a show..." : "Find a Show"}
-      </SpinButton>
     </ControlsBox>
   );
 };

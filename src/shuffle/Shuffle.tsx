@@ -5,8 +5,7 @@ import SplitFlapBoard from "./SplitFlapBoard";
 import ResultDetails from "./ResultDetails";
 import { fetchShuffleEvents } from "./shuffleApi";
 import { useGeolocation } from "./geo";
-import { getTimeHorizonWindow, isDateWithinWindow } from "./dateFilters";
-import { TimeHorizonKey } from "./presets";
+import { getNext24HoursWindow, isDateWithinWindow } from "./dateFilters";
 import { ShuffleEvent } from "./model";
 import { SPIN_DURATION_MS } from "./flapCharset";
 import { LightTextColor } from "../components/Constants";
@@ -47,15 +46,14 @@ interface Props {
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-const filterPool = (pool: ShuffleEvent[], timeHorizon: TimeHorizonKey) => {
-  const window = getTimeHorizonWindow(timeHorizon);
+const filterPool = (pool: ShuffleEvent[]): ShuffleEvent[] => {
+  const window = getNext24HoursWindow();
   return pool.filter((event) => isDateWithinWindow(event.date, window));
 };
 
 const Shuffle = ({ baseUrlFromEnv }: Props) => {
   const geolocation = useGeolocation();
   const [radiusKm, setRadiusKm] = useState(15);
-  const [timeHorizon, setTimeHorizon] = useState<TimeHorizonKey>("tonight");
   const [manualCity, setManualCity] = useState("");
   const [resultEvent, setResultEvent] = useState<ShuffleEvent | null>(null);
   const [boardMessage, setBoardMessage] = useState<string[] | null>(null);
@@ -84,7 +82,7 @@ const Shuffle = ({ baseUrlFromEnv }: Props) => {
 
     try {
       const data = await fetchPoolForRadius(radiusKm);
-      const filtered = filterPool(data, timeHorizon);
+      const filtered = filterPool(data);
 
       if (filtered.length === 0) {
         setResultEvent(null);
@@ -119,8 +117,6 @@ const Shuffle = ({ baseUrlFromEnv }: Props) => {
       <ShuffleControls
         radiusKm={radiusKm}
         onRadiusChange={setRadiusKm}
-        timeHorizon={timeHorizon}
-        onTimeHorizonChange={setTimeHorizon}
         geoStatus={geolocation.status}
         manualCity={manualCity}
         onManualCityChange={setManualCity}
