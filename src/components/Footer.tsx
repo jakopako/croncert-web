@@ -48,6 +48,10 @@ const Footer = () => {
       <FooterComponent>
         <a href="/status">Status</a>
       </FooterComponent>
+
+      <FooterComponent>
+        <a href="/shuffle">Shuffle</a>
+      </FooterComponent>
     </FooterBox>
   );
 };
