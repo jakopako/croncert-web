@@ -1,4 +1,5 @@
 import { ShuffleEventsResponse } from "./model";
+import { addHours } from "date-fns";
 
 export type FetchShuffleEventsParams = {
   baseUrl: string;
@@ -10,8 +11,7 @@ export type FetchShuffleEventsParams = {
   signal?: AbortSignal;
 };
 
-// Fetches a pool of upcoming concerts within a radius (or city), omitting the
-// `date` param so all future events come back for client-side time-window filtering.
+// Fetches a pool of concerts within the next 24 hours and a radius (or city).
 export const fetchShuffleEvents = async ({
   baseUrl,
   radiusKm,
@@ -22,9 +22,12 @@ export const fetchShuffleEvents = async ({
   signal,
 }: FetchShuffleEventsParams): Promise<ShuffleEventsResponse> => {
   const params = new URLSearchParams();
+  const fromTime = new Date();
   params.set("type", "concert");
   params.set("limit", String(limit));
   params.set("radius", String(radiusKm));
+  params.set("fromTime", fromTime.toISOString());
+  params.set("toTime", addHours(fromTime, 24).toISOString());
   if (lat !== undefined && lon !== undefined) {
     params.set("lat", String(lat));
     params.set("lon", String(lon));
