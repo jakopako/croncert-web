@@ -18,6 +18,7 @@ import {
   SearchBarGlowBorderColor,
   DarkBorderColor,
 } from "./Constants";
+import { getEventTimeRange } from "../eventTime";
 
 const toISOStringWithTimezone = (date: Date): string => {
   const tzOffset = -date.getTimezoneOffset();
@@ -151,20 +152,17 @@ const Search = ({ baseUrlFromEnv }: Props) => {
     const start = new Date().getTime();
     const controller = new AbortController();
     (async () => {
-      var url =
-        baseUrlEvents +
-        "?page=" +
-        page +
-        "&title=" +
-        titleSearchTerm +
-        "&city=" +
-        citySearchTerm +
-        "&radius=" +
-        radius +
-        "&type=concert";
-      if (date) {
-        url += "&date=" + encodeURIComponent(toISOStringWithTimezone(date));
-      }
+      const params = new URLSearchParams({
+        page: page.toString(),
+        title: titleSearchTerm,
+        city: citySearchTerm,
+        radius: radius.toString(),
+        type: "concert",
+      });
+      const { fromTime, toTime } = getEventTimeRange(date);
+      params.set("fromTime", fromTime.toISOString());
+      if (toTime) params.set("toTime", toTime.toISOString());
+      const url = `${baseUrlEvents}?${params.toString()}`;
 
       try {
         const res = await fetch(url, { signal: controller.signal });
